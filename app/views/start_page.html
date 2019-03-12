@@ -7,16 +7,128 @@
 
 {% block content %}
 
+<style>
+    .m-bottom-0 {
+        margin-bottom:0;
+    }
+    .m-bottom-10 {
+        margin-bottom:10px;
+    }
+    .m-top-0 {
+        margin-top:0;
+    }
+    .m-top-10 {
+        margin-top:10px;
+    }
+    .m-top-bottom-0 {
+        margin-top:0;
+        margin-bottom:0;
+    }
+    .m-top-bottom-10 {
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+</style>
+
 <div class="govuk-grid-row">
+    
+    <!-- BREADCRUMBS -->
+    <div class="govuk-grid-column-full" style="margin-top:-30px; margin-bottom:40px">
+        <div class="govuk-breadcrumbs">
+            <ol class="govuk-breadcrumbs__list">
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="#">Home</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item">
+                    <a class="govuk-breadcrumbs__link" href="#">Crime, justice and the law</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item" aria-current="page">
+                    <a class="govuk-breadcrumbs__link" href="#">Courts, sentencing and tribunals</a>
+                </li>
+                <li class="govuk-breadcrumbs__list-item" aria-current="page">Online plea</li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
         
         <h1 class="govuk-heading-xl">
-            Start page
+            Make a plea
         </h1>
         
-        <p>To be confirmed</p>
+        <p class="govuk-body-l">Use this service to plead guilty or not guilty online.</p>
+        
+        <h2 class="govuk-heading-m">Before you start</h2>
+        
+        <p>To use this service you need:</p>
+        
+        <details class="govuk-details" open>
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                    For all pleas
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>you must be the person charged with the offence</li>
+                    <li>the Single Justice Procedure notice sent to you</li>
+                    <li>your National Insurance number</li>
+                    <li>details of your income, benefits and outgoings</li>
+                    <li>your employers’ details</li>
+                    <li>your email address</li>
+                </ul>                
+            </div>
+        </details>
+        
+        <details class="govuk-details" open>
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                    Additional information needed for not guilty pleas
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>your witness’ name, address, age and date of birth</li>
+                    <li>any dates you can’t attend court</li>
+                </ul>                
+            </div>
+        </details>
+        
+        <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start">
+            Start now
+        </a>
+        
+        <div class="govuk-inset-text">
+            View this page in Welsh (<a href="#">Cymraeg</a>).
+        </div>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+        
+        <h1 class="govuk-heading-m" style="border-top: 10px solid #005ea5; padding-top:10px">
+            Help and advice
+        </h1>
+        
+        <h3 class="govuk-heading-s govuk-!-font-size-16 m-bottom-10">If you need to contact the prosecutor</h3>
+        <p class=" govuk-!-font-size-16 m-top-0">You can find their contact details on the notice you’ve been sent</p>
+        
+        <h3 class="govuk-heading-s govuk-!-font-size-16 m-bottom-10">Legal advice</h3>
+        <p class=" govuk-!-font-size-16 m-top-0 m-bottom-10">You can get help from either:</p>
+        <ul class="govuk-list govuk-list--bullet m-top-0">
+            <li class=" govuk-!-font-size-16 p-right"><a href="#">a solicitor</a></li>
+            <li class=" govuk-!-font-size-16"><a href="#">Citizens Advice</a></li>
+        </ul>
+        
+        <h3 class="govuk-heading-s govuk-!-font-size-16 m-bottom-10">For help with this online service or the court process, telephone the Contact Centre</h3>
+        <p class=" govuk-!-font-size-16 m-top-bottom-10">Telephone: 0300 303 0656</p>
+        <p class=" govuk-!-font-size-16 m-top-bottom-10">Monday to Friday 9am to 5pm</p>
+        <p class=" govuk-!-font-size-16 m-top-10"><a href="#">Find out about call charges</a></p>
 
     </div>
+    
 </div>
 
 {% endblock %}
