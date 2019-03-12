@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Online plea design prototype
+            <span class="govuk-caption-xl">Multiple offences</span>  
+            <span class="govuk-caption-xl">{{releaseVersion}}</span>
+        </h1>{{releaseVersion | log }}
+
+        <h2 class="govuk-heading-m">About this design prototype</h2>
+
+        <p>To be confirmed</p>
+
+        <form class="form" action="/start_page" method="post">
+            <button type="submit" class="govuk-button">Start prototye</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
