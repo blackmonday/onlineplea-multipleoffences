@@ -13,3 +13,167 @@ $govuk-global-styles: true;
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+/* ************ */
+/* ************ */
+/* MARGIN FIXES */
+
+/* 0px */
+.m-bottom-0 {
+    margin-bottom:0;
+}
+.m-top-0 {
+    margin-top:0;
+}
+.m-top-bottom-0 {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+/* 5px */
+.m-bottom-5 {
+    margin-bottom:5px;
+}
+.m-top-5 {
+    margin-top:5px;
+}
+.m-top-bottom-5 {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+/* 10px */
+.m-bottom-10 {
+    margin-bottom:10px;
+}
+.m-top-10 {
+    margin-top:10px;
+}
+.m-top-bottom-10 {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+/* 15px */
+.m-bottom-15 {
+    margin-bottom:15px;
+}
+.m-top-15 {
+    margin-top:15px;
+}
+.m-top-bottom-15 {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+/* 20px */
+.m-bottom-20 {
+    margin-bottom:20px;
+}
+.m-top-20 {
+    margin-top:20px;
+}
+.m-top-bottom-20 {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+/* 30px */
+.m-bottom-30 {
+    margin-bottom:30px;
+}
+.m-top-30 {
+    margin-top:30px;
+}
+.m-top-bottom-30 {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+/* 60px */
+.m-bottom-60 {
+    margin-bottom:60px;
+}
+.m-top-60 {
+    margin-top:60px;
+}
+.m-top-bottom-60 {
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+
+/* ************* */
+/* ************* */
+/* ************* */
+/* PADDING FIXES */
+
+/* 0px */
+.p-top-0 {
+    margin-top:0;
+}
+.p-bottom-0 {
+    margin-bottom:0;
+}
+.p-top-bottom-0 {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+/* 10px */
+.p-top-bottom-5 {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.p-bottom-5 {
+    margin-bottom:5px;
+}
+.p-top-5 {
+    margin-top:5px;
+}
+
+/* 10px */
+.p-top-bottom-10 {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.p-bottom-10 {
+    margin-bottom:10px;
+}
+.p-top-10 {
+    margin-top:10px;
+}
+
+/* 15px */
+.p-top-bottom-15 {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.p-bottom-15 {
+    margin-bottom:15px;
+}
+.p-top-15 {
+    margin-top:15px;
+}
+
+/* 20px */
+.p-top-bottom-20 {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.p-bottom-20 {
+    margin-bottom:20px;
+}
+.p-top-20 {
+    margin-top:20px;
+}
+
+/* ************ */
+/* ************ */
+/* ************ */
+/* TEXT COLOURS */
+.white-text {
+    color:govuk-colour("white");
+}
+
+
+

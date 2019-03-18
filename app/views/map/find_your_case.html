@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Find your case
+        </h1>
+        
+        <form action="" method="post">
+            
+            <div class="govuk-form-group m-bottom-15">
+                <label class="govuk-label" for="your-urn">
+                    <strong>Case or Unique Reference Number</strong>
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="your-urn" name="your-urn" type="text">
+            </div>
+            
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        Where to find this on your notice
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    [ IMAGE TO BE CONFIRMED ]
+                </div>
+            </details>
+            
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="your-postcode">
+                    <strong>Your postcode, as shown on your notice</strong>
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="your-postcode" name="your-postcode" type="text">
+            </div>
+            
+            <div class="govuk-form-group">
+                {% include "includes/continue_with_back.html" %}
+            </div>
+            
+        </form>
+
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <!--
+        <h1 class="govuk-heading-xl">
+            Confirmation
+        </h1>
+        -->
+        
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-!-font-size-36 m-top-0">
+                Your plea has been submitted
+            </h1>
+            <p class="govuk-!-font-size-19 m-bottom-0 white-text">
+                <strong>
+                    Your case reference is
+                </strong>
+            </p>
+            <p class="govuk-!-font-size-24 m-top-0 white-text">
+                <strong>
+                    HDJ2123F
+                </strong>
+            </p>
+            <p class="govuk-!-font-size-19 white-text m-bottom-0">
+                <strong>
+                    If you need to contact us, you will need to quote this case reference
+                </strong>
+            </p>
+        </div>
+        
+        <h2 class="govuk-heading-m m-top-30">What happens next?</h2>
+        
+        <p class="govuk-body">We will email you confirmation that your plea has been submitted.</p>
+        
+        <p class="govuk-body m-bottom-5">Depending on how you pleaded, we will:</p>
+        
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                send you a letter once your case has been reviewed, usually within 28 days
+            </li>
+            <li>
+                tell you how much and when to pay if you need to pay a financial penalty
+            </li>
+            <li>
+                tell you if or when you need to attend court
+            </li>
+        </ul>
+        
+        <h2 class="govuk-heading-m">For help with this online service or the court process</h2>
+        
+        <p class="govuk-body">Contact the Contact Centre quoting your case reference.</p>
+        
+        <h3 class="govuk-heading-s m-bottom-5">By telephone</h3>
+        
+        <p class="m-bottom-30">
+            0300 303 0656
+            <br>Monday to Friday 9am to 5pm
+            <br><a href="#">Find out about call charges</a>
+        </p>
+        
+        <form action="" method="post">
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button">
+                    Finish
+                </button>
+            </div>
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+    </div>
+
+</div>
+
+{% endblock %}

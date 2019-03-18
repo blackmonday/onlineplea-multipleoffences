@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h2 class="govuk-heading-m m-bottom-0">
+            Charge 1 of 3
+        </h2>
+        <p class="govuk-body">
+            <strong>
+                Speeding - exceed 30 miles per hour on restricted road - manned camera device
+            </strong>
+        </p>
+
+        <h1 class="govuk-heading-xl m-top-30 m-bottom-30">
+            Guilty plea
+        </h1>
+        
+        <div class="govuk-inset-text m-top-20">
+            <p class="govuk-body">You have the right to attend an open court hearing but don’t have to. The magistrate can also consider your case without you and send you their decision by post.</p>
+            <p class="govuk-body">If you are needed to attend court we will write to you.</p>
+            <p class="govuk-body">Magistrates follow the same guidelines either way.</p>
+        </div>
+        
+        <form action="" method="post">
+            
+            
+            <div class="govuk-form-group m-bottom-15">
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                        <h2 class="govuk-heading-m m-bottom-0">
+                            Would you like to come to court?
+                        </h2>
+                    </legend>
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="come-to-court-1" name="come-to-court" type="radio" value="Yes" {{ checked('come-to-court','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="come-to-court-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="come-to-court-2" name="come-to-court" type="radio" value="No" {{ checked('come-to-court','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="come-to-court-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>            
+            
+            
+            
+            
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_1.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Make a plea
+        </h1>
+        
+        <p class="govuk-body-l">Use this service to plead guilty or not guilty online.</p>
+        
+        <h2 class="govuk-heading-m">Before you start</h2>
+        
+        <p>To use this service you need:</p>
+        
+        <details class="govuk-details" open>
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                    For all pleas
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>you must be the person charged with the offence</li>
+                    <li>the Single Justice Procedure notice sent to you</li>
+                    <li>your National Insurance number</li>
+                    <li>details of your income, benefits and outgoings</li>
+                    <li>your employers’ details</li>
+                    <li>your email address</li>
+                </ul>                
+            </div>
+        </details>
+        
+        <details class="govuk-details" open>
+            <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text govuk-!-font-weight-bold">
+                    Additional information needed for not guilty pleas
+                </span>
+            </summary>
+            <div class="govuk-details__text">
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>your witness’ name, address, age and date of birth</li>
+                    <li>any dates you can’t attend court</li>
+                </ul>                
+            </div>
+        </details>
+        
+        <form action="" method="post">
+            <div class="govuk-form-group">
+                <button type="submit" class="govuk-button govuk-button--start">
+                    Start now
+                </button>
+            </div>
+        </form>
+        
+        <div class="govuk-inset-text">
+            View this page in Welsh (<a href="#">Cymraeg</a>).
+        </div>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+    
+</div>
+
+{% endblock %}

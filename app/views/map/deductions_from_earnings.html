@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Deductions from earnings
+        </h1>
+        
+        <p class="govuk-heading-s">If you need to pay a penalty, would you like us to deduct it from your earnings?</p>
+
+
+        
+        
+        
+        <p class="govuk-body m-bottom-5">The court may deduct a penalty from your earnings if:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>you’ve failed to pay in the past</li>
+            <li>you’re ordered to pay compensation, as part of your penalty</li>
+        </ul>
+        
+        
+        
+        
+        
+        <form action="" method="post">
+            
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="deduct-from-earnings-hint">
+                    <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="deduct-from-earnings-1" name="deduct-from-earnings" type="radio" value="Yes" {{ checked('deduct-from-earnings','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="deduct-from-earnings-2" name="deduct-from-earnings" type="radio" value="No" {{ checked('deduct-from-earnings','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            {% include "includes/continue_with_back.html" %}
+            
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h2 class="govuk-heading-m m-bottom-0">
+            Charge 1 of 3
+        </h2>
+        <p class="govuk-body">
+            <strong>
+                Speeding - exceed 30 miles per hour on restricted road - manned camera device
+            </strong>
+        </p>
+
+        <h1 class="govuk-heading-xl m-top-30">
+            Guilty plea
+        </h1>
+                
+        <form action="" method="post">
+            
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="mitigation-guilty">
+                    <strong>Is there anything you would like to tell the court? (optional)</strong>
+                </label>
+                <p class="govuk-body m-top-15">This is also known as mitigation. You can explain why you committed the offence or tell magistrates relevant personal circumstances.</p>
+                <p class="govuk-body m-top-15">They’ll take what you say into account when deciding on the sentence.</p>
+                <textarea class="govuk-textarea" id="mitigation-guilty" name="mitigation-guilty" rows="5" aria-describedby="mitigation-guilty-hint"></textarea>
+            </div>            
+
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

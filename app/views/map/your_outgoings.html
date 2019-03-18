@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Your outgoings
+        </h1>
+         
+        <form action="" method="post">
+            
+            <div class="govuk-form-group">
+                
+                <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                        <h2 class="govuk-heading-s m-bottom-0">
+                            Would you like to give details of your monthly bills?
+                        </h2>
+                    </legend>
+                    <span id="changed-name-hint" class="govuk-hint">
+                        Magistrates can take your outgoings into account when deciding how long you should get to pay a penalty.
+                    </span>
+                    <div class="govuk-radios govuk-radios">
+                    </div>
+                </fieldset>
+                        
+                <fieldset class="govuk-fieldset" aria-describedby="give-details-of-outgoings-hint">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                        
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="give-details-of-outgoings-1" name="give-details-of-outgoings" type="radio" value="Yes" {{ checked('give-details-of-outgoings','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="give-details-of-outgoings-1">
+                                Yes
+                            </label>
+                        </div>
+                        
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="give-details-of-outgoings-2" name="give-details-of-outgoings" type="radio" value="No" data-aria-controls="conditional-give-details-of-outgoings-2" {{ checked('give-details-of-outgoings','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="give-details-of-outgoings-2">
+                                No
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-give-details-of-outgoings-2">
+                                <p>Please note we can deduct without your agreement if:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>you’ve failed to pay a penalty in the past</li>
+                                <li>the court orders you to pay compensation</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </fieldset>
+                        
+            </div>        
+        
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

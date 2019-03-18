@@ -1,0 +1,113 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Your employment
+        </h1>
+        
+        <p class="govuk-body">Tell us about the company you work for.</p>
+
+        
+        <form action="" method="post">
+            
+            <div class="govuk-form-group">
+                <h2 class="govuk-heading-s m-bottom-5" for="company-name">
+                    Which company do you work for?
+                </h2>
+                <p class="govuk-body secondary-text m-bottom-10">
+                    This is the company name of your employer - this should be on your payslip
+                </p>
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-name" name="company-name" type="text">
+            </div>            
+            
+            <div class="govuk-form-group">
+                <h2 class="govuk-heading-s m-bottom-5" for="company-reference-number">
+                    What is your employee reference number (optional)
+                </h2>
+                <p class="govuk-body secondary-text m-bottom-10">
+                    Also known as employee number or payroll reference - this should be on your payslip
+                </p>
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-reference-number" name="company-reference-number" type="text">
+            </div>            
+            
+            <div class="govuk-form-group">
+                <h2 class="govuk-heading-m m-bottom-5" for="company-address-line-1">
+                    What is your employer's address
+                </h2>
+                <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            Which address should I include?
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        Enter the head office or where your payroll is managed
+                    </div>
+                </details>
+                <h2 class="govuk-heading-s m-bottom-5" for="company-address-line-1">
+                    Address
+                </h2>
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-address-line-1" name="company-address-line-1" type="text">
+                
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                    Town or city
+                </h2>
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                    County (optional)
+                </h2>
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                    Postcode
+                </h2>
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                    Your employer’s telephone (optional)
+                </h2>
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                
+            </div>            
+            
+
+            
+            
+            
+            
+            
+            
+            
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

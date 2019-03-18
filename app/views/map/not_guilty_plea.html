@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h2 class="govuk-heading-m m-bottom-0">
+            Charge 2 of 3
+        </h2>
+        <p class="govuk-body">
+            <strong>
+                Speeding - exceed 30 miles per hour on restricted road - manned camera device
+            </strong>
+        </p>
+
+        <h2 class="govuk-heading-m m-bottom-0">
+            Charge 3 of 3
+        </h2>
+        <p class="govuk-body">
+            <strong>
+                Speeding - exceed 30 miles per hour on restricted road - manned camera device
+            </strong>
+        </p>
+
+        <h1 class="govuk-heading-xl m-top-30 m-bottom-30">
+            Not guilty plea
+        </h1>
+        
+        <p class="govuk-body">Provide information for magistrates ahead of your court hearing.</p>
+        
+        <form action="" method="post">
+            
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="mitigation-not-guilty">
+                    <strong>Why do you believe you are not guilty of these charges?</strong>
+                </label>
+                <textarea class="govuk-textarea" id="mitigation-not-guilty" name="mitigation-not-guilty" rows="5" aria-describedby="mitigation-not-guilty-hint"></textarea>
+            </div>            
+
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

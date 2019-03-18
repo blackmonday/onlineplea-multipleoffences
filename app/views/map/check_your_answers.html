@@ -1,0 +1,928 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-full">
+        
+        <h1 class="govuk-heading-xl">
+            Check your answers
+        </h1>
+        
+        
+        
+        
+        
+        <!-- ------------ -->
+        <!-- ------------ -->
+        <!-- ------------ -->
+        <!-- YOUR DETAILS -->
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your details</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p class="govuk-body" style="text-align: right">
+                    <a href="/map/your_details">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-name">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Name
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['defendant-first-name']}} <span style="text-transform: uppercase">{{data['defendant-last-name']}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-address">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Address
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['defendant-address-line-1']}}<br>
+                        {{data['defendant-address-line-2']}}<br>
+                        {{data['defendant-address-line-3']}}<br>
+                        {{data['defendant-address-line-4']}}<br>
+                        {{data['defendant-address-postcode']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-home-telephone">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Home telephone
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['home-telephone']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-mobile-number">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Mobile number
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['mobile']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-additional-contact-number">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Additional contact number
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['additional-number']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-email-address">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Email address
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['email-1']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-additional-email-address">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Additional email address
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['email-2']}}
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-nin">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Date of birth
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['dob-day']}} {{data['dob-month']}} {{data['dob-year']}}
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+
+        <div id="cya-nin">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        National Insurance number
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        {{data['nin']}}
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+
+        
+        
+        
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- YOUR PLEA 1 -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your plea for charge 1 of 3</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_plea">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-charge">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Charge
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 charge]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-plea">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Plea
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 plea]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-coming-to-court">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Coming to court
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 coming to court]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-mitigation">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Why do you believe your not guilty
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 mitigation]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        
+        
+        
+                
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- YOUR PLEA 2 -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your plea for charge 2 of 3</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_plea">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-charge">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Charge
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 charge]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-plea">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Plea
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 plea]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-coming-to-court">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Coming to court
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 coming to court]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-mitigation">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Why do you believe your not guilty
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 mitigation]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        
+        
+        
+        
+                
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- ----------- -->
+        <!-- YOUR PLEA 3 -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your plea for charge 3 of 3</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_plea">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-charge">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Charge
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 charge]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-plea">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Plea
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 plea]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-coming-to-court">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Coming to court
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 coming to court]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        <div id="cya-plea-1-mitigation">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Why do you believe your not guilty
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [plea 1 mitigation]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+        
+        
+        
+                
+        <!-- ------------------ -->
+        <!-- ------------------ -->
+        <!-- ------------------ -->
+        <!-- YOUR COURT HEARING -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your court hearing</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_court_hearing">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-your-court-hearing-interpreter">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Interpreter
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-language">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Language
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [language]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                                
+        <div id="cya-your-court-hearing-speak-welsh">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Do you want to speak Welsh?
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-prosecution-witness-attend">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Are there any prosecution witness you want to attend?
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-prosecution-witness-name">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Prosecution witness names and why you want them to attend
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [name and reason]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-bringing-your-own-witness">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Bringing your own witness
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-your-witness-details">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Your witness' details
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [withness details]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-court-hearing-dates-to-avoid">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Dates you can't attend court
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [dates]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        
+        
+        
+        
+        
+        <!-- ------------- -->
+        <!-- ------------- -->
+        <!-- ------------- -->
+        <!-- YOUR FINANCES -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your finances</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_finances">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+  
+        <div id="cya-your-finances-income">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        [frequency] income (after tax)
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        £[amount]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-employment-status">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Employment status
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [employment status]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-claiming-benefits">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Claiming benefits
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-benefits-you-are-claiming">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Benefits you are claiming
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [Benefits you are claiming]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-deduct-from-earnings">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Deduct from earnings
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [Yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-employee-reference">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Employee reference
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [employee reference]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-employers-name">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Employer's name
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [employer's name]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-employers-address">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Employer's address
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [employer's address line 1]
+                        [employer's address line 2]
+                        [employer's address line 3]
+                        [employer's address line 4]
+                        [employer's address line 5]
+                        [employer's postcode]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-employers-telephone">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Employer's telephone
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [employer's address telephone]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-deduct-from-benefits">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Deduct from benefits
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+
+        
+        
+        
+        
+        
+        
+        
+        <!-- ---------------------- -->
+        <!-- ---------------------- -->
+        <!-- ---------------------- -->
+        <!-- YOUR MONTHLY OUTGOINGS -->
+        <div class="govuk-grid-row m-top-60">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-m">Your monthly outgoings</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+                <p style="text-align: right">
+                    <a href="/map/your_outgoings">
+                        Change
+                    </a>
+                </p>
+            </div>
+        </div>
+        
+        <div id="cya-your-finances-monthly-outgoings">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Would you like to give details of your monthly bills?
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        [yes or no]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <div id="cya-your-finances-monthly-outgoings-amount">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Monthly amount
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        £[amount]
+                    </p>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-60">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+                
+        <form action="" method="post">
+                {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+
+</div>
+
+{% endblock %}

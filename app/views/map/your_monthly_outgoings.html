@@ -1,0 +1,197 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl m-bottom-30">
+            Your monthly outgoings
+        </h1>
+        
+        <h2 class="govuk-heading-s m-bottom-30">
+            What are your monthly bills for the following?
+        </h2>
+        
+        <form action="" method="post">
+            
+            <!-- ------------ -->
+            <!-- ------------ -->
+            <!-- ------------ -->
+            <!-- ACCOMODATION -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="accomodation">
+                    <strong>
+                        Accommodation
+                    </strong>
+                </label>
+                <span id="accomodation-hint" class="govuk-hint">
+                    For example, rent, mortgage or lodgings
+                </span>
+                <div class="input-icon">
+                    <i class="govuk-body">£</i>
+                    <input class="govuk-input govuk-!-width-one-third" id="accomodation" name="accomodation" type="text" aria-describedby="accomodation-hint" value="{{ data['accomodation'] }}">
+                </div>
+            </div>            
+            
+            <!-- ----------- -->
+            <!-- ----------- -->
+            <!-- ----------- -->
+            <!-- COUNCIL TAX -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="council-tax">
+                    <strong>
+                        Council tax
+                    </strong>
+                </label>
+                <div class="input-icon">
+                    <i class="govuk-body">£</i>
+                    <input class="govuk-input govuk-!-width-one-third" id="council-tax" name="council-tax" type="text" aria-describedby="council-tax-hint" value="{{ data['council-tax'] }}">
+                </div>
+            </div>            
+            
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- HOUSEHOLD BILLS -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="household-bills">
+                    <strong>
+                        Household bills
+                    </strong>
+                </label>
+                <span id="household-bills-hint" class="govuk-hint">
+                    For example, gas, electricity, water, insurance
+                </span>
+                <div class="input-icon">
+                    <i class="govuk-body">£</i>
+                    <input class="govuk-input govuk-!-width-one-third" id="household-bills" name="household-bills" type="text" aria-describedby="household-bills-hint" value="{{ data['household-bills'] }}">
+                </div>
+            </div>            
+            
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- TRAVEL EXPENSES -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="travel-expenses">
+                    <strong>
+                        Travel expenses
+                    </strong>
+                </label>
+                <span id="travel-expenses-hint" class="govuk-hint">
+                    For example, fuel, car, public transport
+                </span>
+                <div class="input-icon">
+                    <i class="govuk-body">£</i>
+                    <input class="govuk-input govuk-!-width-one-third" id="travel-expenses" name="travel-expenses" type="text" aria-describedby="travel-expenses-hint" value="{{ data['travel-expenses'] }}">
+                </div>
+            </div>            
+            
+            <!-- ----------------- -->
+            <!-- ----------------- -->
+            <!-- ----------------- -->
+            <!-- CHILD MAINTENANCE -->
+            <div class="govuk-form-group">
+                <label class="govuk-label" for="child-maintenance">
+                    <strong>
+                        Child maintenance
+                    </strong>
+                </label>
+                <div class="input-icon">
+                    <i class="govuk-body">£</i>
+                    <input class="govuk-input govuk-!-width-one-third" id="child-maintenance" name="child-maintenance" type="text" aria-describedby="child-maintenance-hint" value="{{ data['child-maintenance'] }}">
+                </div>
+            </div>            
+            
+            <!-- -------------- -->
+            <!-- -------------- -->
+            <!-- -------------- -->
+            <!-- OTHER EXPENSES -->
+            <div class="govuk-form-group">
+
+                <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                        <h3 class="govuk-heading-s m-bottom-0">
+                            Any other significant expenses not listed?
+                        </h3>
+                    </legend>
+
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                        
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="more-expenses-1" name="more-expenses" type="radio" value="Yes" data-aria-controls="conditional-more-expenses-1" {{ checked('more-expenses','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="more-expenses-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-more-expenses-1">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="more-expenses">
+                                    List any other outgoings or information you believe the court should know about.
+                                </label>
+                                <textarea class="govuk-textarea" id="more-expenses-detail" name="more-expenses-detail" rows="5" aria-describedby="more-expenses-detail-hint">{{data['more-expenses-detail']}}</textarea>
+                            </div>
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="more-expenses-amount">
+                                    <strong>
+                                        Amount of other significant expenses
+                                    </strong>
+                                </label>
+                                <div class="input-icon">
+                                    <i class="govuk-body">£</i>
+                                    <input class="govuk-input govuk-!-width-one-third" id="more-expenses-amount" name="more-expenses-amount" type="text" aria-describedby="more-expenses-amount-hint" value="{{ data['more-expenses-amount'] }}">
+                                </div>
+                            </div>            
+                        </div>
+
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="more-expenses-2" name="more-expenses" type="radio" value="No" {{ checked('more-expenses','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="more-expenses-2">
+                                No
+                            </label>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

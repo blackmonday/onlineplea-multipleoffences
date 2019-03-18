@@ -1,0 +1,212 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Your income
+        </h1>
+        
+        <p class="govuk-body">All questions are optional.</p>
+        
+        <form action="" method="post">
+            
+            <fieldset class="govuk-fieldset" aria-describedby="your-employment-status-hint">
+                <p class="govuk-heading-s">
+                    Your employment status
+                </p>
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="your-employment-status-1" name="your-employment-status" type="radio" value="Weekly" {{ checked('your-employment-status','Weekly') }}>
+                        <label class="govuk-label govuk-radios__label" for="your-employment-status-1">
+                            Employed (full or part-time)
+                        </label>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="your-employment-status-2" name="your-employment-status" type="radio" value="Self-employed" {{ checked('your-employment-status','Self-employed') }}>
+                        <label class="govuk-label govuk-radios__label" for="your-employment-status-2">
+                            Self-employed
+                        </label>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="your-employment-status-3" name="your-employment-status" type="radio" value="Unemployed" {{ checked('your-employment-status','Unemployed') }}>
+                        <label class="govuk-label govuk-radios__label" for="your-employment-status-3">
+                            Unemployed
+                        </label>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="your-employment-status-4" name="your-employment-status" type="radio" value="Other (for example, retired, student)" data-aria-controls="your-employment-status-4" {{ checked('your-employment-status','Other (for example, retired, student)') }}>
+                        <label class="govuk-label govuk-radios__label" for="your-employment-status-4">
+                            Other (for example, retired, student)
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-your-employment-status-4">
+                        <label class="govuk-label" for="other-employment-details">
+                            Enter details (optional)
+                        </label>
+                        <input class="govuk-input govuk-!-width-one-half" id="other-employment-details" name="other-employment-details" type="text">
+                    </div>
+                </div>
+            </fieldset>
+            
+            <fieldset class="govuk-fieldset" aria-describedby="income-frequency-hint">
+                <p class="govuk-heading-s">
+                    What is the frequency of your income?
+                </p>
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="income-frequency-1" name="income-frequency" type="radio" value="Weekly" data-aria-controls="conditional-income-frequency-1" {{ checked('income-frequency','Weekly') }}>
+                        <label class="govuk-label govuk-radios__label" for="income-frequency-1">
+                            Weekly
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-income-frequency-1">
+                        <p class="govuk-heading-s m-bottom-5" for="weekly-income">
+                            Your weekly income (after tax)
+                        </p>
+                        <p class="govuk-body secondary-text m-bottom-10">
+                            Include earnings, pension, benefits and any other income
+                        </p>
+                        <div class="input-icon">
+                            <i class="govuk-body">£</i>
+                            <input class="govuk-input govuk-!-width-one-half" id="weekly-income" name="weekly-income" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="income-frequency-2" name="income-frequency" type="radio" value="Fortnightly" data-aria-controls="conditional-income-frequency-2" {{ checked('income-frequency','Fortnightly') }}>
+                        <label class="govuk-label govuk-radios__label" for="income-frequency-2">
+                            Forthnightly
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-income-frequency-2">
+                        <p class="govuk-heading-s m-bottom-5" for="fortnightly-income">
+                            Your forthnightly income (after tax)
+                        </p>
+                        <p class="govuk-body secondary-text m-bottom-10">
+                            Include earnings, pension, benefits and any other income
+                        </p>
+                        <div class="input-icon">
+                            <i class="govuk-body">£</i>
+                            <input class="govuk-input govuk-!-width-one-half" id="fortnightly-income" name="fortnightly-income" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="income-frequency-3" name="income-frequency" type="radio" value="Monthly" data-aria-controls="conditional-income-frequency-3" {{ checked('income-frequency','Monthly') }}>
+                        <label class="govuk-label govuk-radios__label" for="income-frequency-3">
+                            Monthly
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-income-frequency-3">
+                        <p class="govuk-heading-s m-bottom-5" for="monthly-income">
+                            Your monthly income (after tax)
+                        </p>
+                        <p class="govuk-body secondary-text m-bottom-10">
+                            Include earnings, pension, benefits and any other income
+                        </p>
+                        <div class="input-icon">
+                            <i class="govuk-body">£</i>
+                            <input class="govuk-input govuk-!-width-one-half" id="monthly-income" name="monthly-income" type="text">
+                        </div>
+                    </div>
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="income-frequency-4" name="income-frequency" type="radio" value="Yearly" data-aria-controls="conditional-income-frequency-4" {{ checked('income-frequency','Yearly') }}>
+                        <label class="govuk-label govuk-radios__label" for="income-frequency-4">
+                            Yearly
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-income-frequency-4">
+                        <p class="govuk-heading-s m-bottom-5" for="monthly-income">
+                            Your yearly income (after tax)
+                        </p>
+                        <p class="govuk-body secondary-text m-bottom-10">
+                            Include earnings, pension, benefits and any other income
+                        </p>
+                        <div class="input-icon">
+                            <i class="govuk-body">£</i>
+                            <input class="govuk-input govuk-!-width-one-half" id="yearly-income" name="yearly-income" type="text">
+                        </div>
+                    </div>
+                    
+                   <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="income-frequency-5" name="income-frequency" type="radio" value="I have no income" {{ checked('income-frequency','I have no income') }}>
+                        <label class="govuk-label govuk-radios__label" for="income-frequency-5">
+                            I have no income
+                        </label>
+                    </div>
+                                        
+                </div>
+            </fieldset>
+            
+            <fieldset class="govuk-fieldset" aria-describedby="claiming-benefits-hint">
+                <p class="govuk-heading-s">
+                    Are you claiming any benefits?
+                </p>
+                <p class="govuk-body secondary-text">
+                    If you only get Child Benefit, answer ‘No'
+                </p>
+                <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                    
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="claiming-benefits-1" name="claiming-benefits" type="radio" value="Yes" data-aria-controls="conditional-claiming-benefits-1" {{ checked('claiming-benefits','Yes') }}>
+                        <label class="govuk-label govuk-radios__label" for="claiming-benefits-1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-claiming-benefits-1">
+                        <p class="govuk-body m-bottom-5" for="which-benefits">
+                            Which benefits are you claiming?
+                        </p>
+                        <textarea class="govuk-textarea" id="which-benefits" name="which-benefits" rows="5" aria-describedby="which-benefits-hint"></textarea>
+                    </div>
+                    
+                   <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="claiming-benefits-2" name="claiming-benefits" type="radio" value="No" {{ checked('claiming-benefits','No') }}>
+                        <label class="govuk-label govuk-radios__label" for="claiming-benefits-2">
+                            No
+                        </label>
+                    </div>
+                                        
+                </div>
+            </fieldset>
+            
+
+            
+            
+            
+            {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

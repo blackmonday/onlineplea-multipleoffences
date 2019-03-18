@@ -1,0 +1,128 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Your finances
+        </h1>
+        
+        <p class="govuk-body-l">You may provide details of your finances.</p>
+
+        <p class="govuk-body m-bottom-5">If you are found guilty and need to pay a penalty, then the court will decide the amount based on:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>your finances</li>
+            <li>the seriousness of the offence</li>
+        </ul>
+        
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                It is an offence to give false or misleading information
+            </strong>
+        </div>
+        
+        <p class="govuk-body">Your financial details will be kept securely and only used by court staff.</p>
+        
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        
+        <form action="" method="post">
+            
+            <!-- -------------------- -->
+            <!-- -------------------- -->
+            <!-- FOR NOT GUILTY PLEAS -->
+            
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="your-finances-ng-hint">
+                    <h3 class="govuk-heading-s m-bottom-15">
+                        Would you like to give us your income or benefits details so they can be taken into account?
+                    </h3>
+                    <div class="govuk-radios govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="your-finances-ng-1" name="your-finances-ng" type="radio" value="Yes" {{ checked('your-finances-ng','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="your-finances-ng-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="your-finances-ng-2" name="your-finances-ng" type="radio" value="No" {{ checked('your-finances-ng','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="your-finances-ng-2">
+                                No
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="your-finances-ng-3" name="your-finances-ng" type="radio" value="I have no income or benefits" {{ checked('your-finances-ng','I have no income or benefits') }}>
+                            <label class="govuk-label govuk-radios__label" for="your-finances-ng-3">
+                                I have no income or benefits
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <!-- ------------------------------------ -->
+            <!-- ------------------------------------ -->
+            <!-- FOR GUILTY PLEAS OR MIXTURE OF PLEAS -->
+            
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="your-finances-g-other-hint">
+                    <h2 class="govuk-heading-m">
+                        Additional information
+                    </h2>
+                    <h3 class="govuk-heading-s m-bottom-5">
+                        Do you have any outstanding Magistrates’ Court or Crown Court fines? (optional)
+                    </h3>
+                    <p class="govuk-body m-bottom-15">If you have outstanding fines then the court will consider this information when they deal with your case.</p>
+                    <div class="govuk-radios govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="your-finances-g-other-1" name="your-finances-g-other" type="radio" value="Yes" {{ checked('your-finances-g-other','Yes') }}>
+                            <label class="govuk-label govuk-radios__label" for="your-finances-g-other-1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="your-finances-g-other-2" name="your-finances-g-other" type="radio" value="No" {{ checked('your-finances-g-other','No') }}>
+                            <label class="govuk-label govuk-radios__label" for="your-finances-g-other-2">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            
+            
+            
+            
+            
+            
+                {% include "includes/continue_with_back.html" %}
+        </form>
+        
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

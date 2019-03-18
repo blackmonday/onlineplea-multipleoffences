@@ -1,0 +1,221 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        <h1 class="govuk-heading-xl">
+            Your plea
+        </h1>
+        
+        <div class="govuk-inset-text">
+            <p class="govuk-body">This is your chance to respond. Please note:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>you're being charged with a criminal offence and you may wish to take legal advice before making your plea</li>
+                <li>all evidence is in the notice sent to you</li>
+                <li>if you plead guilty, we will reduce your fine by up to 33%</li>
+                <li>If you are convicted after trial your costs may be higher than if you had pleaded guilty</li>
+            </ul>
+        </div>
+        
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <h2 class="govuk-heading-l">
+            What you’ve been charged with
+        </h2>
+        
+        <div class="govuk-form-group">
+
+            <form action="" method="post">
+                
+                <!-- -------- -->
+                <!-- -------- -->
+                <!-- CHARGE 1 -->
+                <fieldset class="govuk-fieldset" aria-describedby="charge-1-plea-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl m-bottom-0">
+                        <h2 class="govuk-heading-m m-bottom-5">
+                            Charge 1 of 3
+                        </h2>
+                    </legend>
+                    <details class="govuk-details m-bottom-15">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                Speeding - exceed 30 miles per hour on restricted road - manned camera device
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            Text to be confirmed.
+                        </div>
+                    </details> 
+                    <h3 class="govuk-heading-s m-bottom-15">
+                        How do you plead?
+                    </h3>
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-1-plea-1" name="charge-1-plea" type="radio" value="Guilty" data-aria-controls="conditional-charge-1-plea-1" {{ checked('charge-1-plea','Guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-1-plea-1">
+                                Guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-1-plea-1">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You’re declaring you committed the offence. You will have the opportunity to give additional information to the court.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-1-plea-2" name="charge-1-plea" type="radio" value="Not guilty" data-aria-controls="conditional-charge-1-plea-2" {{ checked('charge-1-plea','Not guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-1-plea-2">
+                                Not guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-1-plea-2">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You're declaring you didn't commit the offence so you'll need to attend court if you want to present your evidence.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+                <!-- -------- -->
+                <!-- -------- -->
+                <!-- CHARGE 2 -->
+                <fieldset class="govuk-fieldset" aria-describedby="charge-2-plea-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl m-bottom-0">
+                        <h2 class="govuk-heading-m m-bottom-5">
+                            Charge 2 of 3
+                        </h2>
+                    </legend>
+                    <details class="govuk-details m-bottom-15">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                Driving otherwise than in accordance with a driving licence
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            Text to be confirmed.
+                        </div>
+                    </details> 
+                    <h3 class="govuk-heading-s m-bottom-15">
+                        How do you plead?
+                    </h3>
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-2-plea-1" name="charge-2-plea" type="radio" value="Guilty" data-aria-controls="conditional-charge-2-plea-1" {{ checked('charge-2-plea','Guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-2-plea-1">
+                                Guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-2-plea-1">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You’re declaring you committed the offence. You will have the opportunity to give additional information to the court.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-2-plea-2" name="charge-2-plea" type="radio" value="Not guilty" data-aria-controls="conditional-charge-2-plea-2" {{ checked('charge-2-plea','Not guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-2-plea-2">
+                                Not guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-2-plea-2">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You're declaring you didn't commit the offence so you'll need to attend court if you want to present your evidence.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+                <!-- -------- -->
+                <!-- -------- -->
+                <!-- CHARGE 3 -->
+                <fieldset class="govuk-fieldset" aria-describedby="charge-3-plea-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl m-bottom-0">
+                        <h2 class="govuk-heading-m m-bottom-5">
+                            Charge 3 of 3
+                        </h2>
+                    </legend>
+                    <details class="govuk-details m-bottom-15">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                Driving otherwise than in accordance with a driving licence
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            Text to be confirmed.
+                        </div>
+                    </details> 
+                    <h3 class="govuk-heading-s m-bottom-15">
+                        How do you plead?
+                    </h3>
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-3-plea-1" name="charge-3-plea" type="radio" value="Guilty" data-aria-controls="conditional-charge-3-plea-1" {{ checked('charge-3-plea','Guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-3-plea-1">
+                                Guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-3-plea-1">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You’re declaring you committed the offence. You will have the opportunity to give additional information to the court.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="charge-3-plea-2" name="charge-3-plea" type="radio" value="Not guilty" data-aria-controls="conditional-charge-3-plea-2" {{ checked('charge-3-plea','Not guilty') }}>
+                            <label class="govuk-label govuk-radios__label" for="charge-3-plea-2">
+                                Not guilty
+                            </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-charge-3-plea-2">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You're declaring you didn't commit the offence so you'll need to attend court if you want to present your evidence.
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                
+                {% include "includes/continue_with_back.html" %}
+            </form>
+
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}
