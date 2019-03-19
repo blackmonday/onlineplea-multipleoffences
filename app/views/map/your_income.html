@@ -24,6 +24,10 @@
         
         <form action="" method="post">
             
+            <!-- ----------------------- -->
+            <!-- ----------------------- -->
+            <!-- ----------------------- -->
+            <!-- YOUR EMPLOYEMENT STATUS -->
             <fieldset class="govuk-fieldset" aria-describedby="your-employment-status-hint">
                 <p class="govuk-heading-s">
                     Your employment status
@@ -52,7 +56,7 @@
                     </div>
                     
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="your-employment-status-4" name="your-employment-status" type="radio" value="Other (for example, retired, student)" data-aria-controls="your-employment-status-4" {{ checked('your-employment-status','Other (for example, retired, student)') }}>
+                        <input class="govuk-radios__input" id="your-employment-status-4" name="your-employment-status" type="radio" value="Other (for example, retired, student)" data-aria-controls="conditional-your-employment-status-4" {{ checked('your-employment-status','Other (for example, retired, student)') }}>
                         <label class="govuk-label govuk-radios__label" for="your-employment-status-4">
                             Other (for example, retired, student)
                         </label>
@@ -61,11 +65,15 @@
                         <label class="govuk-label" for="other-employment-details">
                             Enter details (optional)
                         </label>
-                        <input class="govuk-input govuk-!-width-one-half" id="other-employment-details" name="other-employment-details" type="text">
+                        <textarea class="govuk-textarea" id="other-employment-details" name="other-employment-details" rows="3" aria-describedby="other-employment-details-hint">{{data['other-employment-details']}}</textarea>
                     </div>
                 </div>
             </fieldset>
             
+            <!-- ------------------- -->
+            <!-- ------------------- -->
+            <!-- ------------------- -->
+            <!-- FREQUENCY OF INCOME -->
             <fieldset class="govuk-fieldset" aria-describedby="income-frequency-hint">
                 <p class="govuk-heading-s">
                     What is the frequency of your income?
@@ -87,7 +95,7 @@
                         </p>
                         <div class="input-icon">
                             <i class="govuk-body">£</i>
-                            <input class="govuk-input govuk-!-width-one-half" id="weekly-income" name="weekly-income" type="text">
+                            <input class="govuk-input govuk-!-width-one-half" id="weekly-income" name="weekly-income" type="text" value="{{ data['weekly-income'] }}">
                         </div>
                     </div>
                     
@@ -99,14 +107,14 @@
                     </div>
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-income-frequency-2">
                         <p class="govuk-heading-s m-bottom-5" for="fortnightly-income">
-                            Your forthnightly income (after tax)
+                            Your fortnightly income (after tax)
                         </p>
                         <p class="govuk-body secondary-text m-bottom-10">
                             Include earnings, pension, benefits and any other income
                         </p>
                         <div class="input-icon">
                             <i class="govuk-body">£</i>
-                            <input class="govuk-input govuk-!-width-one-half" id="fortnightly-income" name="fortnightly-income" type="text">
+                            <input class="govuk-input govuk-!-width-one-half" id="fortnightly-income" name="fortnightly-income" type="text" value="{{ data['fortnightly-income'] }}">
                         </div>
                     </div>
                     
@@ -125,7 +133,7 @@
                         </p>
                         <div class="input-icon">
                             <i class="govuk-body">£</i>
-                            <input class="govuk-input govuk-!-width-one-half" id="monthly-income" name="monthly-income" type="text">
+                            <input class="govuk-input govuk-!-width-one-half" id="monthly-income" name="monthly-income" type="text" value="{{ data['monthly-income'] }}">
                         </div>
                     </div>
                     
@@ -144,7 +152,7 @@
                         </p>
                         <div class="input-icon">
                             <i class="govuk-body">£</i>
-                            <input class="govuk-input govuk-!-width-one-half" id="yearly-income" name="yearly-income" type="text">
+                            <input class="govuk-input govuk-!-width-one-half" id="yearly-income" name="yearly-income" type="text" value="{{ data['yearly-income'] }}">
                         </div>
                     </div>
                     
@@ -158,6 +166,10 @@
                 </div>
             </fieldset>
             
+            <!-- ----------------- -->
+            <!-- ----------------- -->
+            <!-- ----------------- -->
+            <!-- CLAIMING BENEFITS -->
             <fieldset class="govuk-fieldset" aria-describedby="claiming-benefits-hint">
                 <p class="govuk-heading-s">
                     Are you claiming any benefits?
@@ -177,7 +189,7 @@
                         <p class="govuk-body m-bottom-5" for="which-benefits">
                             Which benefits are you claiming?
                         </p>
-                        <textarea class="govuk-textarea" id="which-benefits" name="which-benefits" rows="5" aria-describedby="which-benefits-hint"></textarea>
+                        <textarea class="govuk-textarea" id="which-benefits" name="which-benefits" rows="5" aria-describedby="which-benefits-hint">{{data['which-benefits']}}</textarea>
                     </div>
                     
                    <div class="govuk-radios__item">
@@ -190,10 +202,6 @@
                 </div>
             </fieldset>
             
-
-            
-            
-            
             {% include "includes/continue_with_back.html" %}
         </form>
         
@@ -202,9 +210,10 @@
     <!-- RIGHT COLUMN CONTENT -->
     <div class="govuk-grid-column-one-third">
       {% include "includes/map_help_and_advice.html" %}
-      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
-      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
       {% include "includes/map_help_and_advice_more_help.html" %}
+      {% include "includes/map_help_and_advice_more_info.html" %}
     </div>
 
 </div>

@@ -11,10 +11,33 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+        
+        /* ************************ */
+        /* YOUR COURT HEARING CHECK */
+        var plea_charge_1 = document.getElementById('plea-charge-1').innerHTML;
+                
+        if (plea_charge_1 == "Guilty") {
+            document.getElementById('for-other-pleas').style.display = "none"; 
+        } else if (plea_charge_1 == "Not guilty") {
+            document.getElementById('for-not-guilty-pleas').style.display = "none"; 
+        }
+        
+    }
+</script>
+
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
+        
+        <div id="test-data">
+            <p class="govuk-body secondary-text m-bottom-0">Charge 1 plea: <span id="plea-charge-1">{{ data['charge-1-plea'] }}</span></p>
+            <p class="govuk-body secondary-text m-bottom-0">Charge 2 plea: <span id="plea-charge-1">{{ data['charge-2-plea'] }}</span></p>
+            <p class="govuk-body secondary-text">Charge 3 plea: <span id="plea-charge-1">{{ data['charge-3-plea'] }}</span></p>
+        </div>
         
         <h1 class="govuk-heading-xl">
             Your court hearing
@@ -22,9 +45,16 @@
         
         <form action="" method="post">
             
+            <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+            <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+            <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
             <!-- VARIATION 1 - WHEN ALL PLEAS ARE FOR ‘NOT GUILTY’ ONLY OR A COMBINATION OF ‘NOT GUILTY’ AND ‘GUILTY, I WANT TO COME TO COURT’ -->
-            <div class="" id="" style="">
+            <div class="" id="for-not-guilty-pleas" style="">
 
+                <!-- ------------ -->
+                <!-- ------------ -->
+                <!-- ------------ -->
+                <!-- SPEAK WELSH? -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="speak-welsh-hint">
                         <h1 class="govuk-heading-s m-bottom-15">
@@ -47,6 +77,10 @@
                     </fieldset>
                 </div>            
 
+                <!-- ----------- -->
+                <!-- ----------- -->
+                <!-- ----------- -->
+                <!-- INTERPRETER -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="court-interpreter-hint">
                         <h1 class="govuk-heading-s m-bottom-15">
@@ -67,7 +101,7 @@
                                     <p class="govuk-body secondary-text">
                                         You can include sign language
                                     </p>
-                                    <input class="govuk-input govuk-!-width-one-half" id="court-interpreter-language" name="court-interpreter-language" type="text">
+                                    <input class="govuk-input govuk-!-width-one-half" id="court-interpreter-language" name="court-interpreter-language" type="text" value="{{ data['court-interpreter-language'] }}">
                                 </div>
                             </div>
 
@@ -81,6 +115,10 @@
                     </fieldset>
                 </div>            
 
+                <!-- ------------------- -->
+                <!-- ------------------- -->
+                <!-- ------------------- -->
+                <!-- PROSECUTION WITNESS -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="prosecution-witness-hint">
                         <h1 class="govuk-heading-m m-bottom-15">
@@ -101,7 +139,7 @@
                                     <label class="govuk-label" for="prosecution-witness-details">
                                         Enter their name (if known) and why you want them  to attend
                                     </label>
-                                    <textarea class="govuk-textarea" id="prosecution-witness-details" name="prosecution-witness-details" rows="5" aria-describedby="prosecution-witness-details-hint"></textarea>
+                                    <textarea class="govuk-textarea" id="prosecution-witness-details" name="prosecution-witness-details" rows="5" aria-describedby="prosecution-witness-details-hint">{{ data['prosecution-witness-details'] }}</textarea>
                                 </div>
                             </div>
 
@@ -115,6 +153,10 @@
                     </fieldset>
                 </div>            
 
+                <!-- ------------ -->
+                <!-- ------------ -->
+                <!-- ------------ -->
+                <!-- YOUR WITNESS -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="your-witness-hint">
                         <h1 class="govuk-heading-m m-bottom-15">
@@ -138,7 +180,7 @@
                                     <label class="govuk-label" for="your-witness-details">
                                         Enter the name and address of your witness and their age and date of birth if known
                                     </label>
-                                    <textarea class="govuk-textarea" id="more-detail" name="your-witness-details" rows="5" aria-describedby="your-witness-details-hint"></textarea>
+                                    <textarea class="govuk-textarea" id="more-detail" name="your-witness-details" rows="5" aria-describedby="your-witness-details-hint">{{ data['your-witness-details'] }}</textarea>
                                 </div>
                                 <p class="govuk-body secondary-text">
                                     If your witness needs an interpreter then you will need to arrange this.
@@ -146,8 +188,8 @@
                             </div>
 
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="interpreter-2" name="interpreter" type="radio" value="No" {{ checked('your-witness','No') }}>
-                                <label class="govuk-label govuk-radios__label" for="interpreter-2">
+                                <input class="govuk-radios__input" id="your-witness-2" name="your-witness" type="radio" value="No" {{ checked('your-witness','No') }}>
+                                <label class="govuk-label govuk-radios__label" for="your-witness-2">
                                     No
                                 </label>
                             </div>
@@ -155,6 +197,10 @@
                     </fieldset>
                 </div>            
 
+                <!-- -------------- -->
+                <!-- -------------- -->
+                <!-- -------------- -->
+                <!-- DATES TO AVOID -->
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="dates-to-avoid-hint">
                         <h1 class="govuk-heading-m m-bottom-15">
@@ -175,7 +221,7 @@
                                     <label class="govuk-label" for="dates-to-avoid-details">
                                         Are there any dates you or your witness can not attend court?
                                     </label>
-                                    <textarea class="govuk-textarea" id="dates-to-avoid-details" name="more-detail" rows="5" aria-describedby="dates-to-avoid-details-hint"></textarea>
+                                    <textarea class="govuk-textarea" id="dates-to-avoid-details" name="more-detail" rows="5" aria-describedby="dates-to-avoid-details-hint">{{ data['dates-to-avoid-details'] }}</textarea>
                                 </div>
                             </div>
 
@@ -189,18 +235,13 @@
                     </fieldset>
                 </div>            
             
-            </div>
+            </div>            
             
-            
-            
-            
-            
-            
-            
-            
-            
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- ------------------------------------------------------------------------ -->
             <!-- VARIATION 2 - WHEN ALL PLEAS ARE ‘GUILTY, I WANT TO COME TO COURT’ ONLY’ -->
-            <div class="" id="" style="">
+            <div class="" id="for-other-pleas" style="">
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset" aria-describedby="speak-welsh-b-hint">
@@ -231,7 +272,7 @@
                         </h1>
                         <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="court-interpreter-b-1" name="court-interpreter-b" type="radio" value="Yes" data-aria-controls="conditional-court-interpreter-1" {{ checked('court-interpreter','Yes') }}>
+                                <input class="govuk-radios__input" id="court-interpreter-b-1" name="court-interpreter-b" type="radio" value="Yes" data-aria-controls="conditional-court-interpreter-b-1" {{ checked('court-interpreter-b','Yes') }}>
                                 <label class="govuk-label govuk-radios__label" for="court-interpreter-b-1">
                                     Yes
                                 </label>
@@ -244,7 +285,7 @@
                                     <p class="govuk-body secondary-text">
                                         You can include sign language
                                     </p>
-                                    <input class="govuk-input govuk-!-width-one-half" id="court-interpreter-b-language" name="court-interpreter-b-language" type="text">
+                                    <input class="govuk-input govuk-!-width-one-half" id="court-interpreter-b-language" name="court-interpreter-b-language" type="text" value="{{ data['court-interpreter-b-language'] }}">
                                 </div>
                             </div>
 
@@ -260,10 +301,6 @@
 
             </div>
             
-            
-            
-            
-            
             {% include "includes/continue_with_back.html" %}
         </form>
         
@@ -272,8 +309,8 @@
     <!-- RIGHT COLUMN CONTENT -->
     <div class="govuk-grid-column-one-third">
       {% include "includes/map_help_and_advice.html" %}
-      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
-      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
       {% include "includes/map_help_and_advice_more_help.html" %}
     </div>
 

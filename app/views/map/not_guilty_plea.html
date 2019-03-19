@@ -46,7 +46,7 @@
                 <label class="govuk-label" for="mitigation-not-guilty">
                     <strong>Why do you believe you are not guilty of these charges?</strong>
                 </label>
-                <textarea class="govuk-textarea" id="mitigation-not-guilty" name="mitigation-not-guilty" rows="5" aria-describedby="mitigation-not-guilty-hint"></textarea>
+                <textarea class="govuk-textarea" id="mitigation-not-guilty" name="mitigation-not-guilty" rows="5" aria-describedby="mitigation-not-guilty-hint">{{ data['mitigation-not-guilty'] }}</textarea>
             </div>            
 
             {% include "includes/continue_with_back.html" %}

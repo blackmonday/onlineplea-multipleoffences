@@ -37,7 +37,7 @@
                 </label>
                 <p class="govuk-body m-top-15">This is also known as mitigation. You can explain why you committed the offence or tell magistrates relevant personal circumstances.</p>
                 <p class="govuk-body m-top-15">They’ll take what you say into account when deciding on the sentence.</p>
-                <textarea class="govuk-textarea" id="mitigation-guilty" name="mitigation-guilty" rows="5" aria-describedby="mitigation-guilty-hint"></textarea>
+                <textarea class="govuk-textarea" id="mitigation-guilty" name="mitigation-guilty" rows="5" aria-describedby="mitigation-guilty-hint">{{ data['mitigation-guilty'] }}</textarea>
             </div>            
 
             {% include "includes/continue_with_back.html" %}
@@ -51,6 +51,7 @@
       {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
       {% include "includes/map_help_and_advice_legal_advice.html" %}
       {% include "includes/map_help_and_advice_more_help.html" %}
+      {% include "includes/map_help_and_advice_more_info.html" %}
     </div>
 
 </div>

@@ -175,5 +175,32 @@ $govuk-global-styles: true;
     color:govuk-colour("white");
 }
 
+.secondary-text {
+    color:govuk-colour("grey-1");
+}
+
+/* *********************** */
+/* *********************** */
+/* *********************** */
+/* ADDING £ TO FORM INPUTS */
+.input-icon {
+    position: relative;
+}
+
+.input-icon > i {
+    position: absolute;
+    display: block;
+    transform: translate(0, -50%);
+    top: 54%;
+    pointer-events: none;
+    width: 30px;
+    text-align: center;
+    font-style: normal;
+}
+
+.input-icon > input {
+    padding-left: 25px;
+    padding-right: 0;
+}
 
 

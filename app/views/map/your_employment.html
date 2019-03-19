@@ -25,6 +25,10 @@
         
         <form action="" method="post">
             
+            <!-- ------------ -->
+            <!-- ------------ -->
+            <!-- ------------ -->
+            <!-- COMPANY NAME -->
             <div class="govuk-form-group">
                 <h2 class="govuk-heading-s m-bottom-5" for="company-name">
                     Which company do you work for?
@@ -32,9 +36,13 @@
                 <p class="govuk-body secondary-text m-bottom-10">
                     This is the company name of your employer - this should be on your payslip
                 </p>
-                <input class="govuk-input govuk-!-width-two-thirds" id="company-name" name="company-name" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-name" name="company-name" type="text" value="{{ data['company-name'] }}">
             </div>            
             
+            <!-- ------------------------ -->
+            <!-- ------------------------ -->
+            <!-- ------------------------ -->
+            <!-- COMPANY REFERENCE NUMBER -->
             <div class="govuk-form-group">
                 <h2 class="govuk-heading-s m-bottom-5" for="company-reference-number">
                     What is your employee reference number (optional)
@@ -42,9 +50,13 @@
                 <p class="govuk-body secondary-text m-bottom-10">
                     Also known as employee number or payroll reference - this should be on your payslip
                 </p>
-                <input class="govuk-input govuk-!-width-two-thirds" id="company-reference-number" name="company-reference-number" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-reference-number" name="company-reference-number" type="text" value="{{ data['company-reference-number'] }}">
             </div>            
             
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- --------------- -->
+            <!-- COMPANY ADDRESS -->
             <div class="govuk-form-group">
                 <h2 class="govuk-heading-m m-bottom-5" for="company-address-line-1">
                     What is your employer's address
@@ -62,28 +74,28 @@
                 <h2 class="govuk-heading-s m-bottom-5" for="company-address-line-1">
                     Address
                 </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
-                <input class="govuk-input govuk-!-width-two-thirds" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text" value="{{ data['company-address-line-1'] }}">
+                <input class="govuk-input govuk-!-width-two-thirds" id="company-address-line-2" name="company-address-line-2" type="text" value="{{ data['company-address-line-2'] }}">
                 
-                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-3">
                     Town or city
                 </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-3" name="company-address-line-3" type="text" value="{{ data['company-address-line-3'] }}">
                 
-                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-4">
                     County (optional)
                 </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-4" name="company-address-line-4" type="text" value="{{ data['company-address-line-4'] }}">
                 
-                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-postcode">
                     Postcode
                 </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-postcode" name="company-address-postcode" type="text" value="{{ data['company-address-postcode'] }}">
                 
-                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-1">
+                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-telephone">
                     Your employer’s telephone (optional)
                 </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-telephone" name="company-telephone" type="text" value="{{ data['company-telephone'] }}">
                 
             </div>            
             
@@ -103,8 +115,8 @@
     <!-- RIGHT COLUMN CONTENT -->
     <div class="govuk-grid-column-one-third">
       {% include "includes/map_help_and_advice.html" %}
-      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
-      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
       {% include "includes/map_help_and_advice_more_help.html" %}
     </div>
 

@@ -21,7 +21,7 @@ router.post('/', function (req, res) {
 /* START PAGE */
 router.post('/map/start_page', function (req, res) {
     
-    /* DEFENDANT DETAILS */
+    /* DEFENDANTS DETAILS */
     req.session.data['defendant-first-name'] = "Sam"
     req.session.data['defendant-last-name'] = "Smith"
     req.session.data['defendant-address-line-1'] = "38A Baker Street"
@@ -29,6 +29,89 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['defendant-address-line-3'] = ""
     req.session.data['defendant-address-line-4'] = ""
     req.session.data['defendant-address-postcode'] = "W1 7SX"
+    req.session.data['home-telephone'] = "0123456789"
+    req.session.data['mobile'] = "0123456789"
+    req.session.data['additional-number'] = "0123456789"
+    req.session.data['email-1'] = "abc@xyz.com"
+    req.session.data['email-2'] = "xyz@abc.com"
+    req.session.data['dob-day'] = "11"
+    req.session.data['dob-month'] = "11"
+    req.session.data['dob-year'] = "1111"
+    req.session.data['nin'] = "AB 12 34 56 C"
+    
+    /* DEFENDANTS NEW DETAILS */
+    req.session.data['new-defendant-first-name'] = req.session.data['defendant-first-name']
+    req.session.data['new-defendant-last-name'] = req.session.data['defendant-last-name']
+    req.session.data['new-defendant-address-line-1'] = req.session.data['defendant-address-line-1']
+    req.session.data['new-defendant-address-line-2'] = req.session.data['defendant-address-line-2']
+    req.session.data['new-defendant-address-line-3'] = req.session.data['defendant-address-line-3']
+    req.session.data['new-defendant-address-line-4'] = req.session.data['defendant-address-line-4']
+    req.session.data['new-defendant-address-postcode'] = req.session.data['defendant-address-postcode']
+
+    
+    /* CASE DETAILS */
+    req.session.data['urn'] = "0123456789"
+    
+    /* CHARGE 1 DETAILS */
+    req.session.data['charge-1-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"
+    req.session.data['charge-1-description'] = "Charge 1 description to be confirmed..."
+
+    /* CHARGE 2 DETAILS */
+    req.session.data['charge-2-title'] = "Driving otherwise than in accordance with a driving licence"
+    req.session.data['charge-2-description'] = "Charge 2 description to be confirmed..."
+
+    /* CHARGE 3 DETAILS */
+    req.session.data['charge-3-title'] = "Charge 3 title to be confirmed"
+    req.session.data['charge-3-description'] = "Charge 3 description to be confirmed..."
+
+    /* PLEA DETAILS */
+    req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
+    req.session.data['mitigation-not-guilty'] = "I didn't do it! Honest!"
+    
+    /* COURT HEARING DETAILS */
+    req.session.data['court-interpreter-language'] = "Spanish"
+    req.session.data['court-interpreter-b-language'] = "French"
+    req.session.data['prosecution-witness-details'] = "Bob - HE'S NOT TO BE TRUSTED!"
+    req.session.data['your-witness-details'] = "Jane - she will confirm I'm innocent"
+    req.session.data['dates-to-avoid-details'] = "Monday's"
+    
+    /* INCOME DETAILS */
+    req.session.data['other-employment-details'] = "Are you sure I'm not employed?"
+    req.session.data['weekly-income'] = "100"
+    req.session.data['fortnightly-income'] = "200"
+    req.session.data['monthly-income'] = "300"
+    req.session.data['yearly-income'] = "400"
+    req.session.data['which-benefits'] = "Child benefit"
+
+    
+    
+    
+    
+    
+    
+    /* COMPANY DETAILS */
+    req.session.data['company-name'] = "ABC Company"
+    req.session.data['company-reference-number'] = "1234567890"
+    req.session.data['company-address-line-1'] = "Address line 1"
+    req.session.data['company-address-line-2'] = "Address line 2"
+    req.session.data['company-address-line-3'] = "Address line 3"
+    req.session.data['company-address-line-4'] = "Address line 4"
+    req.session.data['company-address-postcode'] = "Postcode"
+    req.session.data['company-telephone'] = "0123456789"
+    
+    /* MONTHLY OUTGOINGS */
+    req.session.data['accomodation'] = ""
+    req.session.data['council-tax'] = ""
+    req.session.data['household-bills'] = ""
+    req.session.data['travel-expenses'] = ""
+    req.session.data['child-maintenance'] = ""
+    req.session.data['more-expenses-detail'] = ""
+    req.session.data['more-expenses-amount'] = ""
+    
+    
+    
+    
+    
     
     res.redirect('/map/find_your_case')
         
@@ -50,7 +133,14 @@ router.post('/map/find_your_case', function (req, res) {
 /* YOUR DETAILS */
 router.post('/map/your_details', function (req, res) {
     
-    res.redirect('/map/your_plea')
+    var are_these_details_correct = req.session.data['are-these-details-correct'];
+    
+    if ((are_these_details_correct == "Yes") || (are_these_details_correct == "No")) {
+        res.redirect('/map/your_plea')
+    } else {
+        res.redirect('/map/your_details')
+    }
+
     
 });
 
@@ -60,8 +150,15 @@ router.post('/map/your_details', function (req, res) {
 /* YOUR PLEA */
 router.post('/map/your_plea', function (req, res) {
     
-    res.redirect('/map/guilty_plea')
-    
+    var charge_1_plea = req.session.data['charge-1-plea'];
+    if (charge_1_plea == "Guilty") {
+        res.redirect('/map/guilty_plea')
+    } else if (charge_1_plea == "Not guilty") {
+        res.redirect('/map/not_guilty_plea')
+    } else {
+        res.redirect('/map/your_plea')
+    }
+        
 });
 
 /* *********** */
@@ -70,8 +167,15 @@ router.post('/map/your_plea', function (req, res) {
 /* GUILTY PLEA */
 router.post('/map/guilty_plea', function (req, res) {
     
-    res.redirect('/map/guilty_plea_reason')
-    
+    var come_to_court = req.session.data['come-to-court'];
+    if (come_to_court == "Yes") {
+        res.redirect('/map/guilty_plea_reason')
+    } else if (come_to_court == "No") {
+        res.redirect('/map/your_finances')
+    } else {
+        res.redirect('/map/guilty_plea')
+    }
+        
 });
 
 /* ****************** */
@@ -80,7 +184,7 @@ router.post('/map/guilty_plea', function (req, res) {
 /* GUILTY PLEA REASON */
 router.post('/map/guilty_plea_reason', function (req, res) {
     
-    res.redirect('/map/not_guilty_plea')
+    res.redirect('/map/your_court_hearing')
     
 });
 
@@ -119,6 +223,16 @@ router.post('/map/your_finances', function (req, res) {
 /* ************ */
 /* YOUR INCOME  */
 router.post('/map/your_income', function (req, res) {
+    
+    var weekly_income = req.session.data['weekly-income']
+    var fortnightly_income = req.session.data['fortnightly-income']
+    var monthly_income = req.session.data['monthly-income']
+    var yearly_income = req.session.data['yearly-income']
+    
+    req.session.data['weekly-income'] = parseFloat(weekly_income).toFixed(2)
+    req.session.data['fortnightly-income'] = parseFloat(fortnightly_income).toFixed(2)
+    req.session.data['monthly-income'] = parseFloat(monthly_income).toFixed(2)
+    req.session.data['yearly-income'] = parseFloat(yearly_income).toFixed(2)
     
     res.redirect('/map/deductions_from_earnings')
     
@@ -160,8 +274,15 @@ router.post('/map/your_benefits', function (req, res) {
 /* YOUR OUTGOINGS  */
 router.post('/map/your_outgoings', function (req, res) {
     
-    res.redirect('/map/your_monthly_outgoings')
-    
+    var give_details_of_outgoings = req.session.data['give-details-of-outgoings'];
+    if (give_details_of_outgoings == "Yes") {
+        res.redirect('/map/your_monthly_outgoings')
+    } else if (give_details_of_outgoings == "No") {
+        res.redirect('/map/check_your_answers')
+    } else {
+        res.redirect('/map/your_outgoings')
+    }
+        
 });
 
 /* *********************** */
@@ -170,6 +291,27 @@ router.post('/map/your_outgoings', function (req, res) {
 /* YOUR MONTHLY OUTGOINGS  */
 router.post('/map/your_monthly_outgoings', function (req, res) {
     
+    var more_expenses = req.session.data['more-expenses'];
+    
+    if (more_expenses == "Yes") {
+        var total = 
+            Number(req.session.data['accomodation']) + 
+            Number(req.session.data['council-tax']) + 
+            Number(req.session.data['household-bills']) + 
+            Number(req.session.data['travel-expenses']) + 
+            Number(req.session.data['child-maintenance']) + 
+            Number(req.session.data['more-expenses-amount'])
+    } else {
+        var total = 
+            Number(req.session.data['accomodation']) + 
+            Number(req.session.data['council-tax']) + 
+            Number(req.session.data['household-bills']) + 
+            Number(req.session.data['travel-expenses']) + 
+            Number(req.session.data['child-maintenance'])
+    }
+
+    req.session.data['more-expenses-total'] = parseFloat(total).toFixed(2)
+
     res.redirect('/map/check_your_answers')
     
 });

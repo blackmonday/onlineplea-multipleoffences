@@ -41,7 +41,7 @@
                 </span>
                 <div class="input-icon">
                     <i class="govuk-body">£</i>
-                    <input class="govuk-input govuk-!-width-one-third" id="accomodation" name="accomodation" type="text" aria-describedby="accomodation-hint" value="{{ data['accomodation'] }}">
+                    <input class="govuk-input govuk-!-width-one-third" id="accomodation" name="accomodation" type="number" aria-describedby="accomodation-hint" value="{{ data['accomodation'] }}">
                 </div>
             </div>            
             
@@ -57,7 +57,7 @@
                 </label>
                 <div class="input-icon">
                     <i class="govuk-body">£</i>
-                    <input class="govuk-input govuk-!-width-one-third" id="council-tax" name="council-tax" type="text" aria-describedby="council-tax-hint" value="{{ data['council-tax'] }}">
+                    <input class="govuk-input govuk-!-width-one-third" id="council-tax" name="council-tax" type="number" aria-describedby="council-tax-hint" value="{{ data['council-tax'] }}">
                 </div>
             </div>            
             
@@ -76,7 +76,7 @@
                 </span>
                 <div class="input-icon">
                     <i class="govuk-body">£</i>
-                    <input class="govuk-input govuk-!-width-one-third" id="household-bills" name="household-bills" type="text" aria-describedby="household-bills-hint" value="{{ data['household-bills'] }}">
+                    <input class="govuk-input govuk-!-width-one-third" id="household-bills" name="household-bills" type="number" aria-describedby="household-bills-hint" value="{{ data['household-bills'] }}">
                 </div>
             </div>            
             
@@ -95,7 +95,7 @@
                 </span>
                 <div class="input-icon">
                     <i class="govuk-body">£</i>
-                    <input class="govuk-input govuk-!-width-one-third" id="travel-expenses" name="travel-expenses" type="text" aria-describedby="travel-expenses-hint" value="{{ data['travel-expenses'] }}">
+                    <input class="govuk-input govuk-!-width-one-third" id="travel-expenses" name="travel-expenses" type="number" aria-describedby="travel-expenses-hint" value="{{ data['travel-expenses'] }}">
                 </div>
             </div>            
             
@@ -111,7 +111,7 @@
                 </label>
                 <div class="input-icon">
                     <i class="govuk-body">£</i>
-                    <input class="govuk-input govuk-!-width-one-third" id="child-maintenance" name="child-maintenance" type="text" aria-describedby="child-maintenance-hint" value="{{ data['child-maintenance'] }}">
+                    <input class="govuk-input govuk-!-width-one-third" id="child-maintenance" name="child-maintenance" type="number" aria-describedby="child-maintenance-hint" value="{{ data['child-maintenance'] }}">
                 </div>
             </div>            
             
@@ -152,7 +152,7 @@
                                 </label>
                                 <div class="input-icon">
                                     <i class="govuk-body">£</i>
-                                    <input class="govuk-input govuk-!-width-one-third" id="more-expenses-amount" name="more-expenses-amount" type="text" aria-describedby="more-expenses-amount-hint" value="{{ data['more-expenses-amount'] }}">
+                                    <input class="govuk-input govuk-!-width-one-third" id="more-expenses-amount" name="more-expenses-amount" type="number" aria-describedby="more-expenses-amount-hint" value="{{ data['more-expenses-amount'] }}">
                                 </div>
                             </div>            
                         </div>
@@ -187,9 +187,10 @@
     <!-- RIGHT COLUMN CONTENT -->
     <div class="govuk-grid-column-one-third">
       {% include "includes/map_help_and_advice.html" %}
-      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
-      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
       {% include "includes/map_help_and_advice_more_help.html" %}
+      {% include "includes/map_help_and_advice_more_info.html" %}
     </div>
 
 </div>

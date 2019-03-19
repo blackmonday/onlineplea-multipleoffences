@@ -62,11 +62,19 @@
                 
         <form action="" method="post">
             
+            <!-- -------------------------- -->
+            <!-- -------------------------- -->
+            <!-- -------------------------- -->
+            <!-- ARE THESE DETAILS CORRECT? -->
             <fieldset class="govuk-fieldset" aria-describedby="are-these-details-correct-conditional-hint">
                 <h3 class="govuk-heading-s m-bottom-15">Are these details correct?</h3>
                 
                 <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                     
+                    <!-- --- -->
+                    <!-- --- -->
+                    <!-- --- -->
+                    <!-- YES -->
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="are-these-details-correct-1" name="are-these-details-correct" type="radio" value="Yes" {{ checked('are-these-details-correct','Yes') }}>
                         <label class="govuk-label govuk-radios__label" for="are-these-details-correct-1">
@@ -74,6 +82,10 @@
                         </label>
                     </div>
                     
+                    <!-- -- -->
+                    <!-- -- -->
+                    <!-- -- -->
+                    <!-- NO -->
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="are-these-details-correct-2" name="are-these-details-correct" type="radio" value="No" data-aria-controls="are-these-details-correct-conditional-2" {{ checked('are-these-details-correct','No') }}>
                         <label class="govuk-label govuk-radios__label" for="are-these-details-correct-2">
@@ -81,22 +93,26 @@
                         </label>
                     </div>
                     
+                    <!-- ------- -->
+                    <!-- ------- -->
+                    <!-- ------- -->
+                    <!-- CHANGES -->
                     <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="are-these-details-correct-conditional-2">
 
                         <h2 class="govuk-heading-s m-top-15">Changes to name</h2>
 
                         <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-first-name">
+                            <label class="govuk-label" for="new-defendant-first-name">
                                 First name
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-first-name" name="new-first-name" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-first-name" name="new-defendant-first-name" type="text" value="{{ data['new-defendant-first-name'] }}">
                         </div>            
             
                         <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-last-name">
+                            <label class="govuk-label" for="new-defendant-last-name">
                                 Last name
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-last-name" name="new-last-name" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-last-name" name="new-defendant-last-name" type="text" value="{{ data['new-defendant-last-name'] }}">
                         </div>            
             
                         <h2 class="govuk-heading-s m-top-30">Changes to name</h2>
@@ -105,32 +121,32 @@
                             <label class="govuk-label" for="new-defendant-address-line-1">
                                 Address
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-line-1" name="new-defendant-address-line-1" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-1" name="new-defendant-address-line-1" type="text" value="{{ data['new-defendant-address-line-1'] }}">
                         </div>            
             
                         <div class="govuk-form-group m-bottom-15">
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-line-2" name="new-defendant-address-line-2" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-2" name="new-defendant-address-line-2" type="text" value="{{ data['new-defendant-address-line-2'] }}">
                         </div>            
             
                         <div class="govuk-form-group m-bottom-15">
                             <label class="govuk-label" for="new-defendant-address-line-3">
                                 Town or city
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-line-3" name="new-defendant-address-line-3" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-3" name="new-defendant-address-line-3" type="text" value="{{ data['new-defendant-address-line-3'] }}">
                         </div>            
             
                         <div class="govuk-form-group m-bottom-15">
                             <label class="govuk-label" for="new-defendant-address-line-4">
                                 County (optional)
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-line-4" name="new-defendant-address-line-4" type="text">
+                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-4" name="new-defendant-address-line-4" type="text" value="{{ data['new-defendant-address-line-4'] }}">
                         </div>            
             
                         <div class="govuk-form-group m-bottom-15">
                             <label class="govuk-label" for="new-defendant-address-postcode">
                                 Postcode
                             </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-postcode" name="new-defendant-address-postcode" type="text">
+                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-postcode" name="new-defendant-address-postcode" type="text" value="{{ data['new-defendant-address-postcode'] }}">
                         </div>            
             
                     
@@ -141,6 +157,10 @@
                 </div>
             </fieldset>
             
+            <!-- ------------------- -->
+            <!-- ------------------- -->
+            <!-- ------------------- -->
+            <!-- ENTER OTHER DETAILS -->
             <h2 class="govuk-heading-l m-top-30">Enter other details</h2>
             <h3 class="govuk-heading-s m-bottom-5">Contact numbers</h3>
             <p class="govuk-body secondary-text m-bottom-15">The court may need to contact you so they can resolve your case quickly</p>
@@ -170,14 +190,14 @@
             <p class="govuk-body secondary-text m-bottom-15">We will automatically email you confirmation when the plea is submitted</p>
             
             <div class="govuk-form-group m-bottom-15">
-                <input class="govuk-input govuk-!-width-one-third" id="email-1" name="email-1" type="text"value="{{ data['email-1'] }}">
+                <input class="govuk-input govuk-!-width-two-thirds" id="email-1" name="email-1" type="text"value="{{ data['email-1'] }}">
             </div>            
             
             <div class="govuk-form-group m-bottom-15">
                 <label class="govuk-label" for="email-2">
                     Additioanl email address (optional)
                 </label>
-                <input class="govuk-input govuk-!-width-one-third" id="email-2" name="email-2" type="text" value="{{ data['email-2'] }}">
+                <input class="govuk-input govuk-!-width-two-thirds" id="email-2" name="email-2" type="text" value="{{ data['email-2'] }}">
             </div>            
             
             <fieldset class="govuk-fieldset m-top-30" aria-describedby="dob-hint" role="group">
@@ -224,14 +244,7 @@
                 <input class="govuk-input govuk-!-width-one-third" id="nin" name="nin" type="text"value="{{ data['nin'] }}">
             </div>            
             
-            
-            
-            
-            
-            
-            
-            
-                {% include "includes/continue_with_back.html" %}
+            {% include "includes/continue_with_back.html" %}
         </form>
 
     </div>
@@ -239,8 +252,8 @@
     <!-- RIGHT COLUMN CONTENT -->
     <div class="govuk-grid-column-one-third">
       {% include "includes/map_help_and_advice.html" %}
-      {% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
-      {% include "includes/map_help_and_advice_legal_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
       {% include "includes/map_help_and_advice_more_help.html" %}
     </div>
 
