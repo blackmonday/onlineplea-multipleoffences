@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Online plea design prototype
 {% endblock %}
 
 {% block content %}
@@ -12,17 +12,16 @@
         
         <h1 class="govuk-heading-xl">
             Online plea design prototype
-            <span class="govuk-caption-xl">Multiple offences</span>  
-            <span class="govuk-caption-xl">{{releaseVersion}}</span>
+            <span class="govuk-caption-xl m-top-10">Multiple offences</span>  
+            <span class="govuk-caption-m m-top-10">Using GOV.UK prototype kit: {{releaseVersion}}</span>
         </h1>{{releaseVersion | log }}
 
         <h2 class="govuk-heading-m">About this design prototype</h2>
 
-        <p>To be confirmed</p>
-        <p>&nbsp;</p>
-
+        <p class="govuk-body">To be confirmed</p>
+        
         <form action="" method="post">
-            <div class="govuk-form-group">
+            <div class="govuk-form-group m-top-30">
                 <button type="submit" class="govuk-button govuk-button--start">
                     Start the prototype
                 </button>

@@ -17,11 +17,16 @@
         /* ************************ */
         /* YOUR COURT HEARING CHECK */
         var plea_charge_1 = document.getElementById('plea-charge-1').innerHTML;
+        var plea_charge_2 = document.getElementById('plea-charge-2').innerHTML;
+        var plea_charge_3 = document.getElementById('plea-charge-3').innerHTML;
+        var guilty_come_to_court = document.getElementById('guilty-come-to-court').innerHTML;
                 
-        if (plea_charge_1 == "Guilty") {
-            document.getElementById('for-other-pleas').style.display = "none"; 
-        } else if (plea_charge_1 == "Not guilty") {
-            document.getElementById('for-not-guilty-pleas').style.display = "none"; 
+        if ((plea_charge_1 == "Guilty") && (plea_charge_2 == "Guilty") && (plea_charge_3 == "Guilty") && (guilty_come_to_court == "Yes")) {
+            document.getElementById('for-not-guilty-pleas').style.display = "none";
+            document.getElementById('for-other-pleas').style.display = "inline";
+        } else {
+            document.getElementById('for-not-guilty-pleas').style.display = "inline";
+            document.getElementById('for-other-pleas').style.display = "none";
         }
         
     }
@@ -33,11 +38,7 @@
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
         
-        <div id="test-data">
-            <p class="govuk-body secondary-text m-bottom-0">Charge 1 plea: <span id="plea-charge-1">{{ data['charge-1-plea'] }}</span></p>
-            <p class="govuk-body secondary-text m-bottom-0">Charge 2 plea: <span id="plea-charge-1">{{ data['charge-2-plea'] }}</span></p>
-            <p class="govuk-body secondary-text">Charge 3 plea: <span id="plea-charge-1">{{ data['charge-3-plea'] }}</span></p>
-        </div>
+        {% include "includes/test_data.html" %}
         
         <h1 class="govuk-heading-xl">
             Your court hearing

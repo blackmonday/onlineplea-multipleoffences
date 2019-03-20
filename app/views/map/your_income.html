@@ -29,7 +29,7 @@
             <!-- ----------------------- -->
             <!-- YOUR EMPLOYEMENT STATUS -->
             <fieldset class="govuk-fieldset" aria-describedby="your-employment-status-hint">
-                <p class="govuk-heading-s">
+                <p class="govuk-heading-s m-bottom-15">
                     Your employment status
                 </p>
                 <div class="govuk-radios govuk-radios--conditional" data-module="radios">
@@ -75,7 +75,7 @@
             <!-- ------------------- -->
             <!-- FREQUENCY OF INCOME -->
             <fieldset class="govuk-fieldset" aria-describedby="income-frequency-hint">
-                <p class="govuk-heading-s">
+                <p class="govuk-heading-s m-top-30 m-bottom-15">
                     What is the frequency of your income?
                 </p>
                 <div class="govuk-radios govuk-radios--conditional" data-module="radios">
@@ -171,10 +171,10 @@
             <!-- ----------------- -->
             <!-- CLAIMING BENEFITS -->
             <fieldset class="govuk-fieldset" aria-describedby="claiming-benefits-hint">
-                <p class="govuk-heading-s">
+                <p class="govuk-heading-s m-top-30 m-bottom-5">
                     Are you claiming any benefits?
                 </p>
-                <p class="govuk-body secondary-text">
+                <p class="govuk-body secondary-text m-bottom-10">
                     If you only get Child Benefit, answer ‘No'
                 </p>
                 <div class="govuk-radios govuk-radios--conditional" data-module="radios">
@@ -202,7 +202,9 @@
                 </div>
             </fieldset>
             
-            {% include "includes/continue_with_back.html" %}
+            <div class="m-top-30">
+                {% include "includes/continue_with_back.html" %}
+            </div>
         </form>
         
     </div>

@@ -11,28 +11,75 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+        
+        /* ********** */
+        /* PLEA CHECK */
+        var plea_charge_1 = document.getElementById('plea-charge-1').innerHTML;
+        var plea_charge_2 = document.getElementById('plea-charge-2').innerHTML;
+        var plea_charge_3 = document.getElementById('plea-charge-3').innerHTML;
+        
+        if (plea_charge_1 == "Not guilty") {
+            document.getElementById('plea-1-header').style.display = "inline";
+        } else if (plea_charge_1 == "Guilty") {
+            document.getElementById('plea-1-header').style.display = "none";
+        }
+        
+        if (plea_charge_2 == "Not guilty") {
+            document.getElementById('plea-2-header').style.display = "inline";
+        } else if (plea_charge_2 == "Guilty") {
+            document.getElementById('plea-2-header').style.display = "none";
+        }
+        
+        if (plea_charge_3 == "Not guilty") {
+            document.getElementById('plea-3-header').style.display = "inline";
+        } else if (plea_charge_3 == "Guilty") {
+            document.getElementById('plea-3-header').style.display = "none";
+        }
+        
+    }
+</script>
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-heading-m m-bottom-0">
-            Charge 2 of 3
-        </h2>
-        <p class="govuk-body">
-            <strong>
-                Speeding - exceed 30 miles per hour on restricted road - manned camera device
-            </strong>
-        </p>
+        {% include "includes/test_data.html" %}
+        
+        <div id="plea-1-header">
+           <h2 class="govuk-heading-m m-bottom-0">
+                Charge 1 of 3
+            </h2>
+            <p class="govuk-body">
+                <strong>
+                    {{data['charge-1-title']}}
+                </strong>
+            </p>
+        </div>
 
-        <h2 class="govuk-heading-m m-bottom-0">
-            Charge 3 of 3
-        </h2>
-        <p class="govuk-body">
-            <strong>
-                Speeding - exceed 30 miles per hour on restricted road - manned camera device
-            </strong>
-        </p>
+        <div id="plea-2-header">
+           <h2 class="govuk-heading-m m-bottom-0">
+                Charge 2 of 3
+            </h2>
+            <p class="govuk-body">
+                <strong>
+                    {{data['charge-2-title']}}
+                </strong>
+            </p>
+        </div>
+
+        <div id="plea-3-header">
+            <h2 class="govuk-heading-m m-bottom-0">
+                Charge 3 of 3
+            </h2>
+            <p class="govuk-body">
+                <strong>
+                    {{data['charge-3-title']}}
+                </strong>
+            </p>
+        </div>
 
         <h1 class="govuk-heading-xl m-top-30 m-bottom-30">
             Not guilty plea
