@@ -108,6 +108,8 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['more-expenses-detail'] = ""
     req.session.data['more-expenses-amount'] = ""
     
+    /* CHECK IF ALL SECTIONS HAVE BEEN COMPLETED OR NOT */
+    req.session.data['i-made-it-to-check-your-answers'] = "No"
     
     
     
@@ -134,12 +136,18 @@ router.post('/map/find_your_case', function (req, res) {
 router.post('/map/your_details', function (req, res) {
     
     var are_these_details_correct = req.session.data['are-these-details-correct'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
-    if ((are_these_details_correct == "Yes") || (are_these_details_correct == "No")) {
-        res.redirect('/map/your_plea')
+    if (check_your_answers != "Yes") {
+        if ((are_these_details_correct == "Yes") || (are_these_details_correct == "No")) {
+            res.redirect('/map/your_plea')
+        } else {
+            res.redirect('/map/your_details')
+        }
     } else {
-        res.redirect('/map/your_details')
+        res.redirect('/map/check_your_answers')
     }
+    
 
     
 });
@@ -195,18 +203,27 @@ router.post('/map/guilty_plea', function (req, res) {
     var charge_1_plea = req.session.data['charge-1-plea'];
     var charge_2_plea = req.session.data['charge-2-plea'];
     var charge_3_plea = req.session.data['charge-3-plea'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
             
     if (come_to_court == "Yes") {
         res.redirect('/map/guilty_plea_reason')
     } else if ((come_to_court == "No") && ((charge_1_plea == "Not guilty") || (charge_2_plea == "Not guilty") || (charge_3_plea == "Not guilty"))) { 
         req.session.data['plea-counter']--;
         if (req.session.data['plea-counter'] <= 0) {
-            res.redirect('/map/your_finances')
+            if (check_your_answers != "Yes") {
+                res.redirect('/map/your_finances')
+            } else {
+                res.redirect('/map/check_your_answers')
+            }
         }
         res.redirect('/map/not_guilty_plea')
     } else {
         req.session.data['plea-counter']--;
-        res.redirect('/map/your_finances')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_finances')
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
     }
         
 });
@@ -220,16 +237,25 @@ router.post('/map/guilty_plea_reason', function (req, res) {
     var charge_1_plea = req.session.data['charge-1-plea'];
     var charge_2_plea = req.session.data['charge-2-plea'];
     var charge_3_plea = req.session.data['charge-3-plea'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
     if ((charge_1_plea == "Not guilty") || (charge_2_plea == "Not guilty") || (charge_3_plea == "Not guilty")) {
         req.session.data['plea-counter']--;
         if (req.session.data['plea-counter'] <= 0) {
-            res.redirect('/map/your_finances')
+            if (check_your_answers != "Yes") {
+                res.redirect('/map/your_finances')
+            } else {
+                res.redirect('/map/check_your_answers')
+            }
         }
         res.redirect('/map/not_guilty_plea')
     } else {
         req.session.data['plea-counter']--;
-        res.redirect('/map/your_finances')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_court_hearing')
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
     }
     
 });
@@ -243,11 +269,18 @@ router.post('/map/not_guilty_plea', function (req, res) {
     var charge_1_plea = req.session.data['charge-1-plea'];
     var charge_2_plea = req.session.data['charge-2-plea'];
     var charge_3_plea = req.session.data['charge-3-plea'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+    
+    req.session.data['come-to-court-not-guilty'] = "Yes";
     
     if ((charge_1_plea == "Guilty") || (charge_2_plea == "Guilty") || (charge_3_plea == "Guilty")) {
         req.session.data['plea-counter']--;
         if (req.session.data['plea-counter'] <= 0) {
-            res.redirect('/map/your_finances')
+            if (check_your_answers != "Yes") {
+                res.redirect('/map/your_finances')
+            } else {
+                res.redirect('/map/check_your_answers')
+            }
         }
         res.redirect('/map/guilty_plea')
     } else {
@@ -263,7 +296,13 @@ router.post('/map/not_guilty_plea', function (req, res) {
 /* YOUR COURT HEARING  */
 router.post('/map/your_court_hearing', function (req, res) {
     
-    res.redirect('/map/your_finances')
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+
+    if (check_your_answers != "Yes") {
+        res.redirect('/map/your_finances')
+    } else {
+        res.redirect('/map/check_your_answers')
+    }
     
 });
 
@@ -275,13 +314,22 @@ router.post('/map/your_finances', function (req, res) {
     
     var your_finances_ng = req.session.data['your-finances-ng'];
     var your_finances_g_other = req.session.data['your-finances-g-other'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
     if ((your_finances_ng == "Yes") || (your_finances_g_other == "Yes") || (your_finances_g_other == "No")) {
         res.redirect('/map/your_income');
     } else if ((your_finances_ng == "No")) {
-        res.redirect('/map/your_outgoings');
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings');
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
     } else if(your_finances_ng == "I have no income or benefits") {
-        res.redirect('/map/your_outgoings');
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings');
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
     }
     
 });
@@ -370,6 +418,10 @@ router.post('/map/your_outgoings', function (req, res) {
     if (give_details_of_outgoings == "Yes") {
         res.redirect('/map/your_monthly_outgoings')
     } else if (give_details_of_outgoings == "No") {
+        
+        /* CHECK IF ALL SECTIONS HAVE BEEN COMPLETED OR NOT */
+        req.session.data['i-made-it-to-check-your-answers'] = "Yes"
+        
         res.redirect('/map/check_your_answers')
     } else {
         res.redirect('/map/your_outgoings')
@@ -382,7 +434,7 @@ router.post('/map/your_outgoings', function (req, res) {
 /* *********************** */
 /* YOUR MONTHLY OUTGOINGS  */
 router.post('/map/your_monthly_outgoings', function (req, res) {
-    
+        
     var more_expenses = req.session.data['more-expenses'];
     
     if (more_expenses == "Yes") {
@@ -403,6 +455,9 @@ router.post('/map/your_monthly_outgoings', function (req, res) {
     }
 
     req.session.data['more-expenses-total'] = parseFloat(total).toFixed(2)
+
+    /* CHECK IF ALL SECTIONS HAVE BEEN COMPLETED OR NOT */
+    req.session.data['i-made-it-to-check-your-answers'] = "Yes"
 
     res.redirect('/map/check_your_answers')
     

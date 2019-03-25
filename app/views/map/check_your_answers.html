@@ -15,6 +15,8 @@
     window.onload = function() {
 
         /* ************* */
+        /* ************* */
+        /* ************* */
         /* ADDRESS CHECK */
         var outgoings_answer = document.getElementById('outgoings-answer').innerText;
                         
@@ -46,12 +48,8 @@
             document.getElementById('def-address-postcode').style.display = "none";
         }
         
-        
-        
-        
-        
-        
-        
+        /* ******************* */
+        /* ******************* */
         /* ******************* */
         /* MORE EXPENSES CHECK */
         var more_expenses_info = document.getElementById('more-expenses-info').innerText;
@@ -62,6 +60,8 @@
             document.getElementById('other-outgoings-group').style.display = "inline";
         }
         
+        /* ********************* */
+        /* ********************* */
         /* ********************* */
         /* COMING TO COURT CHECK */
         var coming_to_court_1 = document.getElementById('coming-to-court-1').innerText;
@@ -80,7 +80,78 @@
         if ((coming_to_court_1 == "No") && (coming_to_court_2 == "No") && (coming_to_court_3 == "No")) {
             document.getElementById('court-hearing-group').style.display = "none";
         }
+                
+        var plea_charge_1 = document.getElementById('plea-charge-1').innerHTML;
+        var plea_charge_2 = document.getElementById('plea-charge-2').innerHTML;
+        var plea_charge_3 = document.getElementById('plea-charge-3').innerHTML;
+        var guilty_come_to_court = document.getElementById('guilty-come-to-court').innerHTML;
+                        
+        if ((plea_charge_1 == "Guilty") && (plea_charge_2 == "Guilty") && (plea_charge_3 == "Guilty") && (guilty_come_to_court == "Yes")) {
+            document.getElementById('court-hearing-group-1').style.display = "none";
+            document.getElementById('court-hearing-group-2').style.display = "inline";
 
+            /*
+            if () {
+                document.getElementById('cya-your-court-hearing-language-b').style.display = "inline";
+            }
+            */
+        } else {
+            document.getElementById('court-hearing-group-1').style.display = "inline";
+            document.getElementById('court-hearing-group-2').style.display = "none";
+        }
+
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        var court_interpreter_answer_a = document.getElementById('court-interpreter-answer-a').innerHTML;
+        var court_interpreter_answer_b = document.getElementById('court-interpreter-answer-b').innerHTML;
+        
+        if(court_interpreter_answer_a == "Yes") {
+            document.getElementById('cya-your-court-hearing-language').style.display = "inline";
+        } else {
+            document.getElementById('cya-your-court-hearing-language').style.display = "none";
+        }
+        if(court_interpreter_answer_b == "Yes") {
+            document.getElementById('cya-your-court-hearing-language-b').style.display = "inline";
+        } else {
+            document.getElementById('cya-your-court-hearing-language-b').style.display = "none";
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        /* ********** */
+        /* ********** */
         /* ********** */
         /* CHECK PLEA */
         var plea_for_charge_1 = document.getElementById('plea-for-charge-1').innerText;
@@ -108,7 +179,9 @@
             document.getElementById('cya-plea-3-mitigation-guilty').style.display = "none";
             document.getElementById('cya-plea-3-mitigation-not-guilty').style.display = "inline";
         }
-        
+
+        /* ********************** */
+        /* ********************** */
         /* ********************** */
         /* CHECK INCOME FREQUENCY */
         var income_frequency_info = document.getElementById('income-frequency-info').innerText;
@@ -137,14 +210,27 @@
             document.getElementById('monthly-income-group').style.display = "none";
             document.getElementById('yearly-income-group').style.display = "inline";
             document.getElementById('no-income-group').style.display = "none";
-        } else if (income_frequency_info == "I have no income or benefits") {
+        } else if (income_frequency_info == "I have no income") {
             document.getElementById('weekly-income-group').style.display = "none";
             document.getElementById('fortnightly-income-group').style.display = "none";
             document.getElementById('monthly-income-group').style.display = "none";
             document.getElementById('yearly-income-group').style.display = "none";
             document.getElementById('no-income-group').style.display = "inline";
         }
+
+        /* *********************************** */
+        /* *********************************** */
+        /* *********************************** */
+        /* WHEN NO INCOME HIDE EMPLOYMENT INFO */
         
+        if (income_frequency_info == "I have no income") {
+            document.getElementById('employment-info').style.display = "none";
+        } else {
+            document.getElementById('employment-info').style.display = "inline";
+        }
+
+        /* ************** */
+        /* ************** */
         /* ************** */
         /* CHECK BENEFITS */
         var claiming_benefits_question = document.getElementById('claiming-benefits-question').innerText;
@@ -155,7 +241,92 @@
             document.getElementById('benefits-info').style.display = "none";
         }
 
+        /* ********************************* */
+        /* ********************************* */
+        /* ********************************* */
+        /* CHECK DEDUCT FROM EARNINGS ANSWER */
+        var deduct_from_earnings_answer = document.getElementById('deduct-from-earnings-answer').innerText;
+
+        if (deduct_from_earnings_answer == "Yes") {
+            document.getElementById('employer-details-group').style.display = "inline";
+        } else if (deduct_from_earnings_answer == "No") {
+            document.getElementById('employer-details-group').style.display = "none";
+        }
         
+        /* *********************** */
+        /* *********************** */
+        /* *********************** */
+        /* CHECK DEFENDENT DETAILS */
+        
+        var defendant_home_telephone = document.getElementById('defendant-home-telephone').innerHTML;
+        var defendant_mobile = document.getElementById('defendant-mobile').innerText;
+        var defendant_additional_number = document.getElementById('defendant-additional-number').innerHTML;
+        var defendant_email_1 = document.getElementById('defendant-email-1').innerHTML;
+        var defendant_email_2 = document.getElementById('defendant-email-2').innerHTML;
+        var defendant_nin = document.getElementById('defendant-nin').innerHTML;
+        
+        if (defendant_home_telephone == "") {
+            document.getElementById('defendant-home-telephone').innerHTML = "&mdash;";
+        }
+        if (defendant_mobile == "") {
+            document.getElementById('defendant-mobile').innerHTML = "&mdash;";
+        }
+        if (defendant_additional_number == "") {
+            document.getElementById('defendant-additional-number').innerHTML = "&mdash;";
+        }
+        if (defendant_email_1 == "") {
+            document.getElementById('defendant-email-1').innerHTML = "&mdash;";
+        }
+        if (defendant_email_2 == "") {
+            document.getElementById('defendant-email-2').innerHTML = "&mdash;";
+        }
+        if (defendant_nin == "") {
+            document.getElementById('defendant-nin').innerHTML = "&mdash;";
+        }
+
+        
+        
+        
+        
+        /* ********************** */
+        /* ********************** */
+        /* ********************** */
+        /* CHECK EMPLOYER DETAILS */
+        
+        var employee_reference = document.getElementById('employee-reference').innerHTML;
+        var employer_company_name = document.getElementById('employer-company-name').innerHTML;
+        var employer_company_telephone = document.getElementById('employer-company-telephone').innerHTML;
+
+        var employer_company_address_line_1 = document.getElementById('employer-company-address-line-1').innerHTML;
+        var employer_company_address_line_2 = document.getElementById('employer-company-address-line-2').innerHTML;
+        var employer_company_address_line_3 = document.getElementById('employer-company-address-line-3').innerHTML;
+        var employer_company_address_line_4 = document.getElementById('employer-company-address-line-4').innerHTML;
+        var employer_company_address_postcode = document.getElementById('employer-company-address-postcode').innerHTML;
+
+        if (employee_reference == "") {
+            document.getElementById('employee-reference').innerHTML = "&mdash;";
+        }
+        if (employer_company_name == "") {
+            document.getElementById('employer-company-name').innerHTML = "&mdash;";
+        }
+        if (employer_company_address_line_1 == "<br>") {
+            document.getElementById('employer-company-address-line-1').innerHTML = "&mdash;<br>";
+        }
+        if (employer_company_address_line_2 == "<br>") {
+            document.getElementById('employer-company-address-line-2').innerHTML = "&mdash;<br>";
+        }
+        if (employer_company_address_line_3 == "<br>") {
+            document.getElementById('employer-company-address-line-3').innerHTML = "&mdash;<br>";
+        }
+        if (employer_company_address_line_4 == "<br>") {
+            document.getElementById('employer-company-address-line-4').innerHTML = "&mdash;<br>";
+        }
+        if (employer_company_address_postcode == "") {
+            document.getElementById('employer-company-address-postcode').innerHTML = "&mdash;";
+        }
+        if (employer_company_telephone == "") {
+            document.getElementById('employer-company-telephone').innerHTML = "&mdash;";
+        }
         
     }
 </script>
@@ -188,6 +359,7 @@
             </div>
         </div>
         
+        <!-- DEFENDANT NAME -->
         <div id="cya-name">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -206,6 +378,7 @@
             </div>
         </div>
         
+        <!-- DEFENDANT ADDRESS -->
         <div id="cya-address">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -228,6 +401,7 @@
             </div>
         </div>
         
+        <!-- DEFENDANT TELEPHONE -->
         <div id="cya-home-telephone">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -237,7 +411,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['home-telephone']}}
+                        <span id="defendant-home-telephone">{{data['home-telephone']}}</span>
                     </p>
                 </div>
             </div>
@@ -246,6 +420,7 @@
             </div>
         </div>
         
+        <!-- DEFENDANT MOBILE -->
         <div id="cya-mobile-number">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -255,7 +430,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['mobile']}}
+                        <span id="defendant-mobile">{{data['mobile']}}</span>
                     </p>
                 </div>
             </div>
@@ -264,6 +439,7 @@
             </div>
         </div>
         
+        <!-- DEFENDANT ADDITIONAL TELEPHONE -->
         <div id="cya-additional-contact-number">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -273,7 +449,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['additional-number']}}
+                        <span id="defendant-additional-number">{{data['additional-number']}}</span>
                     </p>
                 </div>
             </div>
@@ -282,6 +458,7 @@
             </div>
         </div>
         
+        <!-- DFENDANT EMAIL -->
         <div id="cya-email-address">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -291,7 +468,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['email-1']}}
+                        <span id="defendant-email-1">{{data['email-1']}}</span>
                     </p>
                 </div>
             </div>
@@ -300,6 +477,7 @@
             </div>
         </div>
         
+        <!-- DFENDANT ADDITIONAL EMAIL -->
         <div id="cya-additional-email-address">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -309,7 +487,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['email-2']}}
+                        <span id="defendant-email-2">{{data['email-2']}}</span>
                     </p>
                 </div>
             </div>
@@ -318,6 +496,7 @@
             </div>
         </div>
         
+        <!-- DFENDANT DOB -->
         <div id="cya-nin">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -335,6 +514,7 @@
             </div>
         </div>
 
+        <!-- DFENDANT NIN -->
         <div id="cya-nin">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -344,7 +524,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        {{data['nin']}}
+                        <span id="defendant-nin">{{data['nin']}}</span>
                 </div>
             </div>
             <div class="m-top-10 m-bottom-15">
@@ -371,6 +551,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 1 TITLE -->
             <div id="cya-plea-1-charge">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -389,6 +570,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 1 PLEA -->
             <div id="cya-plea-1-plea">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -409,6 +591,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 1 COME TO COURT -->
             <div id="cya-plea-1-coming-to-court">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -418,9 +601,8 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            <span id="coming-to-court-1">
-                                {{data['come-to-court']}}
-                            </span>
+                            <span id="coming-to-court-1">{{data['come-to-court']}}</span>
+                            <span id="coming-to-court-1b">{{data['come-to-court-not-guilty']}}</span>
                         </p>
                     </div>
                 </div>
@@ -431,6 +613,7 @@
 
             <div id="cya-plea-1-court-group">
                 
+                <!-- CHARGE 1 MITIGATION - NOT GUILTY -->
                 <div id="cya-plea-1-mitigation-not-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -449,6 +632,7 @@
                     </div>
                 </div>
 
+                <!-- CHARGE 1 MITIGATION - GUILTY -->
                 <div id="cya-plea-1-mitigation-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -490,6 +674,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 2 TITLE -->
             <div id="cya-plea-2-charge">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -508,6 +693,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 2 PLEA -->
             <div id="cya-plea-2-plea">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -528,6 +714,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 2 COME TO COURT -->
             <div id="cya-plea-2-coming-to-court">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -537,9 +724,8 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            <span id="coming-to-court-2">
-                                {{data['come-to-court']}}
-                            </span>
+                            <span id="coming-to-court-2">{{data['come-to-court']}}</span>
+                            <span id="coming-to-court-2b">{{data['come-to-court-not-guilty']}}</span>
                         </p>
                     </div>
                 </div>
@@ -550,6 +736,7 @@
 
             <div id="cya-plea-2-court-group">
                 
+                <!-- CHARGE 2 MITIGATION - NOT GUILTY -->
                 <div id="cya-plea-2-mitigation-not-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -568,6 +755,7 @@
                     </div>
                 </div>
 
+                <!-- CHARGE 2 MITIGATION - GUILTY -->
                 <div id="cya-plea-2-mitigation-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -609,6 +797,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 3 TITLE -->
             <div id="cya-plea-3-charge">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -627,6 +816,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 3 PLEA -->
             <div id="cya-plea-3-plea">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -647,6 +837,7 @@
                 </div>
             </div>
 
+            <!-- CHARGE 3 COME TO COURT -->
             <div id="cya-plea-3-coming-to-court">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -656,9 +847,8 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            <span id="coming-to-court-3">
-                                {{data['come-to-court']}}
-                            </span>
+                            <span id="coming-to-court-3">{{data['come-to-court']}}</span>
+                            <span id="coming-to-court-3b">{{data['come-to-court-not-guilty']}}</span>
                         </p>
                     </div>
                 </div>
@@ -669,6 +859,7 @@
 
             <div id="cya-plea-3-court-group">
                 
+                <!-- CHARGE 3 MITIGATION - NOT GUILTY -->
                 <div id="cya-plea-3-mitigation-not-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -687,6 +878,7 @@
                     </div>
                 </div>
 
+                <!-- CHARGE 3 MITIGATION - GUILTY -->
                 <div id="cya-plea-3-mitigation-guilty">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -715,6 +907,19 @@
         <!-- YOUR COURT HEARING -->
         <div id="court-hearing-group">
 
+            <div class="govuk-grid-row m-top-60">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-m">Your court hearing</h2>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <p style="text-align: right">
+                        <a href="/map/your_court_hearing">
+                            Change
+                        </a>
+                    </p>
+                </div>
+            </div>
+
             <!-- ------------------------------------------------------------------- -->
             <!-- ------------------------------------------------------------------- -->
             <!-- ------------------------------------------------------------------- -->
@@ -722,19 +927,6 @@
             <!-- A COMBINATION OF ‘NOT GUILTY’ AND ‘GUILTY, I WANT TO COME TO COURT’ -->
             <div id="court-hearing-group-1">
                 
-                <div class="govuk-grid-row m-top-60">
-                    <div class="govuk-grid-column-two-thirds">
-                        <h2 class="govuk-heading-m">Your court hearing</h2>
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                        <p style="text-align: right">
-                            <a href="/map/your_court_hearing">
-                                Change
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
                 <div id="cya-your-court-hearing-speak-welsh">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -744,7 +936,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['speak-welsh']}}
                             </p>
                         </div>
                     </div>
@@ -762,7 +954,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['court-interpreter']}}
                             </p>
                         </div>
                     </div>
@@ -798,7 +990,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['prosecution-witness']}}
                             </p>
                         </div>
                     </div>
@@ -834,7 +1026,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['your-witness']}}
                             </p>
                         </div>
                     </div>
@@ -879,6 +1071,14 @@
                     </div>
                 </div>
 
+            </div>
+            
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- ------------------------------------------------------------------------ -->
+            <!-- VARIATION 2 - WHEN ALL PLEAS ARE ‘GUILTY, I WANT TO COME TO COURT’ ONLY’ -->
+            <div id="court-hearing-group-2">
+                
                 <div id="cya-your-court-hearing-speak-welsh">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -888,7 +1088,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['speak-welsh-b']}}
                             </p>
                         </div>
                     </div>
@@ -896,14 +1096,6 @@
                         <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
-
-            </div>
-            
-            <!-- ------------------------------------------------------------------------ -->
-            <!-- ------------------------------------------------------------------------ -->
-            <!-- ------------------------------------------------------------------------ -->
-            <!-- VARIATION 2 - WHEN ALL PLEAS ARE ‘GUILTY, I WANT TO COME TO COURT’ ONLY’ -->
-            <div id="court-hearing-group-2">
                 
                 <div id="cya-your-court-hearing-interpreter">
                     <div class="govuk-grid-row">
@@ -914,7 +1106,7 @@
                         </div>
                         <div class="govuk-grid-column-two-thirds">
                             <p class="m-bottom-0">
-                                [yes or no]
+                                {{data['court-interpreter-b']}}
                             </p>
                         </div>
                     </div>
@@ -923,7 +1115,7 @@
                     </div>
                 </div>
 
-                <div id="cya-your-court-hearing-language">
+                <div id="cya-your-court-hearing-language-b">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
                             <p class="govuk-body m-bottom-0">
@@ -1090,6 +1282,7 @@
         <!-- EMPLOYMENT INFO -->
         <div id="employment-info">
             
+            <!-- EMPLOYMENT STATUS -->
             <div id="cya-your-finances-employment-status">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -1099,7 +1292,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        [employment status]
+                        {{data['your-employment-status']}}
                     </p>
                 </div>
             </div>
@@ -1107,7 +1300,8 @@
                 <hr class="govuk-section-break govuk-section-break--visible">
             </div>
         </div>
-                
+
+            <!-- DEDUCT FROM EARNINGS -->
             <div id="cya-your-finances-deduct-from-earnings">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -1117,7 +1311,7 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            [Yes or no]
+                            <span id="deduct-from-earnings-answer">{{data['deduct-from-earnings']}}</span>
                         </p>
                     </div>
                 </div>
@@ -1126,84 +1320,94 @@
                 </div>
             </div>
 
-            <div id="cya-your-finances-employee-reference">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Employee reference
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['company-reference-number']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
+            <!-- EMPLOYERS DETAILS -->
+            <div id="employer-details-group">
 
-            <div id="cya-your-finances-employers-name">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Employer's name
-                        </p>
+                <!-- EMPLOYMENT REFERENCE -->
+                <div id="cya-your-finances-employee-reference">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Employee reference
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                <span id="employee-reference">{{data['company-reference-number']}}</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['company-name']}}
-                        </p>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
 
-            <div id="cya-your-finances-employers-address">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Employer's address
-                        </p>
+                <!-- EMPLOYERS NAME -->
+                <div id="cya-your-finances-employers-name">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Employer's name
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                <span id="employer-company-name">{{data['company-name']}}</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['company-address-line-1']}}<br>
-                            {{data['company-address-line-2']}}<br>
-                            {{data['company-address-line-3']}}<br>
-                            {{data['company-address-line-4']}}<br>
-                            {{data['company-address-postcode']}}
-                        </p>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
 
-            <div id="cya-your-finances-employers-telephone">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Employer's telephone
-                        </p>
+                <!-- EMPLOYERS ADDRESS -->
+                <div id="cya-your-finances-employers-address">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Employer's address
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                <span id="employer-company-address-line-1">{{data['company-address-line-1']}}<br></span>
+                                <span id="employer-company-address-line-2">{{data['company-address-line-2']}}<br></span>
+                                <span id="employer-company-address-line-3">{{data['company-address-line-3']}}<br></span>
+                                <span id="employer-company-address-line-4">{{data['company-address-line-4']}}<br></span>
+                                <span id="employer-company-address-postcode">{{data['company-address-postcode']}}</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['company-telephone']}}
-                        </p>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
+
+                <!-- EMPLOYERS TELEPHONE -->
+                <div id="cya-your-finances-employers-telephone">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Employer's telephone
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                <span id="employer-company-telephone">{{data['company-telephone']}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
                 </div>
+
             </div>
 
         </div>
         
+        <!-- ARE YOU CLAIMING BENEFITS? -->
         <div id="cya-your-finances-claiming-benefits">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -1225,24 +1429,26 @@
         <!-- BENEFITS INFO -->
         <div id="benefits-info">
             
+            <!-- ARE YOU CLAIMING BENEFITS? -->
             <div id="cya-your-finances-benefits-you-are-claiming">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Benefits you are claiming
-                    </p>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        <p class="govuk-body m-bottom-0">
+                            Benefits you are claiming
+                        </p>
+                    </div>
+                    <div class="govuk-grid-column-two-thirds">
+                        <p class="m-bottom-0">
+                            {{data['which-benefits']}}
+                        </p>
+                    </div>
                 </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        {{data['which-benefits']}}
-                    </p>
+                <div class="m-top-10 m-bottom-15">
+                    <hr class="govuk-section-break govuk-section-break--visible">
                 </div>
             </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
 
+            <!-- DEDUCT FROM BENEFITS -->
             <div id="cya-your-finances-deduct-from-benefits">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -1280,6 +1486,7 @@
             </div>
         </div>
         
+        <!-- GIVE DETAILS OF MONTHLY OUTGOINGS -->
         <div id="cya-your-finances-monthly-outgoings">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -1301,6 +1508,7 @@
         <!-- MONTHLY OUTGOINGS GROUP -->
         <div id="monthly-outgoinges-group">
             
+            <!-- MONTHLY AMOUNT -->
             <div id="cya-your-finances-monthly-outgoings-amount">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
@@ -1322,6 +1530,7 @@
             <!-- OTHER OUTGOINGS GROUP -->
             <div id="other-outgoings-group">
                 
+                <!-- OTHER OUTGOINGS INFORMATINO -->
                 <div id="cya-your-finances-monthly-outgoings-amount">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">

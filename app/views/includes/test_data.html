@@ -1,10 +1,24 @@
+<style>
+    #test-data p {
+        color: forestgreen;
+    }
+</style>
 <div id="test-data">
-    <p class="govuk-body secondary-text m-bottom-0">Charge 1 plea: <span id="plea-charge-1">{{ data['charge-1-plea'] }}</span></p>
-    <p class="govuk-body secondary-text m-bottom-0">Charge 2 plea: <span id="plea-charge-2">{{ data['charge-2-plea'] }}</span></p>
-    <p class="govuk-body secondary-text m-bottom-0">Charge 3 plea: <span id="plea-charge-3">{{ data['charge-3-plea'] }}</span></p>
-    <p class="govuk-body secondary-text m-bottom-0">For guilty pleas - come to court? <span id="guilty-come-to-court">{{ data['come-to-court'] }}</span></p>
-    <p class="govuk-body secondary-text m-bottom-0">Plea counter: {{ data['plea-counter'] }}</p>
-    <p class="govuk-body secondary-text m-bottom-0">More expenses info: <span id="more-expenses-info">{{ data['more-expenses'] }}</span></p>
-    <p class="govuk-body secondary-text m-bottom-0">Income frequency: <span id="income-frequency-info">{{ data['income-frequency'] }}</span></p>
-    <p class="govuk-body secondary-text">Claiming benefits: <span id="claiming-benefits-question">{{ data['claiming-benefits'] }}</span></p>
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Charge 1 plea:</strong> <span id="plea-charge-1">{{ data['charge-1-plea'] }}</span></p>
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Charge 2 plea:</strong> <span id="plea-charge-2">{{ data['charge-2-plea'] }}</span></p>
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Charge 3 plea:</strong> <span id="plea-charge-3">{{ data['charge-3-plea'] }}</span></p>
+    
+    <p class="govuk-body secondary-text m-bottom-0"><strong>For guilty pleas - come to court?</strong> <span id="guilty-come-to-court">{{ data['come-to-court'] }}</span></p>
+    
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Plea counter:</strong> {{ data['plea-counter'] }}</p>
+    
+    <p class="govuk-body secondary-text m-bottom-0"><strong>More expenses info:</strong> <span id="more-expenses-info">{{ data['more-expenses'] }}</span></p>
+    <p class="govuk-body secondary-text"><strong>Income frequency:</strong> <span id="income-frequency-info">{{ data['income-frequency'] }}</span></p>
+    
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Interpreter needed when all pleas are ‘Guilty, I want to come to court':</strong> <span id="court-interpreter-answer-a">{{ data['court-interpreter'] }}</span></p>
+    <p class="govuk-body secondary-text"><strong>Interpreter needed when all pleas are ‘Guilty, I want to come to court’:</strong> <span id="court-interpreter-answer-b">{{ data['court-interpreter-b'] }}</span></p>
+    
+    <p class="govuk-body secondary-text"><strong>I made it to check your answers:</strong> <span id="">{{ data['i-made-it-to-check-your-answers'] }}</span></p>
+    
+    <p class="govuk-body secondary-text m-bottom-60"><strong>Claiming benefits:</strong> <span id="claiming-benefits-question">{{ data['claiming-benefits'] }}</span></p>
 </div>

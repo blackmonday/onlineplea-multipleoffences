@@ -179,6 +179,10 @@ $govuk-global-styles: true;
     color:govuk-colour("grey-1");
 }
 
+.red-text {
+    color:govuk-colour("bright-red");
+}
+
 /* *********************** */
 /* *********************** */
 /* *********************** */
@@ -203,4 +207,10 @@ $govuk-global-styles: true;
     padding-right: 0;
 }
 
-
+/* *********************** */
+/* *********************** */
+/* *********************** */
+/* ADDING £ TO FORM INPUTS */
+img {
+    width: 100%;
+}
