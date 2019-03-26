@@ -29,6 +29,7 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['defendant-address-line-3'] = ""
     req.session.data['defendant-address-line-4'] = ""
     req.session.data['defendant-address-postcode'] = "W1 7SX"
+    /*
     req.session.data['home-telephone'] = "0123456789"
     req.session.data['mobile'] = "0123456789"
     req.session.data['additional-number'] = "0123456789"
@@ -38,6 +39,7 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['dob-month'] = "11"
     req.session.data['dob-year'] = "1111"
     req.session.data['nin'] = "AB 12 34 56 C"
+    */
     
     /* DEFENDANTS NEW DETAILS */
     req.session.data['new-defendant-first-name'] = req.session.data['defendant-first-name']
@@ -47,7 +49,6 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['new-defendant-address-line-3'] = req.session.data['defendant-address-line-3']
     req.session.data['new-defendant-address-line-4'] = req.session.data['defendant-address-line-4']
     req.session.data['new-defendant-address-postcode'] = req.session.data['defendant-address-postcode']
-
     
     /* CASE DETAILS */
     req.session.data['urn'] = "0123456789"
@@ -65,23 +66,23 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['charge-3-description'] = "Charge 3 description to be confirmed..."
 
     /* PLEA DETAILS */
-    req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
-    req.session.data['mitigation-not-guilty'] = "I didn't do it! Honest!"
+    //req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
+    //req.session.data['mitigation-not-guilty'] = "I didn't do it! Honest!"
     
     /* COURT HEARING DETAILS */
-    req.session.data['court-interpreter-language'] = "Spanish"
-    req.session.data['court-interpreter-b-language'] = "French"
-    req.session.data['prosecution-witness-details'] = "Bob - HE'S NOT TO BE TRUSTED!"
-    req.session.data['your-witness-details'] = "Jane - she will confirm I'm innocent"
-    req.session.data['dates-to-avoid-details'] = "Monday's"
+    //req.session.data['court-interpreter-language'] = "Spanish"
+    //req.session.data['court-interpreter-b-language'] = "French"
+    //req.session.data['prosecution-witness-details'] = "Bob - HE'S NOT TO BE TRUSTED!"
+    //req.session.data['your-witness-details'] = "Jane - she will confirm I'm innocent"
+    //req.session.data['dates-to-avoid-details'] = "Monday's"
     
     /* INCOME DETAILS */
-    req.session.data['other-employment-details'] = "Are you sure I'm not employed?"
-    req.session.data['weekly-income'] = "100"
-    req.session.data['fortnightly-income'] = "200"
-    req.session.data['monthly-income'] = "300"
-    req.session.data['yearly-income'] = "400"
-    req.session.data['which-benefits'] = "Child benefit"
+    //req.session.data['other-employment-details'] = "Are you sure I'm not employed?"
+    //req.session.data['weekly-income'] = "100"
+    //req.session.data['fortnightly-income'] = "200"
+    //req.session.data['monthly-income'] = "300"
+    //req.session.data['yearly-income'] = "400"
+    //req.session.data['which-benefits'] = "Child benefit"
 
     
     
@@ -90,14 +91,14 @@ router.post('/map/start_page', function (req, res) {
     
     
     /* COMPANY DETAILS */
-    req.session.data['company-name'] = "ABC Company"
-    req.session.data['company-reference-number'] = "1234567890"
-    req.session.data['company-address-line-1'] = "Address line 1"
-    req.session.data['company-address-line-2'] = "Address line 2"
-    req.session.data['company-address-line-3'] = "Address line 3"
-    req.session.data['company-address-line-4'] = "Address line 4"
-    req.session.data['company-address-postcode'] = "Postcode"
-    req.session.data['company-telephone'] = "0123456789"
+    //req.session.data['company-name'] = "ABC Company"
+    //req.session.data['company-reference-number'] = "1234567890"
+    //req.session.data['company-address-line-1'] = "Address line 1"
+    //req.session.data['company-address-line-2'] = "Address line 2"
+    //req.session.data['company-address-line-3'] = "Address line 3"
+    //req.session.data['company-address-line-4'] = "Address line 4"
+    //req.session.data['company-address-postcode'] = "Postcode"
+    //req.session.data['company-telephone'] = "0123456789"
     
     /* MONTHLY OUTGOINGS */
     req.session.data['accomodation'] = ""
@@ -139,7 +140,19 @@ router.post('/map/your_details', function (req, res) {
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
     if (check_your_answers != "Yes") {
-        if ((are_these_details_correct == "Yes") || (are_these_details_correct == "No")) {
+        if (are_these_details_correct == "Yes") {
+            res.redirect('/map/your_plea')
+        } else if (are_these_details_correct == "No") {
+            
+            /* DEFENDANTS NEW DETAILS */
+            req.session.data['defendant-first-name'] = req.session.data['new-defendant-first-name']
+            req.session.data['defendant-last-name'] = req.session.data['new-defendant-last-name']
+            req.session.data['defendant-address-line-1'] = req.session.data['new-defendant-address-line-1']
+            req.session.data['defendant-address-line-2'] = req.session.data['new-defendant-address-line-2']
+            req.session.data['defendant-address-line-3'] = req.session.data['new-defendant-address-line-3']
+            req.session.data['defendant-address-line-4'] = req.session.data['new-defendant-address-line-4']
+            req.session.data['defendant-address-postcode'] = req.session.data['new-defendant-address-postcode']
+            
             res.redirect('/map/your_plea')
         } else {
             res.redirect('/map/your_details')
@@ -147,6 +160,15 @@ router.post('/map/your_details', function (req, res) {
     } else {
         res.redirect('/map/check_your_answers')
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     
