@@ -48,6 +48,11 @@
             document.getElementById('def-address-postcode').style.display = "none";
         }
         
+        
+        
+        
+        
+        
         /* ******************* */
         /* ******************* */
         /* ******************* */
@@ -59,6 +64,11 @@
         } else {
             document.getElementById('other-outgoings-group').style.display = "inline";
         }
+        
+        
+        
+        
+        
         
         /* ********************* */
         /* ********************* */
@@ -179,13 +189,23 @@
             document.getElementById('cya-plea-3-mitigation-guilty').style.display = "none";
             document.getElementById('cya-plea-3-mitigation-not-guilty').style.display = "inline";
         }
+        
+        /* HIDE 'Would you like to give us your income or benefits details so they can be taken into account?' IF ALL PLEAS ARE GUILTY */
+        if ((plea_for_charge_1 == "Guilty") && (plea_for_charge_2 == "Guilty") && (plea_for_charge_3 == "Guilty")) {
+            document.getElementById('outstanding-fines-group').style.display = "none";
+        }
 
+        
+        
+        
+        
+        
         /* ********************** */
         /* ********************** */
         /* ********************** */
         /* CHECK INCOME FREQUENCY */
         var income_frequency_info = document.getElementById('income-frequency-info').innerText;
-        
+
         if (income_frequency_info == "Weekly") {
             document.getElementById('weekly-income-group').style.display = "inline";
             document.getElementById('fortnightly-income-group').style.display = "none";
@@ -218,17 +238,86 @@
             document.getElementById('no-income-group').style.display = "inline";
         }
 
+        
+        
+        
+        
+        
         /* *********************************** */
         /* *********************************** */
         /* *********************************** */
         /* WHEN NO INCOME HIDE EMPLOYMENT INFO */
-        
         if (income_frequency_info == "I have no income") {
             document.getElementById('employment-info').style.display = "none";
         } else {
             document.getElementById('employment-info').style.display = "inline";
         }
+        
+        
+        
+        
+        
+        
+        /* ************************************************ */
+        /* ************************************************ */
+        /* ************************************************ */
+        /* CHECK YOUR FINANCES GUILTY ROUTE - GIVE DETAILS? */
+        var your_finances_ng_question = document.getElementById('your-finances-ng-question').innerText;
 
+        if ((your_finances_ng_question == "I have no income or benefits") || (your_finances_ng_question == "No")) {
+            document.getElementById('finance-details-group').style.display = "none";
+        } else if (your_finances_ng_question == "Yes") {
+            document.getElementById('finance-details-group').style.display = "inline";
+        }
+        
+                
+        
+        
+        var outstanding_fines_answer = document.getElementById('outstanding-fines-answer').innerText;
+        if (outstanding_fines_answer == "") {
+            document.getElementById('outstanding-fines-group-b').style.display = "none";
+        } else {
+            document.getElementById('outstanding-fines-group-b').style.display = "inline";
+        }
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /* ************** */
         /* ************** */
         /* ************** */
@@ -241,6 +330,10 @@
             document.getElementById('benefits-info').style.display = "none";
         }
 
+        
+        
+        
+        
         /* ********************************* */
         /* ********************************* */
         /* ********************************* */
@@ -252,6 +345,11 @@
         } else if (deduct_from_earnings_answer == "No") {
             document.getElementById('employer-details-group').style.display = "none";
         }
+        
+        
+        
+        
+        
         
         /* *********************** */
         /* *********************** */
@@ -1152,20 +1250,22 @@
                 </p>
             </div>
         </div>
-  
-        <!-- OUTSTANDING FINES? -->
+        
+        
+        
+        
+        
+        <!-- GIVE DETAILS OF INCOME AND BENEFITS? -->
         <div id="outstanding-fines-group">
             <div id="cya-your-finances-income">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
                         <p class="govuk-body m-bottom-0">
-                            Do you have any outstanding Magistrates’ Court or Crown Court fines?
+                            Would you like to give us your income or benefits details so they can be taken into account?
                         </p>
                     </div>
                     <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['your-finances-g-other']}}
-                        </p>
+                        <p id="your-finances-ng-answer" class="m-bottom-0">{{ data['your-finances-ng'] }}</p>
                     </div>
                 </div>
                 <div class="m-top-10 m-bottom-15">
@@ -1173,273 +1273,278 @@
                 </div>
             </div>
         </div>           
+
         
-        <!-- WEEKLY INCOME -->
-        <div id="weekly-income-group">
-            <div id="cya-your-finances-income">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Weekly income (after tax)
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            £{{data['weekly-income']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-        </div>
-                
-        <!-- FORTNIGHTLY INCOME -->
-        <div id="fortnightly-income-group">
-            <div id="cya-your-finances-income">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Fortnightly income (after tax)
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            £{{data['fortnightly-income']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-        </div>
-                
-        <!-- MONTHLY INCOME -->
-        <div id="monthly-income-group">
-            <div id="cya-your-finances-income">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Monthly income (after tax)
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            £{{data['monthly-income']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-        </div>
-                
-        <!-- YEARLY INCOME -->
-        <div id="yearly-income-group">
-            <div id="cya-your-finances-income">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Yearly income (after tax)
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            £{{data['yearly-income']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-        </div>
-                
-        <!-- NO INCOME -->
-        <div id="no-income-group">
-            <div id="cya-your-finances-income">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Income (after tax)
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            I have no income or benefits
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-        </div>
-                
-        <!-- EMPLOYMENT INFO -->
-        <div id="employment-info">
-            
-            <!-- EMPLOYMENT STATUS -->
-            <div id="cya-your-finances-employment-status">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Employment status
-                    </p>
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        {{data['your-employment-status']}}
-                    </p>
-                </div>
-            </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
-
-            <!-- DEDUCT FROM EARNINGS -->
-            <div id="cya-your-finances-deduct-from-earnings">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Deduct from earnings
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            <span id="deduct-from-earnings-answer">{{data['deduct-from-earnings']}}</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
-
-            <!-- EMPLOYERS DETAILS -->
-            <div id="employer-details-group">
-
-                <!-- EMPLOYMENT REFERENCE -->
-                <div id="cya-your-finances-employee-reference">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Employee reference
-                            </p>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                <span id="employee-reference">{{data['company-reference-number']}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
-                    </div>
-                </div>
-
-                <!-- EMPLOYERS NAME -->
-                <div id="cya-your-finances-employers-name">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Employer's name
-                            </p>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                <span id="employer-company-name">{{data['company-name']}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
-                    </div>
-                </div>
-
-                <!-- EMPLOYERS ADDRESS -->
-                <div id="cya-your-finances-employers-address">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Employer's address
-                            </p>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                <span id="employer-company-address-line-1">{{data['company-address-line-1']}}<br></span>
-                                <span id="employer-company-address-line-2">{{data['company-address-line-2']}}<br></span>
-                                <span id="employer-company-address-line-3">{{data['company-address-line-3']}}<br></span>
-                                <span id="employer-company-address-line-4">{{data['company-address-line-4']}}<br></span>
-                                <span id="employer-company-address-postcode">{{data['company-address-postcode']}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
-                    </div>
-                </div>
-
-                <!-- EMPLOYERS TELEPHONE -->
-                <div id="cya-your-finances-employers-telephone">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Employer's telephone
-                            </p>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                <span id="employer-company-telephone">{{data['company-telephone']}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
         
-        <!-- ARE YOU CLAIMING BENEFITS? -->
-        <div id="cya-your-finances-claiming-benefits">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Are you claiming benefits?
-                    </p>
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        {{ data['claiming-benefits'] }}
-                    </p>
-                </div>
-            </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
-
-        <!-- BENEFITS INFO -->
-        <div id="benefits-info">
+        
+        
+  
+        <!-- YOUR FINANCES DETAILS GROUP -->
+        <div id="finance-details-group">
             
+            <!-- OUTSTANDING FINES? -->
+            <div id="outstanding-fines-group-b">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Do you have any outstanding Magistrates’ Court or Crown Court fines?
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p id="outstanding-fines-answer" class="m-bottom-0">{{data['your-finances-g-other']}}</p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>           
+
+            <!-- WEEKLY INCOME -->
+            <div id="weekly-income-group">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Weekly income (after tax)
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                £{{data['weekly-income']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORTNIGHTLY INCOME -->
+            <div id="fortnightly-income-group">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Fortnightly income (after tax)
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                £{{data['fortnightly-income']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+
+            <!-- MONTHLY INCOME -->
+            <div id="monthly-income-group">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Monthly income (after tax)
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                £{{data['monthly-income']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+
+            <!-- YEARLY INCOME -->
+            <div id="yearly-income-group">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Yearly income (after tax)
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                £{{data['yearly-income']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+
+            <!-- NO INCOME -->
+            <div id="no-income-group">
+                <div id="cya-your-finances-income">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Income (after tax)
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                I have no income or benefits
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMPLOYMENT INFO -->
+            <div id="employment-info">
+
+                <!-- EMPLOYMENT STATUS -->
+                <div id="cya-your-finances-employment-status">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Employment status
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                {{data['your-employment-status']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+
+                <!-- DEDUCT FROM EARNINGS -->
+                <div id="cya-your-finances-deduct-from-earnings">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Deduct from earnings
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                <span id="deduct-from-earnings-answer">{{data['deduct-from-earnings']}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+
+                <!-- EMPLOYERS DETAILS -->
+                <div id="employer-details-group">
+
+                    <!-- EMPLOYMENT REFERENCE -->
+                    <div id="cya-your-finances-employee-reference">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Employee reference
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    <span id="employee-reference">{{data['company-reference-number']}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
+                        </div>
+                    </div>
+
+                    <!-- EMPLOYERS NAME -->
+                    <div id="cya-your-finances-employers-name">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Employer's name
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    <span id="employer-company-name">{{data['company-name']}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
+                        </div>
+                    </div>
+
+                    <!-- EMPLOYERS ADDRESS -->
+                    <div id="cya-your-finances-employers-address">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Employer's address
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    <span id="employer-company-address-line-1">{{data['company-address-line-1']}}<br></span>
+                                    <span id="employer-company-address-line-2">{{data['company-address-line-2']}}<br></span>
+                                    <span id="employer-company-address-line-3">{{data['company-address-line-3']}}<br></span>
+                                    <span id="employer-company-address-line-4">{{data['company-address-line-4']}}<br></span>
+                                    <span id="employer-company-address-postcode">{{data['company-address-postcode']}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
+                        </div>
+                    </div>
+
+                    <!-- EMPLOYERS TELEPHONE -->
+                    <div id="cya-your-finances-employers-telephone">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Employer's telephone
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    <span id="employer-company-telephone">{{data['company-telephone']}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- ARE YOU CLAIMING BENEFITS? -->
-            <div id="cya-your-finances-benefits-you-are-claiming">
+            <div id="cya-your-finances-claiming-benefits">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
                         <p class="govuk-body m-bottom-0">
-                            Benefits you are claiming
+                            Are you claiming benefits?
                         </p>
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            {{data['which-benefits']}}
+                            {{ data['claiming-benefits'] }}
                         </p>
                     </div>
                 </div>
@@ -1448,26 +1553,50 @@
                 </div>
             </div>
 
-            <!-- DEDUCT FROM BENEFITS -->
-            <div id="cya-your-finances-deduct-from-benefits">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third">
-                        <p class="govuk-body m-bottom-0">
-                            Deduct from benefits
-                        </p>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds">
-                        <p class="m-bottom-0">
-                            {{data['deduct-from-benefits']}}
-                        </p>
-                    </div>
-                </div>
-                <div class="m-top-10 m-bottom-15">
-                    <hr class="govuk-section-break govuk-section-break--visible">
-                </div>
-            </div>
+            <!-- BENEFITS INFO -->
+            <div id="benefits-info">
 
-        </div> 
+                <!-- ARE YOU CLAIMING BENEFITS? -->
+                <div id="cya-your-finances-benefits-you-are-claiming">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Benefits you are claiming
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                {{data['which-benefits']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+
+                <!-- DEDUCT FROM BENEFITS -->
+                <div id="cya-your-finances-deduct-from-benefits">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            <p class="govuk-body m-bottom-0">
+                                Deduct from benefits
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="m-bottom-0">
+                                {{data['deduct-from-benefits']}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="m-top-10 m-bottom-15">
+                        <hr class="govuk-section-break govuk-section-break--visible">
+                    </div>
+                </div>
+
+            </div> 
+            
+        </div>
         
         <!-- ---------------------- -->
         <!-- ---------------------- -->

@@ -2,6 +2,9 @@
     #test-data p {
         color: forestgreen;
     }
+    #test-data {
+        display: none;
+    }
 </style>
 <div id="test-data">
     <p class="govuk-body secondary-text m-bottom-0"><strong>Charge 1 plea:</strong> <span id="plea-charge-1">{{ data['charge-1-plea'] }}</span></p>
@@ -19,6 +22,8 @@
     <p class="govuk-body secondary-text"><strong>Interpreter needed when all pleas are ‘Guilty, I want to come to court’:</strong> <span id="court-interpreter-answer-b">{{ data['court-interpreter-b'] }}</span></p>
     
     <p class="govuk-body secondary-text"><strong>I made it to check your answers:</strong> <span id="">{{ data['i-made-it-to-check-your-answers'] }}</span></p>
+    
+    <p class="govuk-body secondary-text"><strong>Your finances (not guilty route):</strong> <span id="your-finances-ng-question">{{ data['your-finances-ng'] }}</span></p>
     
     <p class="govuk-body secondary-text m-bottom-60"><strong>Claiming benefits:</strong> <span id="claiming-benefits-question">{{ data['claiming-benefits'] }}</span></p>
 </div>
