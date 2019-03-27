@@ -11,10 +11,98 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+
+        /* **************** */
+        /* **************** */
+        /* **************** */
+        /* ERROR VALIDATION */
+        var validation_check_query = document.getElementById('validation-check-query').innerText;
+        
+        if (validation_check_query == "URN error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('URN-error').style.display = "block";
+            document.getElementById('URN-error-message').style.display = "block";
+            document.getElementById('postcode-error').style.display = "none";
+            document.getElementById('postcode-error-message').style.display = "none";
+            
+            document.getElementById('your-urn-group').classList.add('govuk-form-group--error');
+            document.getElementById('your-urn-input').classList.add('govuk-input--error');
+            document.getElementById('your-postcode-group').classList.remove('govuk-form-group--error');
+            document.getElementById('your-postcode-input').classList.remove('govuk-input--error');
+
+            
+        } else if (validation_check_query == "Postcode error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('URN-error').style.display = "none";
+            document.getElementById('URN-error-message').style.display = "none";
+            document.getElementById('postcode-error').style.display = "block";
+            document.getElementById('postcode-error-message').style.display = "block";
+            
+            document.getElementById('your-urn-group').classList.remove('govuk-form-group--error');
+            document.getElementById('your-urn-input').classList.remove('govuk-input--error');
+            document.getElementById('your-postcode-group').classList.add('govuk-form-group--error');
+            document.getElementById('your-postcode-input').classList.add('govuk-input--error');
+            
+        } else if (validation_check_query == "URN and postcode error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('URN-error').style.display = "block";
+            document.getElementById('URN-error-message').style.display = "block";
+            document.getElementById('postcode-error').style.display = "block";
+            document.getElementById('postcode-error-message').style.display = "block";
+            
+            document.getElementById('your-urn-group').classList.add('govuk-form-group--error');
+            document.getElementById('your-urn-input').classList.add('govuk-input--error');
+            document.getElementById('your-postcode-group').classList.add('govuk-form-group--error');
+            document.getElementById('your-postcode-input').classList.add('govuk-input--error');
+
+        } else {
+            document.getElementById('govuk-error-summary').style.display = "none";
+            document.getElementById('URN-error-message').style.display = "none";
+            document.getElementById('postcode-error-message').style.display = "none";
+            document.getElementById('your-urn-group').classList.remove('govuk-form-group--error');
+            document.getElementById('your-urn-input').classList.remove('govuk-input--error');
+            document.getElementById('your-postcode-group').classList.remove('govuk-form-group--error');
+            document.getElementById('your-postcode-input').classList.remove('govuk-input--error');
+        }
+        
+    }
+    
+</script>
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
-    <div class="govuk-grid-column-two-thirds">
+    <div id="abcxyz" class="govuk-grid-column-two-thirds">
+
+        {% include "includes/test_data.html" %}
+        
+        
+        
+        
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="URN-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#your-urn-group">Case or unique reference number</a>
+                    </li>
+                </ul>
+                <ul id="postcode-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#your-postcode-group">Your postcode, as shown on your notice</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        
+        
         
         <h1 class="govuk-heading-xl">
             Find your case
@@ -22,12 +110,15 @@
         
         <form action="" method="post">
             
-            <div class="govuk-form-group m-bottom-15">
+            <div id="your-urn-group" class="govuk-form-group m-bottom-15">
                 <label class="govuk-label" for="urn">
                     <strong>Case or Unique Reference Number</strong>
                 </label>
-                <!--<input class="govuk-input govuk-!-width-one-half" id="your-urn" name="your-urn" type="text" value="{{ data['urn'] }}">-->
-                <input class="govuk-input govuk-!-width-one-half" id="your-urn" name="your-urn" type="text">
+                <!-- ERROR MESSAGE -->
+                <span id="URN-error-message" class="govuk-error-message m-bottom-5">
+                    <span class="govuk-visually-hidden">Error:</span> Provide this information
+                </span>
+                <input id="your-urn-input" class="govuk-input govuk-!-width-one-half" id="your-urn" name="your-urn" type="text" value="{{ data['your-urn'] }}">
             </div>
             
             <details class="govuk-details">
@@ -41,12 +132,15 @@
                 </div>
             </details>
             
-            <div class="govuk-form-group">
+            <div id="your-postcode-group" class="govuk-form-group">
                 <label class="govuk-label" for="defendant-address-postcode">
                     <strong>Your postcode, as shown on your notice</strong>
                 </label>
-                <!--<input class="govuk-input govuk-!-width-one-half" id="your-postcode" name="your-postcode" type="text" value="{{ data['defendant-address-postcode'] }}">-->
-                <input class="govuk-input govuk-!-width-one-half" id="your-postcode" name="your-postcode" type="text">
+                <!-- ERROR MESSAGE -->
+                <span id="postcode-error-message" class="govuk-error-message m-bottom-5">
+                    <span class="govuk-visually-hidden">Error:</span> Provide this information
+                </span>
+                <input id="your-postcode-input" class="govuk-input govuk-!-width-one-half" id="your-postcode" name="your-postcode" type="text" value="{{ data['your-postcode'] }}">
             </div>
             
             <div class="govuk-form-group">

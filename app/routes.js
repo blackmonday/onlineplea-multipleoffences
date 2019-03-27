@@ -126,7 +126,23 @@ router.post('/map/start_page', function (req, res) {
 /* FIND YOUR CASE */
 router.post('/map/find_your_case', function (req, res) {
     
-    res.redirect('/map/your_details')
+    /* FORM VALIDATION */
+    var your_urn = req.session.data['your-urn'];
+    var your_postcode = req.session.data['your-postcode'];
+    
+    if ((your_urn == "") && (your_postcode == "")) {
+        req.session.data['validation-check'] = "URN and postcode error"
+        res.redirect('/map/find_your_case')
+    } else if (your_urn == "") {
+        req.session.data['validation-check'] = "URN error"
+        res.redirect('/map/find_your_case')
+    } else if (your_postcode == "") {
+        req.session.data['validation-check'] = "Postcode error"
+        res.redirect('/map/find_your_case')
+    } else {
+        req.session.data['validation-check'] = ""
+        res.redirect('/map/your_details')
+    }
     
 });
 
@@ -137,13 +153,20 @@ router.post('/map/find_your_case', function (req, res) {
 router.post('/map/your_details', function (req, res) {
     
     var are_these_details_correct = req.session.data['are-these-details-correct'];
+    var email_1 = req.session.data['email-1'];
+    var dob_day = req.session.data['dob-day'];
+    var dob_month = req.session.data['dob-month'];
+    var dob_year = req.session.data['dob-year'];
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
-    
+        
     if (check_your_answers != "Yes") {
+        
+
         if (are_these_details_correct == "Yes") {
-            res.redirect('/map/your_plea')
-        } else if (are_these_details_correct == "No") {
+            req.session.data['validation-check'] = ""
+            //res.redirect('/map/your_plea')
             
+        } else if (are_these_details_correct == "No") {
             /* DEFENDANTS NEW DETAILS */
             req.session.data['defendant-first-name'] = req.session.data['new-defendant-first-name']
             req.session.data['defendant-last-name'] = req.session.data['new-defendant-last-name']
@@ -153,13 +176,41 @@ router.post('/map/your_details', function (req, res) {
             req.session.data['defendant-address-line-4'] = req.session.data['new-defendant-address-line-4']
             req.session.data['defendant-address-postcode'] = req.session.data['new-defendant-address-postcode']
             
-            res.redirect('/map/your_plea')
+            req.session.data['validation-check'] = ""
+            //res.redirect('/map/your_plea')
+            
         } else {
-            res.redirect('/map/your_details')
+            req.session.data['validation-check'] = "Are these details correct error"
+            
         }
+        
+        if (email_1 == "") {
+            req.session.data['email-1-query'] = "email 1 error"
+        } else {
+            req.session.data['email-1-query'] = ""
+        }
+        
+        if ((dob_day == "") || (dob_month == "") || (dob_year == "")) {
+            req.session.data['dob-query'] = "dob error"
+        } else {
+            req.session.data['dob-query'] = ""
+        }
+        
+        var validation_check_answer = req.session.data['validation-check'];
+        
+        if ((validation_check_answer == "Are these details correct error") || (email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "")) {
+            res.redirect('/map/your_details')
+        } else {
+            res.redirect('/map/your_plea')
+        }
+        
+            
+            
+        
     } else {
         res.redirect('/map/check_your_answers')
     }
+    
     
     
     

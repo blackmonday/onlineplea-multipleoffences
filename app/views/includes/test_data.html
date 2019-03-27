@@ -1,9 +1,10 @@
 <style>
     #test-data p {
         color: forestgreen;
+        font-size: 12px;
     }
     #test-data {
-        display: none;
+        display: block;
     }
 </style>
 <div id="test-data">
@@ -25,5 +26,9 @@
     
     <p class="govuk-body secondary-text"><strong>Your finances (not guilty route):</strong> <span id="your-finances-ng-question">{{ data['your-finances-ng'] }}</span></p>
     
-    <p class="govuk-body secondary-text m-bottom-60"><strong>Claiming benefits:</strong> <span id="claiming-benefits-question">{{ data['claiming-benefits'] }}</span></p>
+    <p class="govuk-body secondary-text"><strong>Claiming benefits:</strong> <span id="claiming-benefits-question">{{ data['claiming-benefits'] }}</span></p>
+    
+    <p class="govuk-body secondary-text m-bottom-0"><strong>Validation check query:</strong> <span id="validation-check-query">{{ data['validation-check'] }}</span></p>
+    <p class="govuk-body secondary-text m-bottom-0"><strong>email 1 query:</strong> <span id="email-1-query">{{ data['email-1-query'] }}</span></p>
+    <p class="govuk-body secondary-text m-bottom-60"><strong>dob query:</strong> <span id="dob-query">{{ data['dob-query'] }}</span></p>
 </div>
