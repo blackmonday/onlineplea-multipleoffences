@@ -231,10 +231,10 @@ router.post('/map/your_details', function (req, res) {
 /* YOUR PLEA */
 router.post('/map/your_plea', function (req, res) {
     
-    var charge_1_plea = req.session.data['charge-1-plea'];
-    var charge_2_plea = req.session.data['charge-2-plea'];
-    var charge_3_plea = req.session.data['charge-3-plea'];
-    
+    var charge_1_plea = req.session.data['charge-1-plea']
+    var charge_2_plea = req.session.data['charge-2-plea']
+    var charge_3_plea = req.session.data['charge-3-plea']
+
     // IF ALL PLEAS ARE GUILTY
     if ((charge_1_plea == "Guilty") && (charge_2_plea == "Guilty") && (charge_3_plea == "Guilty")) {
         
@@ -263,6 +263,7 @@ router.post('/map/your_plea', function (req, res) {
         
         res.redirect('/map/not_guilty_plea')
     }
+            
         
 });
 
@@ -279,24 +280,32 @@ router.post('/map/guilty_plea', function (req, res) {
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
             
     if (come_to_court == "Yes") {
+        req.session.data['guilty-plea-court-query'] = ""
         res.redirect('/map/guilty_plea_reason')
     } else if ((come_to_court == "No") && ((charge_1_plea == "Not guilty") || (charge_2_plea == "Not guilty") || (charge_3_plea == "Not guilty"))) { 
         req.session.data['plea-counter']--;
         if (req.session.data['plea-counter'] <= 0) {
             if (check_your_answers != "Yes") {
+                req.session.data['guilty-plea-court-query'] = ""
                 res.redirect('/map/your_finances')
             } else {
+                req.session.data['guilty-plea-court-query'] = ""
                 res.redirect('/map/check_your_answers')
             }
         }
         res.redirect('/map/not_guilty_plea')
-    } else {
+    } else if (come_to_court == "No") {
         req.session.data['plea-counter']--;
         if (check_your_answers != "Yes") {
+            req.session.data['guilty-plea-court-query'] = ""
             res.redirect('/map/your_finances')
         } else {
+            req.session.data['guilty-plea-court-query'] = ""
             res.redirect('/map/check_your_answers')
         }
+    } else if ((come_to_court != "Yes") || (come_to_court != "No")) {
+        req.session.data['guilty-plea-court-query'] = "error"
+        res.redirect('/map/guilty_plea')
     }
         
 });

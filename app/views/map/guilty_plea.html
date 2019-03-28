@@ -15,6 +15,8 @@
     window.onload = function() {
         
         /* ********** */
+        /* ********** */
+        /* ********** */
         /* PLEA CHECK */
         var plea_charge_1 = document.getElementById('plea-charge-1').innerHTML;
         var plea_charge_2 = document.getElementById('plea-charge-2').innerHTML;
@@ -38,6 +40,25 @@
             document.getElementById('plea-3-header').style.display = "none";
         }
         
+        /* **************** */
+        /* **************** */
+        /* **************** */
+        /* ERROR VALIDATION */
+        var guilty_plea_court_query = document.getElementById('guilty-plea-court-query').innerText;
+        
+        if (guilty_plea_court_query == "error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('come-to-court-error-message').style.display = "block";
+            
+            document.getElementById('come-to-court-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('govuk-error-summary').style.display = "none";
+            document.getElementById('come-to-court-error-message').style.display = "none";
+            
+            document.getElementById('come-to-court-group').classList.remove('govuk-form-group--error');
+
+        }
     }
 </script>
 
@@ -47,6 +68,26 @@
     <div class="govuk-grid-column-two-thirds">
         
         {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+        
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="URN-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#come-to-court-group">Would you like to come to court?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        
+        
+        
+        
         
         <div id="plea-1-header">
            <h2 class="govuk-heading-m m-bottom-0">
@@ -93,13 +134,17 @@
         
         <form action="" method="post">
             
-            <div class="govuk-form-group m-bottom-15">
+            <div id="come-to-court-group" class="govuk-form-group m-bottom-15">
                 <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
                         <h2 class="govuk-heading-m m-bottom-0">
                             Would you like to come to court?
                         </h2>
                     </legend>
+                    <!-- ERROR MESSAGE -->
+                    <span id="come-to-court-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Provide this information
+                    </span>
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="come-to-court-1" name="come-to-court" type="radio" value="Yes" {{ checked('come-to-court','Yes') }}>
