@@ -37,6 +37,25 @@
         } else if (plea_charge_3 == "Guilty") {
             document.getElementById('plea-3-header').style.display = "none";
         }
+
+        /* **************** */
+        /* **************** */
+        /* **************** */
+        /* ERROR VALIDATION */
+        var not_guilty_plea_query = document.getElementById('not-guilty-plea-query').innerText;
+        if (not_guilty_plea_query == "error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('not-guilty-plea-error-message').style.display = "block";
+            
+            document.getElementById('not-guilty-plea-group').classList.add('govuk-form-group--error');
+            
+        } else if (not_guilty_plea_query == "") {
+            document.getElementById('govuk-error-summary').style.display = "none";
+            document.getElementById('not-guilty-plea-error-message').style.display = "none";
+            
+            document.getElementById('not-guilty-plea-group').classList.remove('govuk-form-group--error');
+
+        }
         
     }
 </script>
@@ -47,6 +66,22 @@
     <div class="govuk-grid-column-two-thirds">
         
         {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+        
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="URN-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#come-to-court-group">Why do you believe you are not guilty of these charges?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         
         <div id="plea-1-header">
            <h2 class="govuk-heading-m m-bottom-0">
@@ -89,10 +124,16 @@
         
         <form action="" method="post">
             
-            <div class="govuk-form-group">
+            <div id="not-guilty-plea-group" class="govuk-form-group">
                 <label class="govuk-label" for="mitigation-not-guilty">
                     <strong>Why do you believe you are not guilty of these charges?</strong>
                 </label>
+                
+                <!-- ERROR MESSAGE -->
+                <span id="not-guilty-plea-error-message" class="govuk-error-message m-bottom-5">
+                    <span class="govuk-visually-hidden">Error:</span> Provide this information
+                </span>
+
                 <textarea class="govuk-textarea" id="mitigation-not-guilty" name="mitigation-not-guilty" rows="5" aria-describedby="mitigation-not-guilty-hint">{{ data['mitigation-not-guilty'] }}</textarea>
             </div>            
 

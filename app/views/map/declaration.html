@@ -11,41 +11,91 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+
+        /* **************** */
+        /* **************** */
+        /* **************** */
+        /* ERROR VALIDATION */
+        var declaration_query = document.getElementById('declaration-query').innerText;
+        if (declaration_query == "error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('declaration-error-message').style.display = "block";
+            
+            document.getElementById('declaration-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('govuk-error-summary').style.display = "none";
+            document.getElementById('declaration-error-message').style.display = "none";
+            
+            document.getElementById('declaration-group').classList.remove('govuk-form-group--error');
+
+        }
+        
+    }
+</script>
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
         
+        {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+        
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="URN-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#come-to-court-group">Declaration</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <h1 class="govuk-heading-xl">
             Declaration
         </h1>
         
-            <p class="govuk-body m-bottom-5">I confrim that:</p>
-            
-            <ul class="govuk-list govuk-list--bullet">
-                <li>I’ve read and understand the charges against me</li>
-                <li>I’m the person named in the Single Justice Procedure notice</li>
-                <li>the facts I’ve given are correct as far as I know</li>
-            </ul>
-            
-            <div class="govuk-warning-text">
-                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-                <strong class="govuk-warning-text__text">
-                    <span class="govuk-warning-text__assistive">Warning</span>
-                    You may be prosecuted if you make a false statement or deliberately don’t declare all relevant facts.
-                </strong>
-            </div>
-            
-            <p>If you would like to change any of the information in this plea you can go '<a href="/map/your_details">Back</a>' to make the changes.</p>
-        
         <form action="" method="post">
             
-            <div class="govuk-form-group">
+            <div id="declaration-group" class="govuk-form-group">
+                
                 <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                    
+                    <p class="govuk-body m-bottom-5">I confrim that:</p>
+
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>I’ve read and understand the charges against me</li>
+                        <li>I’m the person named in the Single Justice Procedure notice</li>
+                        <li>the facts I’ve given are correct as far as I know</li>
+                    </ul>
+
+                    <div class="govuk-warning-text">
+                        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                        <strong class="govuk-warning-text__text">
+                            <span class="govuk-warning-text__assistive">Warning</span>
+                            You may be prosecuted if you make a false statement or deliberately don’t declare all relevant facts.
+                        </strong>
+                    </div>
+
+                    <p>If you would like to change any of the information in this plea you can go '<a href="/map/your_details">Back</a>' to make the changes.</p>
+
+                    
+                    <!-- ERROR MESSAGE -->
+                    <span id="declaration-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Confirm you understand
+                    </span>
+                    
                     <div class="govuk-checkboxes">
                         <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="carcasses">
-                            <label class="govuk-label govuk-checkboxes__label" for="waste-1">
+                            <input class="govuk-checkboxes__input" id="declaration-1" name="declaration" type="checkbox" value="I confirm">
+                            <label class="govuk-label govuk-checkboxes__label" for="declaration-1">
                                 I confirm
                             </label>
                         </div>

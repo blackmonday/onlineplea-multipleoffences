@@ -161,7 +161,6 @@ router.post('/map/your_details', function (req, res) {
         
     if (check_your_answers != "Yes") {
         
-
         if (are_these_details_correct == "Yes") {
             req.session.data['validation-check'] = ""
             //res.redirect('/map/your_plea')
@@ -204,25 +203,10 @@ router.post('/map/your_details', function (req, res) {
             res.redirect('/map/your_plea')
         }
         
-            
-            
-        
     } else {
         res.redirect('/map/check_your_answers')
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
+        
 });
 
 /* ********* */
@@ -352,22 +336,32 @@ router.post('/map/not_guilty_plea', function (req, res) {
     var charge_2_plea = req.session.data['charge-2-plea'];
     var charge_3_plea = req.session.data['charge-3-plea'];
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+    var mitigation_not_guilty = req.session.data['mitigation-not-guilty'];
     
     req.session.data['come-to-court-not-guilty'] = "Yes";
     
-    if ((charge_1_plea == "Guilty") || (charge_2_plea == "Guilty") || (charge_3_plea == "Guilty")) {
-        req.session.data['plea-counter']--;
-        if (req.session.data['plea-counter'] <= 0) {
-            if (check_your_answers != "Yes") {
-                res.redirect('/map/your_finances')
-            } else {
-                res.redirect('/map/check_your_answers')
+    if (mitigation_not_guilty == "") {
+        req.session.data['not-guilty-plea-query'] = "error"
+        res.redirect('not_guilty_plea')
+        
+    } else if (mitigation_not_guilty != "") {
+        req.session.data['not-guilty-plea-query'] = "no error"
+        
+        if ((charge_1_plea == "Guilty") || (charge_2_plea == "Guilty") || (charge_3_plea == "Guilty")) {
+            req.session.data['plea-counter']--;
+            if (req.session.data['plea-counter'] <= 0) {
+                if (check_your_answers != "Yes") {
+                    res.redirect('/map/your_finances')
+                } else {
+                    res.redirect('/map/check_your_answers')
+                }
             }
+            res.redirect('/map/guilty_plea')
+        } else {
+            req.session.data['plea-counter']--;
+            res.redirect('/map/your_court_hearing')
         }
-        res.redirect('/map/guilty_plea')
-    } else {
-        req.session.data['plea-counter']--;
-        res.redirect('/map/your_court_hearing')
+
     }
         
 });
@@ -455,11 +449,22 @@ router.post('/map/deductions_from_earnings', function (req, res) {
     var claiming_benefits = req.session.data['claiming-benefits'];
     
     if (deduct_from_earnings == "Yes") {
+        req.session.data['deduct-from-earnings-query'] = ""
         res.redirect('/map/your_employment')
-    } else if (claiming_benefits == "Yes") {
-        res.redirect('/map/your_benefits')
+    } else if (deduct_from_earnings == "No") {
+        
+        if (claiming_benefits == "Yes") {
+            req.session.data['deduct-from-earnings-query'] = ""
+            res.redirect('/map/your_benefits')
+        } else {
+            req.session.data['deduct-from-earnings-query'] = ""
+            res.redirect('/map/your_outgoings')
+        }
+        
     } else {
-        res.redirect('/map/your_outgoings')
+        req.session.data['deduct-from-earnings-query'] = "error"
+        res.redirect('/map/deductions_from_earnings')
+        
     }
     
 });
@@ -497,16 +502,23 @@ router.post('/map/your_benefits', function (req, res) {
 router.post('/map/your_outgoings', function (req, res) {
     
     var give_details_of_outgoings = req.session.data['give-details-of-outgoings'];
+    
     if (give_details_of_outgoings == "Yes") {
+        req.session.data['give-outgoing-details-query'] = ""
         res.redirect('/map/your_monthly_outgoings')
-    } else if (give_details_of_outgoings == "No") {
         
+    } else if (give_details_of_outgoings == "No") {
+        req.session.data['give-outgoing-details-query'] = ""
+
         /* CHECK IF ALL SECTIONS HAVE BEEN COMPLETED OR NOT */
         req.session.data['i-made-it-to-check-your-answers'] = "Yes"
         
         res.redirect('/map/check_your_answers')
+        
     } else {
+        req.session.data['give-outgoing-details-query'] = "error"
         res.redirect('/map/your_outgoings')
+        
     }
         
 });
@@ -561,7 +573,17 @@ router.post('/map/check_your_answers', function (req, res) {
 /* DECLARATION */
 router.post('/map/declaration', function (req, res) {
     
-    res.redirect('/map/confirmation')
+    var declaration = req.session.data['declaration'];
+    
+    if (declaration == "I confirm") {
+        req.session.data['declaration-query'] = ""
+        res.redirect('/map/confirmation')
+        
+    } else {
+        req.session.data['declaration-query'] = "error"
+        res.redirect('/map/declaration')
+        
+    }
     
 });
 
@@ -571,6 +593,6 @@ router.post('/map/declaration', function (req, res) {
 /* CONFIRMATION */
 router.post('/map/confirmation', function (req, res) {
     
-    res.redirect('../')
+    res.redirect('/prototype-admin/clear-data')
     
 });

@@ -11,48 +11,99 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+
+        /* **************** */
+        /* **************** */
+        /* **************** */
+        /* ERROR VALIDATION */
+        var deduct_from_earnings_query = document.getElementById('deduct-from-earnings-query').innerText;
+        if (deduct_from_earnings_query == "error") {
+            document.getElementById('govuk-error-summary').style.display = "block";
+            document.getElementById('deduct-from-earnings-error-message').style.display = "block";
+            
+            document.getElementById('deduct-from-earnings-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('govuk-error-summary').style.display = "none";
+            document.getElementById('deduct-from-earnings-error-message').style.display = "none";
+            
+            document.getElementById('deduct-from-earnings-group').classList.remove('govuk-form-group--error');
+
+        }
+        
+    }
+</script>
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
         
+        {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+        
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="URN-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#come-to-court-group">If you need to pay a penalty, would you like us to deduct it from your earnings?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
         <h1 class="govuk-heading-xl">
             Deductions from earnings
         </h1>
         
-        <p class="govuk-heading-s">If you need to pay a penalty, would you like us to deduct it from your earnings?</p>
+            <form action="" method="post">
 
-        <p class="govuk-body m-bottom-5">The court may deduct a penalty from your earnings if:</p>
-        <ul class="govuk-list govuk-list--bullet">
-            <li>you’ve failed to pay in the past</li>
-            <li>you’re ordered to pay compensation, as part of your penalty</li>
-        </ul>
+                <div id="deduct-from-earnings-group">
+
+                    <p class="govuk-heading-s">If you need to pay a penalty, would you like us to deduct it from your earnings?</p>
+
+                    <p class="govuk-body m-bottom-5">The court may deduct a penalty from your earnings if:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>you’ve failed to pay in the past</li>
+                        <li>you’re ordered to pay compensation, as part of your penalty</li>
+                    </ul>
+
+                    <!-- ERROR MESSAGE -->
+                    <span id="deduct-from-earnings-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Choose an answer
+                    </span>
         
-        <form action="" method="post">
-            
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="deduct-from-earnings-hint">
-                    <div class="govuk-radios govuk-radios--inline">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="deduct-from-earnings-1" name="deduct-from-earnings" type="radio" value="Yes" {{ checked('deduct-from-earnings','Yes') }}>
-                            <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-1">
-                                Yes
-                            </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="deduct-from-earnings-2" name="deduct-from-earnings" type="radio" value="No" {{ checked('deduct-from-earnings','No') }}>
-                            <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-2">
-                                No
-                            </label>
-                        </div>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="deduct-from-earnings-hint">
+                            <div class="govuk-radios govuk-radios--inline">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="deduct-from-earnings-1" name="deduct-from-earnings" type="radio" value="Yes" {{ checked('deduct-from-earnings','Yes') }}>
+                                    <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-1">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="deduct-from-earnings-2" name="deduct-from-earnings" type="radio" value="No" {{ checked('deduct-from-earnings','No') }}>
+                                    <label class="govuk-label govuk-radios__label" for="deduct-from-earnings-2">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                </fieldset>
-            </div>
-            
-            {% include "includes/continue_with_back.html" %}
-            
-        </form>
-        
+                    
+                </div>
+
+                {% include "includes/continue_with_back.html" %}
+
+            </form>
+
     </div>
     
     <!-- RIGHT COLUMN CONTENT -->
