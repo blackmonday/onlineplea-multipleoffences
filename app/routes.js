@@ -55,7 +55,7 @@ router.post('/map/start_page', function (req, res) {
     
     /* CHARGE 1 DETAILS */
     req.session.data['charge-1-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"
-    req.session.data['charge-1-description'] = "Charge 1 description to be confirmed..."
+    req.session.data['charge-1-description'] = "On 19 March 2019 at Edmondton drove a motor vehicle, name Ford Escort, on a restricted road, namely Manchester Road, at a speed exceeding 30 miles per hour."
 
     /* CHARGE 2 DETAILS */
     req.session.data['charge-2-title'] = "Driving otherwise than in accordance with a driving licence"
@@ -351,7 +351,7 @@ router.post('/map/not_guilty_plea', function (req, res) {
             req.session.data['plea-counter']--;
             if (req.session.data['plea-counter'] <= 0) {
                 if (check_your_answers != "Yes") {
-                    res.redirect('/map/your_finances')
+                    res.redirect('/map/your_court_hearing')
                 } else {
                     res.redirect('/map/check_your_answers')
                 }
@@ -359,7 +359,11 @@ router.post('/map/not_guilty_plea', function (req, res) {
             res.redirect('/map/guilty_plea')
         } else {
             req.session.data['plea-counter']--;
-            res.redirect('/map/your_court_hearing')
+            if (check_your_answers != "Yes") {
+                res.redirect('/map/your_court_hearing')
+            } else {
+                res.redirect('/map/check_your_answers')
+            }
         }
 
     }
@@ -420,6 +424,7 @@ router.post('/map/your_income', function (req, res) {
     var fortnightly_income = req.session.data['fortnightly-income']
     var monthly_income = req.session.data['monthly-income']
     var yearly_income = req.session.data['yearly-income']
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
     req.session.data['weekly-income'] = parseFloat(weekly_income).toFixed(2)
     req.session.data['fortnightly-income'] = parseFloat(fortnightly_income).toFixed(2)
@@ -430,11 +435,26 @@ router.post('/map/your_income', function (req, res) {
     var claiming_benefits = req.session.data['claiming-benefits']
     
     if ((income_frequency == "I have no income") && (claiming_benefits == "Yes")) {
-        res.redirect('/map/your_benefits')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_benefits');
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
+        
     } else if ((income_frequency == "I have no income") && (claiming_benefits == "No")) {
-        res.redirect('/map/your_outgoings')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings');
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
+        
     } else {
-        res.redirect('/map/deductions_from_earnings')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/deductions_from_earnings');
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
+
     }
     
 });

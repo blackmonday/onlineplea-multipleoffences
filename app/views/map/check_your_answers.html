@@ -109,29 +109,6 @@
             document.getElementById('court-hearing-group-1').style.display = "inline";
             document.getElementById('court-hearing-group-2').style.display = "none";
         }
-
-
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-
-        
-        
         
         var court_interpreter_answer_a = document.getElementById('court-interpreter-answer-a').innerHTML;
         var court_interpreter_answer_b = document.getElementById('court-interpreter-answer-b').innerHTML;
@@ -146,14 +123,6 @@
         } else {
             document.getElementById('cya-your-court-hearing-language-b').style.display = "none";
         }
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -191,10 +160,75 @@
         }
         
         /* HIDE 'Would you like to give us your income or benefits details so they can be taken into account?' IF ALL PLEAS ARE GUILTY */
-        if ((plea_for_charge_1 == "Guilty") && (plea_for_charge_2 == "Guilty") && (plea_for_charge_3 == "Guilty")) {
+        if ((plea_for_charge_1 == "Not guilty") && (plea_for_charge_2 == "Not guilty") && (plea_for_charge_3 == "Not guilty")) {
+            document.getElementById('outstanding-fines-group').style.display = "inline";
+        } else {
             document.getElementById('outstanding-fines-group').style.display = "none";
         }
 
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* *************************** */
+        /* *************************** */
+        /* *************************** */
+        /* CHECK COURT HEARING DETAILS */
+        
+        var prosecution_witness = document.getElementById('prosecution-witness').innerText;
+        
+        if (prosecution_witness == "No") {
+            document.getElementById('prosecution-witness-details-group').style.display = "none";
+        } else {
+            document.getElementById('prosecution-witness-details-group').style.display = "inline";
+        }
+        
+        var your_witness = document.getElementById('your-witness').innerText;
+        
+        if (your_witness == "No") {
+            document.getElementById('your-witness-group').style.display = "none";
+        } else {
+            document.getElementById('your-witness-group').style.display = "inline";
+        }
+        
+        var dates_to_avoid = document.getElementById('dates-to-avoid').innerText;
+
+        if (dates_to_avoid == "No") {
+            document.getElementById('dates-to-avoid-group').style.display = "none";
+        } else {
+            document.getElementById('dates-to-avoid-group').style.display = "inline";
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -254,6 +288,19 @@
         }
         
         
+        /* *********************** */
+        /* *********************** */
+        /* *********************** */
+        /* CHECK EMPLOYMENT STATUS */
+        
+        var your_employment_status = document.getElementById('your-employment-status').innerText;
+        
+        if (your_employment_status == "Other (for example, retired, student)") {
+            document.getElementById('other-employment-details-group').style.display = "inline";
+        } else {
+            document.getElementById('other-employment-details-group').style.display = "none";
+        }
+        
         
         
         
@@ -282,40 +329,7 @@
 
 
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                
         
         
         /* ************** */
@@ -556,7 +570,7 @@
             </div>
         </div>
         
-        <!-- DFENDANT EMAIL -->
+        <!-- DEFENDANT EMAIL -->
         <div id="cya-email-address">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
@@ -1025,6 +1039,10 @@
             <!-- A COMBINATION OF ‘NOT GUILTY’ AND ‘GUILTY, I WANT TO COME TO COURT’ -->
             <div id="court-hearing-group-1">
                 
+                <!-- ---------------------------------------------------------------- -->
+                <!-- ---------------------------------------------------------------- -->
+                <!-- ---------------------------------------------------------------- -->
+                <!-- If there is a court hearing in Wales do you wish to speak Welsh? -->
                 <div id="cya-your-court-hearing-speak-welsh">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -1043,6 +1061,10 @@
                     </div>
                 </div>
 
+                <!-- -------------------------------------------------------- -->
+                <!-- -------------------------------------------------------- -->
+                <!-- -------------------------------------------------------- -->
+                <!-- For other languages do you need an interpreter in court? -->
                 <div id="cya-your-court-hearing-interpreter">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -1079,6 +1101,10 @@
                     </div>
                 </div>
 
+                <!-- ----------------------------------------------------- -->
+                <!-- ----------------------------------------------------- -->
+                <!-- ----------------------------------------------------- -->
+                <!-- Are there any prosecution witness you want to attend? -->
                 <div id="cya-your-court-hearing-prosecution-witness-attend">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -1087,9 +1113,7 @@
                             </p>
                         </div>
                         <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                {{data['prosecution-witness']}}
-                            </p>
+                            <p id="prosecution-witness" class="m-bottom-0">{{data['prosecution-witness']}}</p>
                         </div>
                     </div>
                     <div class="m-top-10 m-bottom-15">
@@ -1097,24 +1121,30 @@
                     </div>
                 </div>
 
-                <div id="cya-your-court-hearing-prosecution-witness-name">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Prosecution witness names and why you want them to attend
-                            </p>
+                <div id="prosecution-witness-details-group">
+                    <div id="cya-your-court-hearing-prosecution-witness-name">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Prosecution witness names and why you want them to attend
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    {{data['prosecution-witness-details']}}
+                                </p>
+                            </div>
                         </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                {{data['prosecution-witness-details']}}
-                            </p>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
                         </div>
-                    </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
 
+                <!-- ------------------------- -->
+                <!-- ------------------------- -->
+                <!-- ------------------------- -->
+                <!-- BRINGING YOUR OWN WITNESS -->
                 <div id="cya-your-court-hearing-bringing-your-own-witness">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -1123,9 +1153,7 @@
                             </p>
                         </div>
                         <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                {{data['your-witness']}}
-                            </p>
+                            <p id="your-witness" class="m-bottom-0">{{data['your-witness']}}</p>
                         </div>
                     </div>
                     <div class="m-top-10 m-bottom-15">
@@ -1133,42 +1161,70 @@
                     </div>
                 </div>
 
-                <div id="cya-your-court-hearing-your-witness-details">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-one-third">
-                            <p class="govuk-body m-bottom-0">
-                                Name and address of your witness and their age and date of birth if known
-                            </p>
+                <div id="your-witness-group">
+                    
+                    <div id="cya-your-court-hearing-your-witness-details">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    Name and address of your witness and their age and date of birth if known
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    {{data['your-witness-details']}}
+                                </p>
+                            </div>
                         </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                {{data['your-witness-details']}}
-                            </p>
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
                         </div>
                     </div>
-                    <div class="m-top-10 m-bottom-15">
-                        <hr class="govuk-section-break govuk-section-break--visible">
-                    </div>
-                </div>
 
+                </div>
+                
+                <!-- ----------------->
+                <!-- ----------------->
+                <!-- ----------------->
+                <!-- DATES TO AVOID -->
                 <div id="cya-your-court-hearing-dates-to-avoid">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
                             <p class="govuk-body m-bottom-0">
-                                Dates you or your witness can not attend court
+                                Are there any dates you or your witness can not attend court?
                             </p>
                         </div>
                         <div class="govuk-grid-column-two-thirds">
-                            <p class="m-bottom-0">
-                                {{data['dates-to-avoid-details']}}
-                            </p>
+                            <p id="dates-to-avoid" class="m-bottom-0">{{data['dates-to-avoid']}}</p>
                         </div>
                     </div>
+                    
                     <div class="m-top-10 m-bottom-15">
                         <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
+                
+                <div id="dates-to-avoid-group">
+                    <div id="cya-your-court-hearing-dates-to-avoid">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-one-third">
+                                <p class="govuk-body m-bottom-0">
+                                    The dates you or your witness can not attend court
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds">
+                                <p class="m-bottom-0">
+                                    {{data['dates-to-avoid-details']}}
+                                </p>
+                            </div>
+                        </div>
 
+                        <div class="m-top-10 m-bottom-15">
+                            <hr class="govuk-section-break govuk-section-break--visible">
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             
             <!-- ------------------------------------------------------------------------ -->
@@ -1251,10 +1307,6 @@
             </div>
         </div>
         
-        
-        
-        
-        
         <!-- GIVE DETAILS OF INCOME AND BENEFITS? -->
         <div id="outstanding-fines-group">
             <div id="cya-your-finances-income">
@@ -1273,12 +1325,7 @@
                 </div>
             </div>
         </div>           
-
         
-        
-        
-        
-  
         <!-- YOUR FINANCES DETAILS GROUP -->
         <div id="finance-details-group">
             
@@ -1300,6 +1347,25 @@
                     </div>
                 </div>
             </div>           
+
+            <!-- EMPLOYMENT STATUS -->
+            <div id="cya-your-finances-employment-status">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        <p class="govuk-body m-bottom-0">
+                            Employment status
+                        </p>
+                    </div>
+                    <div class="govuk-grid-column-two-thirds">
+                        <p class="m-bottom-0">
+                            <span id="your-employment-status">{{data['your-employment-status']}}</span><span id="other-employment-details-group"> - <span id="other-employment-details">{{data['other-employment-details']}}</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="m-top-10 m-bottom-15">
+                    <hr class="govuk-section-break govuk-section-break--visible">
+                </div>
+            </div>
 
             <!-- WEEKLY INCOME -->
             <div id="weekly-income-group">
@@ -1410,6 +1476,7 @@
             <div id="employment-info">
 
                 <!-- EMPLOYMENT STATUS -->
+                <!--
                 <div id="cya-your-finances-employment-status">
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
@@ -1427,6 +1494,7 @@
                         <hr class="govuk-section-break govuk-section-break--visible">
                     </div>
                 </div>
+                -->
 
                 <!-- DEDUCT FROM EARNINGS -->
                 <div id="cya-your-finances-deduct-from-earnings">
@@ -1597,7 +1665,7 @@
             </div> 
             
         </div>
-        
+            
         <!-- ---------------------- -->
         <!-- ---------------------- -->
         <!-- ---------------------- -->
