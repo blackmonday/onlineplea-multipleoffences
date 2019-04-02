@@ -55,15 +55,15 @@ router.post('/map/start_page', function (req, res) {
     
     /* CHARGE 1 DETAILS */
     req.session.data['charge-1-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"
-    req.session.data['charge-1-description'] = "On 19 March 2019 at Edmondton drove a motor vehicle, name Ford Escort, on a restricted road, namely Manchester Road, at a speed exceeding 30 miles per hour."
+    req.session.data['charge-1-description'] = "On 7 March 2019 at EDMONTON drove a motor vehicle, name FORD ESCORT, on a restricted road, namely A1010, THE GREEN, EDMONTON, , at a speed exceeding 30 miles per hour namely 38 MPH"
 
     /* CHARGE 2 DETAILS */
     req.session.data['charge-2-title'] = "Driving otherwise than in accordance with a driving licence"
-    req.session.data['charge-2-description'] = "Charge 2 description to be confirmed..."
+    req.session.data['charge-2-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, did not provide a valid drivers license"
 
     /* CHARGE 3 DETAILS */
-    req.session.data['charge-3-title'] = "Charge 3 title to be confirmed"
-    req.session.data['charge-3-description'] = "Charge 3 description to be confirmed..."
+    req.session.data['charge-3-title'] = "Using a vehicle uninsured against third party risks"
+    req.session.data['charge-3-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, was driving the vehcile that was not insureds"
 
     /* PLEA DETAILS */
     //req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
