@@ -53,17 +53,17 @@ router.post('/map/start_page', function (req, res) {
     /* CASE DETAILS */
     req.session.data['urn'] = "0123456789"
     
-    /* CHARGE 1 DETAILS */
-    req.session.data['charge-1-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"
-    req.session.data['charge-1-description'] = "On 7 March 2019 at EDMONTON drove a motor vehicle, name FORD ESCORT, on a restricted road, namely A1010, THE GREEN, EDMONTON, , at a speed exceeding 30 miles per hour namely 38 MPH"
+    /* CHARGE 1DETAILS */
+    req.session.data['charge-1-title'] = "Using a vehicle uninsured against third party risks"
+    req.session.data['charge-1-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, was driving the vehcile that was not insured"
 
     /* CHARGE 2 DETAILS */
     req.session.data['charge-2-title'] = "Driving otherwise than in accordance with a driving licence"
     req.session.data['charge-2-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, did not provide a valid drivers license"
 
     /* CHARGE 3 DETAILS */
-    req.session.data['charge-3-title'] = "Using a vehicle uninsured against third party risks"
-    req.session.data['charge-3-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, was driving the vehcile that was not insureds"
+    req.session.data['charge-3-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"
+    req.session.data['charge-3-description'] = "On 7 March 2019 at EDMONTON drove a motor vehicle, name FORD ESCORT, on a restricted road, namely A1010, THE GREEN, EDMONTON, , at a speed exceeding 30 miles per hour namely 38 MPH"
 
     /* PLEA DETAILS */
     //req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
