@@ -35,9 +35,11 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['additional-number'] = "0123456789"
     req.session.data['email-1'] = "abc@xyz.com"
     req.session.data['email-2'] = "xyz@abc.com"
-    req.session.data['dob-day'] = "11"
-    req.session.data['dob-month'] = "11"
-    req.session.data['dob-year'] = "1111"
+    */
+    req.session.data['dob-day'] = "23"
+    req.session.data['dob-month'] = "8"
+    req.session.data['dob-year'] = "1988"
+    /*
     req.session.data['nin'] = "AB 12 34 56 C"
     */
     
@@ -55,11 +57,11 @@ router.post('/map/start_page', function (req, res) {
     
     /* CHARGE 1DETAILS */
     req.session.data['charge-1-title'] = "Using a vehicle uninsured against third party risks"
-    req.session.data['charge-1-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, was driving the vehcile that was not insured"
+    req.session.data['charge-1-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, was driving the vehicle that was not insured"
 
     /* CHARGE 2 DETAILS */
     req.session.data['charge-2-title'] = "Driving otherwise than in accordance with a driving licence"
-    req.session.data['charge-2-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, did not provide a valid drivers license"
+    req.session.data['charge-2-description'] = "On 7 March 2019 the driver of a motor vehicle, name FORD ESCORT, did not provide a valid driver's license"
 
     /* CHARGE 3 DETAILS */
     req.session.data['charge-3-title'] = "Speeding - exceed 30 miles per hour on restricted road - manned camera device"

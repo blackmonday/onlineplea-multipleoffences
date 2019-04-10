@@ -123,8 +123,7 @@
         </h1>
         
         <div class="govuk-inset-text m-top-20">
-            <p class="govuk-body">You have the right to attend an open court hearing but don’t have to. The magistrate can also consider your case without you and send you their decision by post.</p>
-            <p class="govuk-body">If you are needed to attend court we will write to you.</p>
+            <p class="govuk-body">You have the right to attend an open court hearing but don't have to. The magistrate can also consider your case without you and send you their decision by post.</p>
             <p class="govuk-body">Magistrates follow the same guidelines either way.</p>
         </div>
         
@@ -141,22 +140,36 @@
                     <span id="come-to-court-error-message" class="govuk-error-message m-bottom-5">
                         <span class="govuk-visually-hidden">Error:</span> Provide this information
                     </span>
-                    <div class="govuk-radios govuk-radios--inline">
+                    
+                    
+                    
+                    
+                    <div class="govuk-radios govuk-radios--conditional" data-module="radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="come-to-court-1" name="come-to-court" type="radio" value="Yes" {{ checked('come-to-court','Yes') }}>
                             <label class="govuk-label govuk-radios__label" for="come-to-court-1">
                                 Yes
                             </label>
                         </div>
+
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="come-to-court-2" name="come-to-court" type="radio" value="No" {{ checked('come-to-court','No') }}>
+                            <input class="govuk-radios__input" id="come-to-court-2" name="come-to-court" type="radio" value="No" data-aria-controls="conditional-come-to-court-2" {{ checked('come-to-court','No') }}>
                             <label class="govuk-label govuk-radios__label" for="come-to-court-2">
                                 No
                             </label>
                         </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-come-to-court-2">
+                            <div class="govuk-form-group">
+                            <p class="govuk-body">
+                                You might still have to come to court. We’ll write to you if you need to.
+                            </p>
+                            </div>
+                        </div>
                     </div>
+                
+                
                 </fieldset>
-            </div>            
+            </div>
             
             {% include "includes/continue_with_back.html" %}
         </form>
