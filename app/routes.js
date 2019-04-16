@@ -59,20 +59,20 @@ router.post('/map/start_page', function (req, res) {
     req.session.data['charge-1-title'] = "No insurance"
     req.session.data['charge-1-description'] = "On 07/03/2019 at Manchester used a motor vehicle, namely a Audi A4 VRM N15 REP, on a road, or other public place, namely Lordship Lane, Lower Broughton, when there was not in force in relation to that use such a policy of insurance or such a security in respect of third party risks as complied with the requirements of Part VI of the Road Traffic Act 1988."
     req.session.data['charge-1-description-b'] = "Contrary to section 143 of the Road Traffic Act 1988"
-    req.session.data['charge-1-description-c'] = "This offence carries 6 penalty points"
+    req.session.data['charge-1-description-c'] = "This offence carries penalty points"
 
     /* OFFENCE 2 DETAILS */
     req.session.data['charge-2-title'] = "Driving other than in accordance with license"
-    req.session.data['charge-2-description'] = "Speeding - exceed 30 miles per hour on restricted road - automatic camera device 07/03/2019 -- On 07/03/2019 12:03hrs, at BEESTON a Audi A4 VRM N15 REP on a namely Lordship Lane, Lower Broughton at a speed exceeding 30 miles per hour."
+    req.session.data['charge-2-description'] = "On 07/03/2019 at Manchester drove a motor vehicle, namely a Audi A4 VRM N15 REP on a road, namely Lordship Lane, Lower Broughton otherwise than in accordance with a licence authorising you to drive a motor vehicle of that class."
     req.session.data['charge-2-description-b'] = "Contrary to section 87(1) of the Road Traffic Act 1988"
-    req.session.data['charge-2-description-c'] = "This offence carries 3 penalty points"
+    req.session.data['charge-2-description-c'] = "This offence carries penalty points"
 
     /* OFFENCE 3 DETAILS */
     req.session.data['charge-3-title'] = "Speeding"
-    req.session.data['charge-3-description'] = "On 7 March 2019 at EDMONTON drove a motor vehicle, name FORD ESCORT, on a restricted road, namely A1010, THE GREEN, EDMONTON, , at a speed exceeding 30 miles per hour namely 38 MPH"
+    req.session.data['charge-3-description'] = "Speeding - exceed 30 miles per hour on restricted road - automatic camera device 07/03/2019 -- On 07/03/2019 12:03hrs, at BEESTON a Audi A4 VRM N15 REP on a namely Lordship Lane, Lower Broughton at a speed exceeding 30 miles per hour."
     req.session.data['charge-3-description-b'] = "**SPEED RECORDED 37MPH**"
     req.session.data['charge-3-description-c'] = "Contrary to section 14, 15(2) and 15(4) of the Road Traffic Regulation Act 1984"
-    req.session.data['charge-3-description-d'] = "This offence carries 3 penalty points"
+    req.session.data['charge-3-description-d'] = "This offence carries penalty points"
 
     /* PLEA DETAILS */
     //req.session.data['mitigation-guilty'] = "I sorry... I promise I won't do it again."
