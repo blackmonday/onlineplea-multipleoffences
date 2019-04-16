@@ -166,6 +166,7 @@ router.post('/map/your_details', function (req, res) {
     var dob_day = req.session.data['dob-day'];
     var dob_month = req.session.data['dob-month'];
     var dob_year = req.session.data['dob-year'];
+    var dlnumber = req.session.data['dlnumber'];
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
         
     if (check_your_answers != "Yes") {
@@ -204,9 +205,15 @@ router.post('/map/your_details', function (req, res) {
             req.session.data['dob-query'] = ""
         }
         
+        if (dlnumber == "") {
+            req.session.data['dlnumber-query'] = "dlnumber error"
+        } else {
+            req.session.data['dlnumber-query'] = ""
+        }
+        
         var validation_check_answer = req.session.data['validation-check'];
         
-        if ((validation_check_answer == "Are these details correct error") || (email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "")) {
+        if ((validation_check_answer == "Are these details correct error") || (email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "") || (dlnumber == "")) {
             res.redirect('/map/your_details')
         } else {
             res.redirect('/map/your_plea')

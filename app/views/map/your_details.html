@@ -49,6 +49,7 @@
         var validation_check_query = document.getElementById('validation-check-query').innerText;
         var email_1_query = document.getElementById('email-1-query').innerText;
         var dob_query = document.getElementById('dob-query').innerText;
+        var dlnumber_query = document.getElementById('dlnumber-query').innerText;
 
         if (validation_check_query == "Are these details correct error") {
             document.getElementById('are-these-details-correct-error').style.display = "block";
@@ -91,8 +92,22 @@
             document.getElementById('dob-group').classList.remove('govuk-form-group--error');
             
         }
+
+        if (dlnumber_query == "dlnumber error") {
+            document.getElementById('dlnumber-error').style.display = "block";
+            
+            document.getElementById('dlnumber-error-message').style.display = "block";
+            document.getElementById('dlnumber-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('dlnumber-error').style.display = "none";
+            
+            document.getElementById('dlnumber-error-message').style.display = "none";
+            document.getElementById('dlnumber-group').classList.remove('govuk-form-group--error');
+            
+        }
         
-        if ((validation_check_query == "") && (email_1_query == "") && (dob_query == "")) {
+        if ((validation_check_query == "") && (email_1_query == "") && (dob_query == "") && (dlnumber_query == "")) {
             document.getElementById('govuk-error-summary').style.display = "none";
         } else {
             document.getElementById('govuk-error-summary').style.display = "block";
@@ -140,16 +155,13 @@
                         <a href="#dob-group">Date of birth</a>
                     </li>
                 </ul>
+                <ul id="dlnumber-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#dlnumber-group">UK drivers license number</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
         
         <h1 class="govuk-heading-xl">
             Your details
@@ -280,6 +292,7 @@
             <h3 class="govuk-heading-s m-bottom-5">Contact numbers (optional)</h3>
             <p class="govuk-body secondary-text m-bottom-15">The court may need to contact you so they can resolve your case quickly</p>
             
+            <!-- TELEPHONE NUMBER -->
             <div class="govuk-form-group m-bottom-15">
                 <label class="govuk-label" for="home-telephone">
                     Home telephone number
@@ -287,6 +300,7 @@
                 <input class="govuk-input govuk-!-width-one-third" id="home-telephone" name="home-telephone" type="text" value="{{ data['home-telephone'] }}">
             </div>            
             
+            <!-- MOBILE NUMBER -->
             <div class="govuk-form-group m-bottom-15">
                 <label class="govuk-label" for="mobile">
                     Mobile number
@@ -294,6 +308,7 @@
                 <input class="govuk-input govuk-!-width-one-third" id="mobile" name="mobile" type="text" value="{{ data['mobile'] }}">
             </div>            
             
+            <!-- ADDITIONAL CONTACT NUMBER -->
             <div class="govuk-form-group">
                 <label class="govuk-label" for="additional-number">
                     Additional contact number
@@ -301,6 +316,7 @@
                 <input class="govuk-input govuk-!-width-one-third" id="additional-number" name="additional-number" type="text" value="{{ data['additional-number'] }}">
             </div>            
             
+            <!-- EMAIL ADDRESS -->
             <div id="email-1-group" class="">
                 <h3 class="govuk-heading-s m-bottom-5">Email address</h3>
                 <p class="govuk-body secondary-text m-bottom-15">We will automatically email you confirmation when the plea is submitted</p>
@@ -315,6 +331,7 @@
                 </div>
             </div>
             
+            <!-- ADDITIONAL EMAIL ADDRESS -->
             <div class="govuk-form-group m-bottom-15">
                 <label class="govuk-label" for="email-2">
                     Additional email address (optional)
@@ -322,6 +339,7 @@
                 <input class="govuk-input govuk-!-width-two-thirds" id="email-2" name="email-2" type="text" value="{{ data['email-2'] }}">
             </div>            
             
+            <!-- DATE OF BIRTH -->
             <div id="dob-group" class="">
                 
                 <fieldset class="govuk-fieldset m-top-30" aria-describedby="dob-hint" role="group">
@@ -369,12 +387,47 @@
                 
             </div>
                 
-            <h3 class="govuk-heading-s m-bottom-5">National Insurance number (optional)</h3>
-            <p class="govuk-body secondary-text m-bottom-15">It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’</p>
+            <!-- NATIONAL INSURANCE NUMBER -->
+            <div id="nin-group" class="">
+                <h3 class="govuk-heading-s m-bottom-5">National Insurance number (optional)</h3>
+                <p class="govuk-body secondary-text m-bottom-15">It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’</p>
+
+                <div class="govuk-form-group m-bottom-30">
+                    <input class="govuk-input govuk-!-width-one-third" id="nin" name="nin" type="text"value="{{ data['nin'] }}">
+                </div>  
+            </div>
             
-            <div class="govuk-form-group m-bottom-30">
-                <input class="govuk-input govuk-!-width-one-third" id="nin" name="nin" type="text"value="{{ data['nin'] }}">
-            </div>            
+            
+            
+            
+            
+            
+            <!-- DL NUMBER -->
+            <div id="dlnumber-group" class="">
+                <h3 class="govuk-heading-s m-bottom-5">UK driving licence number</h3>
+                <p class="govuk-body secondary-text m-bottom-15">If charge means that penalty points may be put on your licence, please provide your UK driving licence number. This can be found in section 5 of your driving licence phototcard.</p>
+
+                <!-- ERROR MESSAGE -->
+                <span id="dlnumber-error-message" class="govuk-error-message m-bottom-5">
+                    <span class="govuk-visually-hidden">Error:</span> Provide this information
+                </span>
+                
+                <div class="govuk-form-group m-bottom-15">
+                    <input class="govuk-input govuk-!-width-one-half" id="dlnumber" name="dlnumber" type="text"value="{{ data['dlnumber'] }}">
+                </div>
+                
+                <p class="govuk-body m-top-15  m-bottom-30">If you don’t know your UK driving licence number, you can get it online at <a href="https://www.gov.uk/view-driving-licence" target="_blank">gov.uk/view-driving-licence</a></p>
+            </div>
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
             
             {% include "includes/continue_with_back.html" %}
         </form>
