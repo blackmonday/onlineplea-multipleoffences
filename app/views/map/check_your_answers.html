@@ -395,7 +395,16 @@
         if (defendant_nin == "") {
             document.getElementById('defendant-nin').innerHTML = "&mdash;";
         }
-
+        
+        var uk_dl_number_answer = document.getElementById('uk-dl-number-answer').innerHTML;
+        
+        if (uk_dl_number_answer == "Yes") {
+            document.getElementById('cya-dl-number-yes').style.display = "inline";
+            document.getElementById('cya-dl-number-no').style.display = "none";
+        } else if (uk_dl_number_answer == "No") {
+            document.getElementById('cya-dl-number-yes').style.display = "none";
+            document.getElementById('cya-dl-number-no').style.display = "inline";
+        }
         
         
         
@@ -645,7 +654,26 @@
         </div>
         
         <!-- DFENDANT DL NUMBER -->
-        <div id="cya-dlnumber">
+        <!-- DL NUMBER ANSWER -->
+        <div id="cya-dl-number">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Did you provide your UK drivers license number?
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        <span id="uk-dl-number-answer">{{data['uk-dl-number-answer']}}</span>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
+
+        <!-- DL NUMBER ANSWER - YES - DISPLAY DL NUMBER -->
+        <div id="cya-dl-number-yes">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-one-third">
                     <p class="govuk-body m-bottom-0">
@@ -654,7 +682,7 @@
                 </div>
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
-                        <span id="defendant-dlnumber">{{data['dlnumber']}}</span>
+                        <span id="defendant-uk-dl-number">{{data['uk-dl-number']}}</span>
                 </div>
             </div>
             <div class="m-top-10 m-bottom-15">
@@ -662,14 +690,23 @@
             </div>
         </div>
         
-        
-        
-        
-
-        
-        
-        
-        
+        <!-- DL NUMBER ANSWER - NO - DISPLAY REASON -->
+        <div id="cya-dl-number-no">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-body m-bottom-0">
+                        Why did you not give us your UK drivers license number
+                    </p>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="m-bottom-0">
+                        <span id="defendant-uk-dl-number-no">{{data['uk-dl-number-no']}}</span>
+                </div>
+            </div>
+            <div class="m-top-10 m-bottom-15">
+                <hr class="govuk-section-break govuk-section-break--visible">
+            </div>
+        </div>
         
         <!-- ----------- -->
         <!-- ----------- -->

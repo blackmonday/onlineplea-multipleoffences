@@ -49,7 +49,6 @@
         var validation_check_query = document.getElementById('validation-check-query').innerText;
         var email_1_query = document.getElementById('email-1-query').innerText;
         var dob_query = document.getElementById('dob-query').innerText;
-        var dlnumber_query = document.getElementById('dlnumber-query').innerText;
 
         if (validation_check_query == "Are these details correct error") {
             document.getElementById('are-these-details-correct-error').style.display = "block";
@@ -93,21 +92,7 @@
             
         }
 
-        if (dlnumber_query == "dlnumber error") {
-            document.getElementById('dlnumber-error').style.display = "block";
-            
-            document.getElementById('dlnumber-error-message').style.display = "block";
-            document.getElementById('dlnumber-group').classList.add('govuk-form-group--error');
-            
-        } else {
-            document.getElementById('dlnumber-error').style.display = "none";
-            
-            document.getElementById('dlnumber-error-message').style.display = "none";
-            document.getElementById('dlnumber-group').classList.remove('govuk-form-group--error');
-            
-        }
-        
-        if ((validation_check_query == "") && (email_1_query == "") && (dob_query == "") && (dlnumber_query == "")) {
+        if ((validation_check_query == "") && (email_1_query == "") && (dob_query == "")) {
             document.getElementById('govuk-error-summary').style.display = "none";
         } else {
             document.getElementById('govuk-error-summary').style.display = "block";
@@ -398,21 +383,44 @@
             </div>
             
             <!-- DL NUMBER -->
-            <div id="dlnumber-group" class="">
+            <fieldset id="dl-number-group" class="govuk-fieldset" aria-describedby="are-these-details-correct-conditional-hint">
+            
                 <h3 class="govuk-heading-s m-bottom-5">UK driving licence number</h3>
                 <p class="govuk-body secondary-text m-bottom-15">If charge means that penalty points may be put on your licence, please provide your UK driving licence number. This can be found in section 5 of your driving licence phototcard.</p>
-
-                <!-- ERROR MESSAGE -->
-                <span id="dlnumber-error-message" class="govuk-error-message m-bottom-5">
-                    <span class="govuk-visually-hidden">Error:</span> Provide this information
-                </span>
                 
-                <div class="govuk-form-group m-bottom-15">
-                    <input class="govuk-input govuk-!-width-one-half" id="dlnumber" name="dlnumber" type="text"value="{{ data['dlnumber'] }}">
+                <div id="" class="govuk-radios govuk-radios--conditional" data-module="radios">
+
+                    <!-- YES -->
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="uk-dl-number-answer-1" name="uk-dl-number-answer" type="radio" value="Yes" data-aria-controls="uk-dl-number-conditional-1" {{ checked('uk-dl-number-answer','Yes') }}>
+                        <label class="govuk-label govuk-radios__label" for="uk-dl-number-answer-1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="uk-dl-number-conditional-1">
+                        <div class="govuk-form-group">
+                            <p class="govuk-heading-s m-bottom-5">UK drivers license number</p>
+                            <input class="govuk-input govuk-!-width-one-half" id="uk-dl-number" name="uk-dl-number" type="text"value="{{ data['uk-dl-number'] }}">
+                        </div>
+                    </div>
+
+                    <!-- No -->
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="uk-dl-number-answer-2" name="uk-dl-number-answer" type="radio" value="No" data-aria-controls="uk-dl-number-conditional-2" {{ checked('uk-dl-number-answer','No') }}>
+                        <label class="govuk-label govuk-radios__label" for="uk-dl-number-answer-2">
+                            No
+                        </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="uk-dl-number-conditional-2">
+                        <p class="govuk-heading-s m-bottom-5">Tell us why you can't provide a UK drivers license number</p>
+                        <textarea class="govuk-textarea" id="uk-dl-number-no" name="uk-dl-number-no" rows="5" aria-describedby="uk-dl-number-no-hint">{{ data['uk-dl-number-no'] }}</textarea>
+                    </div>
+
                 </div>
                 
                 <p class="govuk-body m-top-15  m-bottom-30">If you don’t know your UK driving licence number, you can get it online at <a href="https://www.viewdrivingrecord.service.gov.uk/driving-record/personal-details" target="_blank">viewdrivingrecord.service.gov.uk/driving-record/personal-details</a></p>
-            </div>
+                
+            </fieldset>
             
             {% include "includes/continue_with_back.html" %}
         </form>
