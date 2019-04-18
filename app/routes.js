@@ -162,35 +162,63 @@ router.post('/map/find_your_case', function (req, res) {
 router.post('/map/your_details', function (req, res) {
     
     var are_these_details_correct = req.session.data['are-these-details-correct'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+        
+    if (are_these_details_correct == "Yes") {
+        req.session.data['validation-check'] = ""
+        res.redirect('/map/your_details_enter_other_details')
+    } else if (are_these_details_correct == "No") {
+        req.session.data['validation-check'] = ""
+        res.redirect('/map/your_details_changes')
+    } else {
+        req.session.data['validation-check'] = "Are these details correct error"
+    }
+
+    var validation_check_answer = req.session.data['validation-check'];
+
+    if (validation_check_answer == "Are these details correct error") {
+        res.redirect('/map/your_details')
+    } else {
+        //res.redirect('/map/your_details_dl')
+    }
+        
+});
+
+/* ************ */
+/* ************ */
+/* ************ */
+/* YOUR DETAILS - CHANGES */
+router.post('/map/your_details_changes', function (req, res) {
+    
+    /* DEFENDANTS NEW DETAILS */
+    req.session.data['defendant-first-name'] = req.session.data['new-defendant-first-name'];
+    req.session.data['defendant-last-name'] = req.session.data['new-defendant-last-name'];
+    req.session.data['defendant-address-line-1'] = req.session.data['new-defendant-address-line-1'];
+    req.session.data['defendant-address-line-2'] = req.session.data['new-defendant-address-line-2'];
+    req.session.data['defendant-address-line-3'] = req.session.data['new-defendant-address-line-3'];
+    req.session.data['defendant-address-line-4'] = req.session.data['new-defendant-address-line-4'];
+    req.session.data['defendant-address-postcode'] = req.session.data['new-defendant-address-postcode'];
+    
+    res.redirect('/map/your_details_enter_other_details');
+});
+
+/* ************ */
+/* ************ */
+/* ************ */
+/* YOUR DETAILS - ENTER OTHER DETAILS */
+router.post('/map/your_details_enter_other_details', function (req, res) {
+    
     var email_1 = req.session.data['email-1'];
     var dob_day = req.session.data['dob-day'];
     var dob_month = req.session.data['dob-month'];
     var dob_year = req.session.data['dob-year'];
+    
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
         
     if (check_your_answers != "Yes") {
-        
-        if (are_these_details_correct == "Yes") {
-            req.session.data['validation-check'] = ""
-            //res.redirect('/map/your_plea')
-            
-        } else if (are_these_details_correct == "No") {
-            /* DEFENDANTS NEW DETAILS */
-            req.session.data['defendant-first-name'] = req.session.data['new-defendant-first-name']
-            req.session.data['defendant-last-name'] = req.session.data['new-defendant-last-name']
-            req.session.data['defendant-address-line-1'] = req.session.data['new-defendant-address-line-1']
-            req.session.data['defendant-address-line-2'] = req.session.data['new-defendant-address-line-2']
-            req.session.data['defendant-address-line-3'] = req.session.data['new-defendant-address-line-3']
-            req.session.data['defendant-address-line-4'] = req.session.data['new-defendant-address-line-4']
-            req.session.data['defendant-address-postcode'] = req.session.data['new-defendant-address-postcode']
-            
-            req.session.data['validation-check'] = ""
-            //res.redirect('/map/your_plea')
-            
-        } else {
-            req.session.data['validation-check'] = "Are these details correct error"
-            
-        }
+                    
+        req.session.data['validation-check'] = ""
+        //res.redirect('/map/your_plea') 
         
         if (email_1 == "") {
             req.session.data['email-1-query'] = "email 1 error"
@@ -203,16 +231,129 @@ router.post('/map/your_details', function (req, res) {
         } else {
             req.session.data['dob-query'] = ""
         }
+                
         
-        var validation_check_answer = req.session.data['validation-check'];
-        
-        if ((validation_check_answer == "Are these details correct error") || (email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "")) {
-            res.redirect('/map/your_details')
+        if ((email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "")) {
+            res.redirect('/map/your_details_enter_other_details')
         } else {
-            res.redirect('/map/your_plea')
+            res.redirect('/map/your_details_dl')
         }
         
     } else {
+        if (email_1 == "") {
+            req.session.data['email-1-query'] = "email 1 error"
+        } else {
+            req.session.data['email-1-query'] = ""
+        }
+        
+        if ((dob_day == "") || (dob_month == "") || (dob_year == "")) {
+            req.session.data['dob-query'] = "dob error"
+        } else {
+            req.session.data['dob-query'] = ""
+        }
+                
+        
+        if ((email_1 == "") || (dob_day == "") || (dob_month == "") || (dob_year == "")) {
+            res.redirect('/map/your_details_enter_other_details')
+        } else {
+            res.redirect('/map/your_details_dl')
+        }
+        
+    }
+        
+});
+
+/* ************ */
+/* ************ */
+/* ************ */
+/* YOUR DETAILS - DRIVING LICENSE NUMBER */
+router.post('/map/your_details_dl', function (req, res) {
+    
+    var uk_dl_number_answer = req.session.data['uk-dl-number-answer'];
+    var uk_dl_number = req.session.data['uk-dl-number'];
+    var uk_dl_number_no = req.session.data['uk-dl-number-no'];
+    
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+
+    if (check_your_answers != "Yes") {
+
+        if ((uk_dl_number_answer == "Yes") || (uk_dl_number_answer == "No")) {
+            req.session.data['uk-dl-number-answer-query'] = ""
+        } else {
+            req.session.data['uk-dl-number-answer-query'] = "uk dl number answer error"
+        }
+        
+        if ((uk_dl_number_answer == "Yes") && (uk_dl_number != "")) {
+            req.session.data['uk-dl-number-query'] = ""
+            
+            /* RESET DRIVERS LICENCE DATA */
+            req.session.data['uk-dl-number-answer-query'] = "";
+            req.session.data['uk-dl-number-query'] = "";
+            req.session.data['uk-dl-number-no-query'] = "";
+
+            res.redirect('/map/your_plea')
+        } else {
+            req.session.data['uk-dl-number-query'] = "uk dl number error"
+        }
+                
+        if ((uk_dl_number_answer == "No") && (uk_dl_number_no != "")) {
+            req.session.data['uk-dl-number-no-query'] = ""
+            
+            /* RESET DRIVERS LICENCE DATA */
+            req.session.data['uk-dl-number-answer-query'] = "";
+            req.session.data['uk-dl-number-query'] = "";
+            req.session.data['uk-dl-number-no-query'] = "";
+
+            res.redirect('/map/your_plea')
+        } else {
+            req.session.data['uk-dl-number-no-query'] = "uk dl number no error"
+            res.redirect('/map/your_details_dl')
+        }
+        
+        if ((uk_dl_number_answer != "Yes") || (uk_dl_number_answer != "No")) {
+            res.redirect('/map/your_details_dl')
+        }
+
+    } else {
+        
+        if ((uk_dl_number_answer == "Yes") || (uk_dl_number_answer == "No")) {
+            req.session.data['uk-dl-number-answer-query'] = ""
+            
+        } else {
+            req.session.data['uk-dl-number-answer-query'] = "uk dl number answer error"
+        }
+        
+        if ((uk_dl_number_answer == "Yes") && (uk_dl_number != "")) {
+            req.session.data['uk-dl-number-query'] = ""
+            
+            /* RESET DRIVERS LICENCE DATA */
+            req.session.data['uk-dl-number-answer-query'] = "";
+            req.session.data['uk-dl-number-query'] = "";
+            req.session.data['uk-dl-number-no-query'] = "";
+
+            res.redirect('/map/check_your_answers')
+        } else {
+            req.session.data['uk-dl-number-query'] = "uk dl number error"
+        }
+                
+        if ((uk_dl_number_answer == "No") && (uk_dl_number_no != "")) {
+            req.session.data['uk-dl-number-no-query'] = ""
+            
+            /* RESET DRIVERS LICENCE DATA */
+            req.session.data['uk-dl-number-answer-query'] = "";
+            req.session.data['uk-dl-number-query'] = "";
+            req.session.data['uk-dl-number-no-query'] = "";
+
+            res.redirect('/map/check_your_answers')
+        } else {
+            req.session.data['uk-dl-number-no-query'] = "uk dl number no error"
+            res.redirect('/map/your_details_dl')
+        }
+        
+        if ((uk_dl_number_answer != "Yes") || (uk_dl_number_answer != "No")) {
+            res.redirect('/map/check_your_answers')
+        }
+
         res.redirect('/map/check_your_answers')
     }
         
@@ -444,11 +585,7 @@ router.post('/map/your_income', function (req, res) {
     var claiming_benefits = req.session.data['claiming-benefits']
     
     if ((income_frequency == "I have no income") && (claiming_benefits == "Yes")) {
-        if (check_your_answers != "Yes") {
-            res.redirect('/map/your_benefits');
-        } else {
-            res.redirect('/map/check_your_answers')
-        }
+        res.redirect('/map/your_benefits');
         
     } else if ((income_frequency == "I have no income") && (claiming_benefits == "No")) {
         if (check_your_answers != "Yes") {
@@ -458,11 +595,7 @@ router.post('/map/your_income', function (req, res) {
         }
         
     } else {
-        if (check_your_answers != "Yes") {
             res.redirect('/map/deductions_from_earnings');
-        } else {
-            res.redirect('/map/check_your_answers')
-        }
 
     }
     
@@ -476,6 +609,7 @@ router.post('/map/deductions_from_earnings', function (req, res) {
     
     var deduct_from_earnings = req.session.data['deduct-from-earnings'];
     var claiming_benefits = req.session.data['claiming-benefits'];
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
     if (deduct_from_earnings == "Yes") {
         req.session.data['deduct-from-earnings-query'] = ""
@@ -486,8 +620,14 @@ router.post('/map/deductions_from_earnings', function (req, res) {
             req.session.data['deduct-from-earnings-query'] = ""
             res.redirect('/map/your_benefits')
         } else {
-            req.session.data['deduct-from-earnings-query'] = ""
-            res.redirect('/map/your_outgoings')
+            if (check_your_answers != "Yes") {
+                req.session.data['deduct-from-earnings-query'] = ""
+                res.redirect('/map/your_outgoings')
+            } else {
+                req.session.data['deduct-from-earnings-query'] = ""
+                res.redirect('/map/check_your_answers')
+            }
+
         }
         
     } else {
@@ -505,11 +645,46 @@ router.post('/map/deductions_from_earnings', function (req, res) {
 router.post('/map/your_employment', function (req, res) {
     
     var claiming_benefits = req.session.data['claiming-benefits']
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
     
+    
+    
+    
+    
+    var company_name = req.session.data['company-name'];
+    var company_address = req.session.data['company-address-line-1'];
+    var company_postcode = req.session.data['company-address-postcode'];
+
+    if (company_name == "") {
+        req.session.data['company-name-query'] = "company name error"
+    } else if (company_name != "") {
+        req.session.data['company-name-query'] = ""
+    } 
+
+    if (company_address == "") {
+        req.session.data['company-address-query'] = "company address error"
+    } else if (company_address != "") {
+        req.session.data['company-address-query'] = ""
+    }
+
+    if (company_postcode == "") {
+        req.session.data['company-postcode-query'] = "company postcode error"
+    } else if (company_postcode != "") {
+        req.session.data['company-postcode-query'] = ""
+    }
+
+    if ((company_name == "") || (company_address == "") || (company_postcode == "")) {
+        res.redirect('/map/your_employment')
+    } 
+
     if (claiming_benefits == "Yes") {
         res.redirect('/map/your_benefits')
     } else {
-        res.redirect('/map/your_outgoings')
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings')
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
     }    
     
 });
@@ -520,7 +695,13 @@ router.post('/map/your_employment', function (req, res) {
 /* YOUR BENEFITS  */
 router.post('/map/your_benefits', function (req, res) {
     
-    res.redirect('/map/your_outgoings')
+    var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
+
+    if (check_your_answers != "Yes") {
+        res.redirect('/map/your_outgoings')
+    } else {
+        res.redirect('/map/check_your_answers')
+    }
     
 });
 

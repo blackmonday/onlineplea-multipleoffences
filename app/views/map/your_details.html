@@ -37,11 +37,6 @@
             document.getElementById('defendant-address-line-4').style.display = "none"
         }
         
-        
-        
-        
-        
-        
         /* ************************************************************* */
         /* ************************************************************* */
         /* ************************************************************* */
@@ -49,7 +44,7 @@
         var validation_check_query = document.getElementById('validation-check-query').innerText;
         var email_1_query = document.getElementById('email-1-query').innerText;
         var dob_query = document.getElementById('dob-query').innerText;
-
+        
         if (validation_check_query == "Are these details correct error") {
             document.getElementById('are-these-details-correct-error').style.display = "block";
             
@@ -64,49 +59,11 @@
             
         }
         
-        if (email_1_query == "email 1 error") {
-            document.getElementById('email-1-error').style.display = "block";
-            
-            document.getElementById('email-1-error-message').style.display = "block";
-            document.getElementById('email-1-group').classList.add('govuk-form-group--error');
-            
-        } else {
-            document.getElementById('email-1-error').style.display = "none";
-            
-            document.getElementById('email-1-error-message').style.display = "none";
-            document.getElementById('email-1-group').classList.remove('govuk-form-group--error');
-            
-        }
-        
-        if (dob_query == "dob error") {
-            document.getElementById('dob-error').style.display = "block";
-            
-            document.getElementById('dob-error-message').style.display = "block";
-            document.getElementById('dob-group').classList.add('govuk-form-group--error');
-            
-        } else {
-            document.getElementById('dob-error').style.display = "none";
-            
-            document.getElementById('dob-error-message').style.display = "none";
-            document.getElementById('dob-group').classList.remove('govuk-form-group--error');
-            
-        }
-
-        if ((validation_check_query == "") && (email_1_query == "") && (dob_query == "")) {
+        if (validation_check_query == "") {
             document.getElementById('govuk-error-summary').style.display = "none";
         } else {
             document.getElementById('govuk-error-summary').style.display = "block";
         }
-        
-        
-        
-        
-
-
-       
-        
-        
-        
         
     }
 </script>
@@ -130,32 +87,13 @@
                         <a href="#details-correct-group">Are these details correct?</a>
                     </li>
                 </ul>
-                <ul id="email-1-error" class="govuk-list govuk-error-summary__list">
-                    <li>
-                        <a href="#email-1-group">Email address</a>
-                    </li>
-                </ul>
-                <ul id="dob-error" class="govuk-list govuk-error-summary__list">
-                    <li>
-                        <a href="#dob-group">Date of birth</a>
-                    </li>
-                </ul>
-                <ul id="dlnumber-error" class="govuk-list govuk-error-summary__list">
-                    <li>
-                        <a href="#dlnumber-group">UK drivers license number</a>
-                    </li>
-                </ul>
             </div>
         </div>
         
         <h1 class="govuk-heading-xl">
-            Your details
-        </h1>
-        
-        <h2 class="govuk-heading-l m-bottom-15">
             Check your name and address
-        </h2>
-        
+        </h1>
+                
         <div class="govuk-inset-text m-top-0">
             <strong>{{data['defendant-first-name']}} <span style="text-transform: uppercase">{{data['defendant-last-name']}}</span></strong><br>
             <span id="defendant-address-line-1">{{data['defendant-address-line-1']}}<br></span>
@@ -171,7 +109,7 @@
             <!-- -------------------------- -->
             <!-- -------------------------- -->
             <!-- ARE THESE DETAILS CORRECT? -->
-            <fieldset id="details-correct-group" class="govuk-fieldset" aria-describedby="are-these-details-correct-conditional-hint">
+            <fieldset id="details-correct-group" class="govuk-fieldset m-bottom-30" aria-describedby="are-these-details-correct-conditional-hint">
                 
                 <h3 class="govuk-heading-s m-bottom-15">Are these details correct?</h3>
                 
@@ -198,230 +136,17 @@
                     <!-- -- -->
                     <!-- NO -->
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="are-these-details-correct-2" name="are-these-details-correct" type="radio" value="No" data-aria-controls="are-these-details-correct-conditional-2" {{ checked('are-these-details-correct','No') }}>
+                        <input class="govuk-radios__input" id="are-these-details-correct-2" name="are-these-details-correct" type="radio" value="No" {{ checked('are-these-details-correct','No') }}>
                         <label class="govuk-label govuk-radios__label" for="are-these-details-correct-2">
                             No
                         </label>
                     </div>
                     
-                    <!-- ------- -->
-                    <!-- ------- -->
-                    <!-- ------- -->
-                    <!-- CHANGES -->
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="are-these-details-correct-conditional-2">
-
-                        <h2 class="govuk-heading-s m-top-15">Changes to name</h2>
-
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-first-name">
-                                First name
-                            </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-first-name" name="new-defendant-first-name" type="text" value="{{ data['new-defendant-first-name'] }}">
-                        </div>            
-            
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-last-name">
-                                Last name
-                            </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-last-name" name="new-defendant-last-name" type="text" value="{{ data['new-defendant-last-name'] }}">
-                        </div>            
-            
-                        <h2 class="govuk-heading-s m-top-30">Changes to name</h2>
-
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-address-line-1">
-                                Address
-                            </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-1" name="new-defendant-address-line-1" type="text" value="{{ data['new-defendant-address-line-1'] }}">
-                        </div>            
-            
-                        <div class="govuk-form-group m-bottom-15">
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-2" name="new-defendant-address-line-2" type="text" value="{{ data['new-defendant-address-line-2'] }}">
-                        </div>            
-            
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-address-line-3">
-                                Town or city
-                            </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-3" name="new-defendant-address-line-3" type="text" value="{{ data['new-defendant-address-line-3'] }}">
-                        </div>            
-            
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-address-line-4">
-                                County (optional)
-                            </label>
-                            <input class="govuk-input govuk-!-width-two-thirds" id="new-defendant-address-line-4" name="new-defendant-address-line-4" type="text" value="{{ data['new-defendant-address-line-4'] }}">
-                        </div>            
-            
-                        <div class="govuk-form-group m-bottom-15">
-                            <label class="govuk-label" for="new-defendant-address-postcode">
-                                Postcode
-                            </label>
-                            <input class="govuk-input govuk-!-width-one-third" id="new-defendant-address-postcode" name="new-defendant-address-postcode" type="text" value="{{ data['new-defendant-address-postcode'] }}">
-                        </div>            
-            
-                    
-                    
-                    
-                    </div>
-                    
                 </div>
 
             </fieldset>
             
-            <!-- ------------------- -->
-            <!-- ------------------- -->
-            <!-- ------------------- -->
-            <!-- ENTER OTHER DETAILS -->
-            <h2 class="govuk-heading-l m-top-30">Enter other details</h2>
-            <h3 class="govuk-heading-s m-bottom-5">Contact numbers (optional)</h3>
-            <p class="govuk-body secondary-text m-bottom-15">The court may need to contact you so they can resolve your case quickly</p>
-            
-            <!-- TELEPHONE NUMBER -->
-            <div class="govuk-form-group m-bottom-15">
-                <label class="govuk-label" for="home-telephone">
-                    Home telephone number
-                </label>
-                <input class="govuk-input govuk-!-width-one-third" id="home-telephone" name="home-telephone" type="text" value="{{ data['home-telephone'] }}">
-            </div>            
-            
-            <!-- MOBILE NUMBER -->
-            <div class="govuk-form-group m-bottom-15">
-                <label class="govuk-label" for="mobile">
-                    Mobile number
-                </label>
-                <input class="govuk-input govuk-!-width-one-third" id="mobile" name="mobile" type="text" value="{{ data['mobile'] }}">
-            </div>            
-            
-            <!-- ADDITIONAL CONTACT NUMBER -->
-            <div class="govuk-form-group">
-                <label class="govuk-label" for="additional-number">
-                    Additional contact number
-                </label>
-                <input class="govuk-input govuk-!-width-one-third" id="additional-number" name="additional-number" type="text" value="{{ data['additional-number'] }}">
-            </div>            
-            
-            <!-- EMAIL ADDRESS -->
-            <div id="email-1-group" class="">
-                <h3 class="govuk-heading-s m-bottom-5">Email address</h3>
-                <p class="govuk-body secondary-text m-bottom-15">We will automatically email you confirmation when the plea is submitted</p>
-
-                <!-- ERROR MESSAGE -->
-                <span id="email-1-error-message" class="govuk-error-message m-bottom-5">
-                    <span class="govuk-visually-hidden">Error:</span> Provide this information
-                </span>
-
-                <div class="govuk-form-group m-bottom-15">
-                    <input class="govuk-input govuk-!-width-two-thirds" id="email-1" name="email-1" type="text" value="{{ data['email-1'] }}">
-                </div>
-            </div>
-            
-            <!-- ADDITIONAL EMAIL ADDRESS -->
-            <div class="govuk-form-group m-bottom-15">
-                <label class="govuk-label" for="email-2">
-                    Additional email address (optional)
-                </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="email-2" name="email-2" type="text" value="{{ data['email-2'] }}">
-            </div>            
-            
-            <!-- DATE OF BIRTH -->
-            <div id="dob-group" class="">
-                
-                <fieldset class="govuk-fieldset m-top-30" aria-describedby="dob-hint" role="group">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl m-bottom-0">
-                        <h1 class="govuk-heading-s m-bottom-10">
-                            Date of birth
-                        </h1>
-                    </legend>
-                    <span id="dob-hint" class="govuk-hint m-bottom-10">
-                        For example, 01 08 2007
-                    </span>
-
-                    <!-- ERROR MESSAGE -->
-                    <span id="dob-error-message" class="govuk-error-message m-bottom-5">
-                        <span class="govuk-visually-hidden">Error:</span> Provide this information
-                    </span>
-
-                    <div class="govuk-date-input" id="dob">
-                        <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label" for="dob-day">
-                                    Day
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="{{ data['dob-day'] }}">
-                            </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label" for="dob-month">
-                                    Month
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" value="{{ data['dob-month'] }}">
-                            </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label govuk-date-input__label" for="dob-year">
-                                    Year
-                                </label>
-                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" value="{{ data['dob-year'] }}">
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-                
-            </div>
-                
-            <!-- NATIONAL INSURANCE NUMBER -->
-            <div id="nin-group" class="">
-                <h3 class="govuk-heading-s m-bottom-5">National Insurance number (optional)</h3>
-                <p class="govuk-body secondary-text m-bottom-15">It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’</p>
-
-                <div class="govuk-form-group m-bottom-30">
-                    <input class="govuk-input govuk-!-width-one-third" id="nin" name="nin" type="text"value="{{ data['nin'] }}">
-                </div>  
-            </div>
-            
-            <!-- DL NUMBER -->
-            <fieldset id="dl-number-group" class="govuk-fieldset" aria-describedby="are-these-details-correct-conditional-hint">
-            
-                <h3 class="govuk-heading-s m-bottom-5">UK driving licence number</h3>
-                <p class="govuk-body secondary-text m-bottom-15">If charge means that penalty points may be put on your licence, please provide your UK driving licence number. This can be found in section 5 of your driving licence phototcard.</p>
-                
-                <div id="" class="govuk-radios govuk-radios--conditional" data-module="radios">
-
-                    <!-- YES -->
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="uk-dl-number-answer-1" name="uk-dl-number-answer" type="radio" value="Yes" data-aria-controls="uk-dl-number-conditional-1" {{ checked('uk-dl-number-answer','Yes') }}>
-                        <label class="govuk-label govuk-radios__label" for="uk-dl-number-answer-1">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="uk-dl-number-conditional-1">
-                        <div class="govuk-form-group">
-                            <p class="govuk-heading-s m-bottom-5">UK drivers license number</p>
-                            <input class="govuk-input govuk-!-width-one-half" id="uk-dl-number" name="uk-dl-number" type="text"value="{{ data['uk-dl-number'] }}">
-                        </div>
-                    </div>
-
-                    <!-- No -->
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="uk-dl-number-answer-2" name="uk-dl-number-answer" type="radio" value="No" data-aria-controls="uk-dl-number-conditional-2" {{ checked('uk-dl-number-answer','No') }}>
-                        <label class="govuk-label govuk-radios__label" for="uk-dl-number-answer-2">
-                            No
-                        </label>
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="uk-dl-number-conditional-2">
-                        <p class="govuk-heading-s m-bottom-5">Tell us why you can't provide a UK drivers license number</p>
-                        <textarea class="govuk-textarea" id="uk-dl-number-no" name="uk-dl-number-no" rows="5" aria-describedby="uk-dl-number-no-hint">{{ data['uk-dl-number-no'] }}</textarea>
-                    </div>
-
-                </div>
-                
-                <p class="govuk-body m-top-15  m-bottom-30">If you don’t know your UK driving licence number, you can get it online at <a href="https://www.viewdrivingrecord.service.gov.uk/driving-record/personal-details" target="_blank">viewdrivingrecord.service.gov.uk/driving-record/personal-details</a></p>
-                
-            </fieldset>
-            
+                        
             {% include "includes/continue_with_back.html" %}
         </form>
 

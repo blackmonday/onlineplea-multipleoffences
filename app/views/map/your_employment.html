@@ -11,10 +11,104 @@
 
 {% block content %}
 
+<script>
+    window.onload = function() {
+        
+        /* ************************************************************* */
+        /* ************************************************************* */
+        /* ************************************************************* */
+        /* ERROR VALIDATION - ALSO SEE ROUTES & VALIDATION CHECK INCLUDE */
+        var company_name_query = document.getElementById('company-name-query').innerText;
+        var company_address_query = document.getElementById('company-address-query').innerText;
+        var company_postcode_query = document.getElementById('company-postcode-query').innerText;
+        
+        if (company_name_query == "company name error") {
+            document.getElementById('company-name-error').style.display = "block";
+            
+            document.getElementById('company-name-error-message').style.display = "block";
+            document.getElementById('company-name-group').classList.add('govuk-form-group--error');
+                        
+        } else {
+            document.getElementById('company-name-error').style.display = "none";
+            
+            document.getElementById('company-name-error-message').style.display = "none";
+            document.getElementById('company-name-group').classList.remove('govuk-form-group--error');
+            
+        }
+        
+        if (company_address_query == "company address error") {
+            document.getElementById('company-address-error').style.display = "block";
+            
+            document.getElementById('company-address-error-message').style.display = "block";
+            document.getElementById('company-address-group').classList.add('govuk-form-group--error');
+                        
+        } else {
+            document.getElementById('company-address-error').style.display = "none";
+            
+            document.getElementById('company-address-error-message').style.display = "none";
+            document.getElementById('company-address-group').classList.remove('govuk-form-group--error');
+            
+        }
+        
+        if (company_postcode_query == "company postcode error") {
+            document.getElementById('company-postcode-error').style.display = "block";
+            
+            document.getElementById('company-postcode-error-message').style.display = "block";
+            document.getElementById('company-postcode-group').classList.add('govuk-form-group--error');
+                        
+        } else {
+            document.getElementById('company-postcode-error').style.display = "none";
+            
+            document.getElementById('company-postcode-error-message').style.display = "none";
+            document.getElementById('company-postcode-group').classList.remove('govuk-form-group--error');
+            
+        }
+        
+        if ((company_name_query == "") && (company_address_query == "") && (company_postcode_query == "")) {
+            document.getElementById('govuk-error-summary').style.display = "none";
+        }
+        
+    }
+</script>
+
 <div class="govuk-grid-row">
     
     <!-- MAIN CONTENT -->
     <div class="govuk-grid-column-two-thirds">
+        
+        {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            
+            <div class="govuk-error-summary__body">
+                
+                <ul id="company-name-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#company-name-group">Which company do you work for?</a>
+                    </li>
+                </ul>
+
+                <ul id="company-address-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#company-address-group">Address</a>
+                    </li>
+                </ul>
+
+                <ul id="company-postcode-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#company-postcode-group">Postcode</a>
+                    </li>
+                </ul>
+                
+            </div>
+            
+        </div>
+        
         
         <h1 class="govuk-heading-xl">
             Your employment
@@ -29,15 +123,23 @@
             <!-- ------------ -->
             <!-- ------------ -->
             <!-- COMPANY NAME -->
-            <div class="govuk-form-group">
-                <h2 class="govuk-heading-s m-bottom-5" for="company-name">
-                    Which company do you work for?
-                </h2>
-                <p class="govuk-body secondary-text m-bottom-10">
-                    This is the company name of your employer - this should be on your payslip
-                </p>
-                <input class="govuk-input govuk-!-width-two-thirds" id="company-name" name="company-name" type="text" value="{{ data['company-name'] }}">
-            </div>            
+            <div id="company-name-group">
+                <div class="govuk-form-group">
+                    <h2 class="govuk-heading-s m-bottom-5" for="company-name">
+                        Which company do you work for?
+                    </h2>
+
+                    <!-- ERROR MESSAGE -->
+                    <span id="company-name-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Provide this information
+                    </span>
+
+                    <p class="govuk-body secondary-text m-bottom-10">
+                        This is the company name of your employer - this should be on your payslip
+                    </p>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="company-name" name="company-name" type="text" value="{{ data['company-name'] }}">
+                </div>
+            </div>
             
             <!-- ------------------------ -->
             <!-- ------------------------ -->
@@ -71,14 +173,24 @@
                         Enter the head office or where your payroll is managed
                     </div>
                 </details>
-                <h2 class="govuk-heading-s m-bottom-5" for="company-address-line-1">
-                    Address
-                </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-1" name="company-address-line-1" type="text" value="{{ data['company-address-line-1'] }}">
-                <input class="govuk-input govuk-!-width-two-thirds" id="company-address-line-2" name="company-address-line-2" type="text" value="{{ data['company-address-line-2'] }}">
+                
+                <div id="company-address-group">
+                    <h2 class="govuk-heading-s m-bottom-5" for="company-address-line-1">
+                        Address
+                    </h2>
+
+                    <!-- ERROR MESSAGE -->
+                    <span id="company-address-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Provide this information
+                    </span>
+
+                    <input class="govuk-input govuk-!-width-two-thirds" id="company-address-line-1" name="company-address-line-1" type="text" value="{{ data['company-address-line-1'] }}">
+                </div>
+
+                    <input class="govuk-input govuk-!-width-two-thirds m-top-10" id="company-address-line-2" name="company-address-line-2" type="text" value="{{ data['company-address-line-2'] }}">
                 
                 <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-line-3">
-                    Town or city
+                    Town or city (optional)
                 </h2>
                 <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-3" name="company-address-line-3" type="text" value="{{ data['company-address-line-3'] }}">
                 
@@ -87,10 +199,18 @@
                 </h2>
                 <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-line-4" name="company-address-line-4" type="text" value="{{ data['company-address-line-4'] }}">
                 
-                <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-postcode">
-                    Postcode
-                </h2>
-                <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-postcode" name="company-address-postcode" type="text" value="{{ data['company-address-postcode'] }}">
+                <div id="company-postcode-group">
+                    <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-address-postcode">
+                        Postcode
+                    </h2>
+
+                    <!-- ERROR MESSAGE -->
+                    <span id="company-postcode-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Provide this information
+                    </span>
+
+                    <input class="govuk-input govuk-!-width-two-thirds m-bottom-10" id="company-address-postcode" name="company-address-postcode" type="text" value="{{ data['company-address-postcode'] }}">
+                </div>
                 
                 <h2 class="govuk-heading-s m-top-15 m-bottom-5" for="company-telephone">
                     Your employer’s telephone (optional)

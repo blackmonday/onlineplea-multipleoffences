@@ -1,0 +1,194 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Online plea design prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/map_breadcrumbs_2.html" %}
+{% endblock %}
+
+{% block content %}
+
+<script>
+    window.onload = function() {
+        
+        /* ************************************************************* */
+        /* ************************************************************* */
+        /* ************************************************************* */
+        /* ERROR VALIDATION - ALSO SEE ROUTES & VALIDATION CHECK INCLUDE */
+        var email_1_query = document.getElementById('email-1-query').innerText;
+        var dob_query = document.getElementById('dob-query').innerText;
+                
+        if (email_1_query == "email 1 error") {
+            document.getElementById('email-1-error').style.display = "block";
+            
+            document.getElementById('email-1-error-message').style.display = "block";
+            document.getElementById('email-1-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('email-1-error').style.display = "none";
+            
+            document.getElementById('email-1-error-message').style.display = "none";
+            document.getElementById('email-1-group').classList.remove('govuk-form-group--error');
+            
+        }
+        
+        if (dob_query == "dob error") {
+            document.getElementById('dob-error').style.display = "block";
+            
+            document.getElementById('dob-error-message').style.display = "block";
+            document.getElementById('dob-group').classList.add('govuk-form-group--error');
+            
+        } else {
+            document.getElementById('dob-error').style.display = "none";
+            
+            document.getElementById('dob-error-message').style.display = "none";
+            document.getElementById('dob-group').classList.remove('govuk-form-group--error');
+            
+        }
+                
+        if ((email_1_query == "") && (dob_query == "")) {
+            document.getElementById('govuk-error-summary').style.display = "none";
+        } else {
+            document.getElementById('govuk-error-summary').style.display = "block";
+        }
+        
+    }
+</script>
+
+<div class="govuk-grid-row">
+    
+    <!-- MAIN CONTENT -->
+    <div class="govuk-grid-column-two-thirds">
+        
+        {% include "includes/test_data.html" %}
+        {% include "includes/validation_check.html" %}
+
+        <!-- ERROR SUMMARY -->
+        <div id="govuk-error-summary" class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                Fix the following
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul id="are-these-details-correct-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#details-correct-group">Are these details correct?</a>
+                    </li>
+                </ul>
+                <ul id="email-1-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#email-1-group">Email address</a>
+                    </li>
+                </ul>
+                <ul id="dob-error" class="govuk-list govuk-error-summary__list">
+                    <li>
+                        <a href="#dob-group">Date of birth</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <h1 class="govuk-heading-xl">
+            Enter other details
+        </h1>
+                        
+        <form action="" method="post">
+            
+            <!-- DATE OF BIRTH -->
+            <div id="dob-group" class="">
+                
+                <fieldset class="govuk-fieldset m-top-30" aria-describedby="dob-hint" role="group">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl m-bottom-0">
+                        <h1 class="govuk-heading-s m-bottom-10">
+                            Date of birth
+                        </h1>
+                    </legend>
+                    <span id="dob-hint" class="govuk-hint m-bottom-10">
+                        For example, 01 08 2007
+                    </span>
+
+                    <!-- ERROR MESSAGE -->
+                    <span id="dob-error-message" class="govuk-error-message m-bottom-5">
+                        <span class="govuk-visually-hidden">Error:</span> Provide this information
+                    </span>
+
+                    <div class="govuk-date-input" id="dob">
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="dob-day">
+                                    <strong>Day</strong>
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="{{ data['dob-day'] }}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="dob-month">
+                                    <strong>Month</strong>
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" value="{{ data['dob-month'] }}">
+                            </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="dob-year">
+                                    <strong>Year</strong>
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" value="{{ data['dob-year'] }}">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                
+            </div>
+                            
+            <!-- EMAIL ADDRESS -->
+            <div id="email-1-group" class="">
+                <h3 class="govuk-heading-s m-bottom-5">Email address</h3>
+                <p class="govuk-body secondary-text m-bottom-5">We will automatically email you confirmation when the plea is submitted</p>
+
+                <!-- ERROR MESSAGE -->
+                <span id="email-1-error-message" class="govuk-error-message m-bottom-5">
+                    <span class="govuk-visually-hidden">Error:</span> Provide this information
+                </span>
+
+                <div class="govuk-form-group m-bottom-15">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="email-1" name="email-1" type="text" value="{{ data['email-1'] }}">
+                </div>
+            </div>
+            
+            <!-- CONTACT NUMBER -->
+            <h3 class="govuk-heading-s m-top-30 m-bottom-5">Contact number (optional)</h3>
+            <p class="govuk-body secondary-text m-bottom-5">The court may need to contact you so they can resolve your case quickly</p>
+            <div class="govuk-form-group m-bottom-15">
+                <input class="govuk-input govuk-!-width-one-third" id="home-telephone" name="home-telephone" type="text" value="{{ data['home-telephone'] }}">
+            </div> 
+            
+            <!-- NATIONAL INSURANCE NUMBER -->
+            <div id="nin-group" class="">
+                <h3 class="govuk-heading-s m-top-30 m-bottom-5">National Insurance number (optional)</h3>
+                <p class="govuk-body secondary-text m-bottom-5">It's on your National Insurance card, benefit letter, payslip or P60 - for example, ‘QQ 12 34 56 C’</p>
+
+                <div class="govuk-form-group m-bottom-30">
+                    <input class="govuk-input govuk-!-width-one-third" id="nin" name="nin" type="text"value="{{ data['nin'] }}">
+                </div>  
+            </div>
+                        
+            {% include "includes/continue_with_back.html" %}
+        </form>
+
+    </div>
+    
+    <!-- RIGHT COLUMN CONTENT -->
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/map_help_and_advice.html" %}
+      <!--{% include "includes/map_help_and_advice_contact_the_prosecutor.html" %}
+      {% include "includes/map_help_and_advice_legal_advice.html" %}-->
+      {% include "includes/map_help_and_advice_more_help.html" %}
+    </div>
+
+</div>
+
+{% endblock %}

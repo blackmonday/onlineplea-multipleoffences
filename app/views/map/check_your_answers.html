@@ -371,26 +371,14 @@
         /* CHECK DEFENDENT DETAILS */
         
         var defendant_home_telephone = document.getElementById('defendant-home-telephone').innerHTML;
-        var defendant_mobile = document.getElementById('defendant-mobile').innerText;
-        var defendant_additional_number = document.getElementById('defendant-additional-number').innerHTML;
         var defendant_email_1 = document.getElementById('defendant-email-1').innerHTML;
-        var defendant_email_2 = document.getElementById('defendant-email-2').innerHTML;
         var defendant_nin = document.getElementById('defendant-nin').innerHTML;
         
         if (defendant_home_telephone == "") {
             document.getElementById('defendant-home-telephone').innerHTML = "&mdash;";
         }
-        if (defendant_mobile == "") {
-            document.getElementById('defendant-mobile').innerHTML = "&mdash;";
-        }
-        if (defendant_additional_number == "") {
-            document.getElementById('defendant-additional-number').innerHTML = "&mdash;";
-        }
         if (defendant_email_1 == "") {
             document.getElementById('defendant-email-1').innerHTML = "&mdash;";
-        }
-        if (defendant_email_2 == "") {
-            document.getElementById('defendant-email-2').innerHTML = "&mdash;";
         }
         if (defendant_nin == "") {
             document.getElementById('defendant-nin').innerHTML = "&mdash;";
@@ -541,44 +529,6 @@
             </div>
         </div>
         
-        <!-- DEFENDANT MOBILE -->
-        <div id="cya-mobile-number">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Mobile number
-                    </p>
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        <span id="defendant-mobile">{{data['mobile']}}</span>
-                    </p>
-                </div>
-            </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
-        
-        <!-- DEFENDANT ADDITIONAL TELEPHONE -->
-        <div id="cya-additional-contact-number">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Additional contact number
-                    </p>
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        <span id="defendant-additional-number">{{data['additional-number']}}</span>
-                    </p>
-                </div>
-            </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
-        
         <!-- DEFENDANT EMAIL -->
         <div id="cya-email-address">
             <div class="govuk-grid-row">
@@ -590,25 +540,6 @@
                 <div class="govuk-grid-column-two-thirds">
                     <p class="m-bottom-0">
                         <span id="defendant-email-1">{{data['email-1']}}</span>
-                    </p>
-                </div>
-            </div>
-            <div class="m-top-10 m-bottom-15">
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </div>
-        </div>
-        
-        <!-- DFENDANT ADDITIONAL EMAIL -->
-        <div id="cya-additional-email-address">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    <p class="govuk-body m-bottom-0">
-                        Additional email address
-                    </p>
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    <p class="m-bottom-0">
-                        <span id="defendant-email-2">{{data['email-2']}}</span>
                     </p>
                 </div>
             </div>
