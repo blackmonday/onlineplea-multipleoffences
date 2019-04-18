@@ -16,13 +16,15 @@
             <span class="govuk-caption-m m-top-10">Using GOV.UK prototype kit: {{releaseVersion}}</span>
         </h1>{{releaseVersion | log }}
 
-        <div class="govuk-warning-text m-top-60 m-bottom-60">
+        <div class="govuk-warning-text m-top-60">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
+            <strong class="govuk-warning-text__text red-text">
                 <span class="govuk-warning-text__assistive">Warning</span>
-                This prototype is a work in progress
+                When there is a mix of pleas the correct data may not be displayed on the check your answers page 
             </strong>
         </div>
+        
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
         
         <!-- ABOUT THIS DESIGN PROTOTYPE -->
         <div>
@@ -55,9 +57,45 @@
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
         </div>
 
-        <!-- YOUR DETAILS -->
+        <!-- YOUR DETAILS - CHECK YOUR NAME AND ADDRESS -->
         <div>
-            <p class="govuk-heading-m">Your details</p>
+            <p class="govuk-heading-m">Your details - Check your name and address</p>
+            <p>This page is fully functional.</p>
+            <ul class="govuk-list green-text">
+                <li>
+                    <strong>Form validation</strong>: Working
+                </li>
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        </div>
+
+        <!-- YOUR DETAILS - CHANGES TO YOUR NAME AND ADDRESS -->
+        <div>
+            <p class="govuk-heading-m">Your details - Changes to your name and address</p>
+            <p>This page is fully functional.</p>
+            <ul class="govuk-list brown-text">
+                <li>
+                    <strong>Form validation</strong>: Not applicable
+                </li>
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        </div>
+
+        <!-- YOUR DETAILS - CHANGES TO YOUR NAME AND ADDRESS -->
+        <div>
+            <p class="govuk-heading-m">Your details - Enter other details</p>
+            <p>This page is fully functional.</p>
+            <ul class="govuk-list green-text">
+                <li>
+                    <strong>Form validation</strong>: Working
+                </li>
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        </div>
+
+        <!-- YOUR DETAILS - CHANGES TO YOUR NAME AND ADDRESS -->
+        <div>
+            <p class="govuk-heading-m">Your details - Driving license number</p>
             <p>This page is fully functional.</p>
             <ul class="govuk-list green-text">
                 <li>
@@ -95,7 +133,7 @@
         <div>
             <p class="govuk-heading-m">Guily plea - coming to court</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list secondary-text">
+            <ul class="govuk-list brown-text">
                 <li>
                     <strong>Form validation</strong>: Not applicable
                 </li>
@@ -131,9 +169,9 @@
         <div>
             <p class="govuk-heading-m">Your finances</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list green-text">
+            <ul class="govuk-list red-text">
                 <li>
-                    <strong>Form validation</strong>: Working
+                    <strong>Form validation</strong>: Not implemented
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -155,9 +193,9 @@
         <div>
             <p class="govuk-heading-m">Deductions from earnings</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list red-text">
+            <ul class="govuk-list green-text">
                 <li>
-                    <strong>Form validation</strong>: Not implemented
+                    <strong>Form validation</strong>: Working
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -167,9 +205,9 @@
         <div>
             <p class="govuk-heading-m">Your employement</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list red-text">
+            <ul class="govuk-list green-text">
                 <li>
-                    <strong>Form validation</strong>: Not implemented
+                    <strong>Form validation</strong>: Working
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -179,9 +217,9 @@
         <div>
             <p class="govuk-heading-m">Your benefits</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list red-text">
+            <ul class="govuk-list green-text">
                 <li>
-                    <strong>Form validation</strong>: Not implemented
+                    <strong>Form validation</strong>: Working
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -202,7 +240,7 @@
         <div>
             <p class="govuk-heading-m">Your monthly outgoings</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list secondary-text">
+            <ul class="govuk-list brown-text">
                 <li>
                     <strong>Form validation</strong>: Not applicable
                 </li>
@@ -212,9 +250,15 @@
 
         <!-- CHECK YOUR ANSWERS -->
         <div>
-            <p class="govuk-heading-m">Check your answers</p>
-            <p class="red-text"><strong>This page needs further testing as it's does not always display the correct content for mixed pleas.</strong></p>
-            <ul class="govuk-list secondary-text">
+            <p class="govuk-heading-m m-bottom-5">Check your answers</p>
+            <div class="govuk-warning-text m-top-0 m-bottom-5">
+                <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                <strong class="govuk-warning-text__text red-text">
+                    <span class="govuk-warning-text__assistive">Warning</span>
+                    This page needs further testing as it's does not always display the correct content for mixed pleas 
+                </strong>
+            </div>
+            <ul class="govuk-list brown-text">
                 <li>
                     <strong>Form validation</strong>: Not applicable
                 </li>
@@ -225,11 +269,7 @@
         <!-- DECLARATION -->
         <div>
             <p class="govuk-heading-m">Declaration</p>
-            <ul class="govuk-list">
-                <li>
-                    <strong>Checkbox</strong>: not functional
-                </li>
-            </ul>
+            <p>This page is fully functional.</p>
             <ul class="govuk-list green-text">
                 <li>
                     <strong>Form validation</strong>: Working
@@ -242,7 +282,7 @@
         <div>
             <p class="govuk-heading-m">Confirmation</p>
             <p>This page is fully functional.</p>
-            <ul class="govuk-list secondary-text">
+            <ul class="govuk-list brown-text">
                 <li>
                     <strong>Form validation</strong>: Not applicable
                 </li>

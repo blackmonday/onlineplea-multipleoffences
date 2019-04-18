@@ -13,7 +13,7 @@
 
 <script>
     window.onload = function() {
-
+        
         /* ************* */
         /* ************* */
         /* ************* */
@@ -75,8 +75,11 @@
         /* ********************* */
         /* COMING TO COURT CHECK */
         var coming_to_court_1 = document.getElementById('coming-to-court-1').innerText;
+        var coming_to_court_1b = document.getElementById('coming-to-court-1b').innerText;
         var coming_to_court_2 = document.getElementById('coming-to-court-2').innerText;
+        var coming_to_court_2b = document.getElementById('coming-to-court-2b').innerText;
         var coming_to_court_3 = document.getElementById('coming-to-court-3').innerText;
+        var coming_to_court_3b = document.getElementById('coming-to-court-3b').innerText;
         
         if (coming_to_court_1 == "No") {
             document.getElementById('cya-plea-1-court-group').style.display = "none";
@@ -129,6 +132,44 @@
         
         
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /* ********** */
         /* ********** */
         /* ********** */
@@ -140,25 +181,48 @@
         if (plea_for_charge_1 == "Guilty") {
             document.getElementById('cya-plea-1-mitigation-guilty').style.display = "inline";
             document.getElementById('cya-plea-1-mitigation-not-guilty').style.display = "none";
+            
+            document.getElementById('coming-to-court-1').style.display = "inline";
+            document.getElementById('coming-to-court-1b').style.display = "none";
+            
         } else {
             document.getElementById('cya-plea-1-mitigation-guilty').style.display = "none";
             document.getElementById('cya-plea-1-mitigation-not-guilty').style.display = "inline";
+            
+            document.getElementById('coming-to-court-1').style.display = "none";
+            document.getElementById('coming-to-court-1b').style.display = "inline";
+            
         }
         if (plea_for_charge_2 == "Guilty") {
             document.getElementById('cya-plea-2-mitigation-guilty').style.display = "inline";
             document.getElementById('cya-plea-2-mitigation-not-guilty').style.display = "none";
+            
+            document.getElementById('coming-to-court-2').style.display = "inline";
+            document.getElementById('coming-to-court-2b').style.display = "none";
+            
         } else {
             document.getElementById('cya-plea-2-mitigation-guilty').style.display = "none";
             document.getElementById('cya-plea-2-mitigation-not-guilty').style.display = "inline";
+            
+            document.getElementById('coming-to-court-2').style.display = "none";
+            document.getElementById('coming-to-court-2b').style.display = "inline";
+            
         }
         if (plea_for_charge_3 == "Guilty") {
             document.getElementById('cya-plea-3-mitigation-guilty').style.display = "inline";
             document.getElementById('cya-plea-3-mitigation-not-guilty').style.display = "none";
+            
+            document.getElementById('coming-to-court-3').style.display = "inline";
+            document.getElementById('coming-to-court-3b').style.display = "none";
+
         } else {
             document.getElementById('cya-plea-3-mitigation-guilty').style.display = "none";
             document.getElementById('cya-plea-3-mitigation-not-guilty').style.display = "inline";
+            
+            document.getElementById('coming-to-court-3').style.display = "none";
+            document.getElementById('coming-to-court-3b').style.display = "inline";
         }
-        
+
         /* HIDE 'Would you like to give us your income or benefits details so they can be taken into account?' IF ALL PLEAS ARE GUILTY */
         if ((plea_for_charge_1 == "Not guilty") && (plea_for_charge_2 == "Not guilty") && (plea_for_charge_3 == "Not guilty")) {
             document.getElementById('outstanding-fines-group').style.display = "inline";
@@ -216,16 +280,6 @@
         } else {
             document.getElementById('dates-to-avoid-group').style.display = "inline";
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         
@@ -687,9 +741,7 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds">
                         <p class="m-bottom-0">
-                            <span id="plea-for-charge-1">
-                                {{data['charge-1-plea']}}
-                            </span>
+                            <span id="plea-for-charge-1">{{data['charge-1-plea']}}</span>
                         </p>
                     </div>
                 </div>

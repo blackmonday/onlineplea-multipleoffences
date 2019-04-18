@@ -695,12 +695,30 @@ router.post('/map/your_employment', function (req, res) {
 /* YOUR BENEFITS  */
 router.post('/map/your_benefits', function (req, res) {
     
+    var deduct_from_benefits = req.session.data['deduct-from-benefits'];
     var check_your_answers = req.session.data['i-made-it-to-check-your-answers'];
 
-    if (check_your_answers != "Yes") {
-        res.redirect('/map/your_outgoings')
+    if (deduct_from_benefits == "Yes") {
+        req.session.data['benefits-query'] = ""
+        
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings')
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
+        
+    } else if (deduct_from_benefits == "No") {
+        req.session.data['benefits-query'] = ""
+
+        if (check_your_answers != "Yes") {
+            res.redirect('/map/your_outgoings')
+        } else {
+            res.redirect('/map/check_your_answers')
+        }
+        
     } else {
-        res.redirect('/map/check_your_answers')
+        req.session.data['benefits-query'] = "benefits error"
+        res.redirect('/map/your_benefits')
     }
     
 });
